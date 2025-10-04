@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Technology-Enabled Health Insurance Agency - Raleigh, NC | Data-Driven ACA Plans</title>
+  <meta name="description" content="Raleigh-based technology-enabled health insurance agency helping customers make informed ACA (Obamacare) plan decisions using data analysis. Compare specialists, medications, and predict healthcare costs.">
+  <meta name="keywords" content="health insurance, ACA, Obamacare, Raleigh NC, health coverage, insurance agent, technology-enabled insurance, data-driven healthcare">
+  
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Technology-Enabled Health Insurance Agency - Data-Driven Coverage">
+  <meta property="og:description" content="Make informed health insurance decisions with data analysis and technology">
+  <meta property="og:type" content="website">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Calendly CSS -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Calendly JavaScript -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Main Content -->
+  <main class="homepage">
+    <!-- Hero Section -->
+    <section class="homepage-hero">
+      <div class="homepage-container">
+        <h2 class="homepage-title">Fact-Based Health Decisions</h2>
+        <p class="homepage-lede">
+          We are a Raleigh-based technology-enabled Healthcare Insurance agency dedicated to
+          helping customers make informed decisions about health coverage using available data.
+        </p>
+        <p class="homepage-sublede">
+          For ACA (Obamacare) open enrollment,
+          <strong>November 1 – December 15, 2025</strong>, we can help you
+          choose the right plan for yourself and your family based on your
+          current situation and the insurance companies offering plans in your
+          area.
+        </p>
+      </div>
+    </section>
+
+    <!-- What Most Agents Do -->
+    <section class="homepage-section">
+      <div class="homepage-container">
+        <h3 class="homepage-h3">What most agents do</h3>
+        <ul class="homepage-list homepage-list-enhanced">
+          <li>
+            Determine eligibility for government subsidies based on anticipated
+            income and family size
+          </li>
+          <li>Check whether your current providers are in-network</li>
+          <li>Verify if your current medications are covered</li>
+          <li>
+            Help you choose the right coverage level (Bronze, Silver, Gold, or
+            Platinum) based on expected healthcare usage next year
+          </li>
+          <li>
+            Assist you in selecting the plan which best fits your needs in terms of
+            premium payments, deductibles, co-payments, coinsurance and maximum out-of-pocket limits.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- How We Go Deeper -->
+    <section class="homepage-section homepage-section-alt">
+      <div class="homepage-container">
+        <h3 class="homepage-h3">How we go deeper</h3>
+        <p class="homepage-deeper-intro">In addition to what most agents do, we:</p>
+
+        <div class="homepage-cards">
+          <button
+            class="deep-button"
+            onclick="openModal('Network.png', 'Compare the number of specialists available near you for each plan')"
+          >
+            Compare the number of specialists available near you for each plan
+          </button>
+
+          <button
+            class="deep-button"
+            onclick="openModal('Meds.png', 'Estimate the likely costs of common medications for each plan')"
+          >
+            Estimate the likely costs of common medications for each plan
+          </button>
+
+          <button
+            class="deep-button"
+            onclick="openModal('Survey.png', 'Use a structured questionnaire to predict medical service usage')"
+          >
+            Use structured questionnaire to predict medical service usage
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="homepage-cta">
+      <div class="homepage-container homepage-cta-card">
+        <h4 class="homepage-cta-title">
+          Interested in a deeper, data-driven review?
+        </h4>
+        <p class="homepage-cta-text">
+          Contact us for an enhanced analysis of your ACA plan options tailored to your situation.
+        </p>
+        <div class="homepage-contact">
+          <div>
+            <a 
+              href="#" 
+              onclick="Calendly.initPopupWidget({url: 'https://calendly.com/kurt-a-conger'}); return false;"
+              class="homepage-contact-link"
+            >
+              📅 <strong>Schedule a Meeting</strong>
+            </a>
+          </div>
+          <div>
+            📧 <strong>kurt.a.conger@gmail.com</strong>
+          </div>
+          <div>
+            📞 <strong>252-570-7239</strong>
+          </div>
+        </div>
+        
+        <!-- Partner line -->
+        <p class="partner-inline-text">
+          If you have other Healthcare Insurance needs outside of NC or with Medicare, contact our partner agency 
+          <a href="https://www.tutelainsurance.com/" target="_blank" rel="noopener noreferrer" class="partner-inline-link">
+            <img src="tutela.png" alt="Tutela Advisors" class="partner-inline-logo">
+          </a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal-overlay" style="display: none;" onclick="handleBackdropClick(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close" title="Close">
+        ×
+      </button>
+      <img id="modalImage" src="" alt="" class="modal-image">
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

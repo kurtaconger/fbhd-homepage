@@ -1,0 +1,316 @@
+/* =========================
+   GLOBAL RESET & LAYOUT
+   ========================= */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   PUBLIC HOMEPAGE STYLES
+   ========================= */
+.homepage {
+  padding-top: 0;  /* REMOVED padding - was 80px */
+  color: #0f172a;
+  background: #f8fafc;
+  min-height: calc(100vh - 60px);
+  overflow-y: auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.homepage-container {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.homepage-hero {
+  background: linear-gradient(180deg, #ffffff 0%, #f3f6fb 100%);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 36px 0 28px;
+}
+
+.homepage-title {
+  margin: 0 0 8px 0;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #198754;
+}
+
+.homepage-lede {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.homepage-sublede {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+.homepage-section {
+  padding: 24px 0;
+}
+
+.homepage-section-alt {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.homepage-h3 {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.homepage-list {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  line-height: 1.7;
+  font-size: 16px;
+  list-style: none; /* Remove default bullets */
+}
+
+/* Green round bullets */
+.homepage-list li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 14px;
+}
+
+.homepage-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  background-color: #198754; /* Green color matching your title */
+  border-radius: 50%;
+}
+
+.homepage-list li:last-child {
+  margin-bottom: 0;
+}
+
+.homepage-cta {
+  padding: 26px 0 44px;
+  background: #f8fafc;
+}
+
+.homepage-cta-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.homepage-cta-title {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.homepage-cta-text {
+  margin: 0 0 12px 0;
+  color: #475569;
+  font-size: 16px;
+}
+
+.homepage-contact {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* === CTA card buttons (green) === */
+.homepage-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.deep-button {
+  display: inline-block;
+  width: 100%;
+  padding: 16px 14px;
+  border-radius: 10px;
+  border: 1px solid #0f5132;
+  background: #198754;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: all 0.2s ease;
+}
+
+.deep-button:hover,
+.deep-button:focus {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.deep-button:active {
+  transform: translateY(0);
+}
+
+/* === Image modal === */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  padding: 12px;
+  max-width: 95vw;
+  max-height: 92vh;
+  overflow: auto;
+}
+
+.modal-image {
+  display: block;
+  max-width: 92vw;
+  max-height: 86vh;
+  height: auto;
+  width: auto;
+}
+
+.modal-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  border: none;
+  background: #0f172a;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+.modal-close:hover {
+  filter: brightness(1.15);
+}
+
+/* Enhanced bullet list visibility */
+.homepage-list-enhanced {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px 20px 20px 38px;
+  margin-top: 12px;
+}
+
+.homepage-list-enhanced li {
+  margin-bottom: 14px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.homepage-list-enhanced li:last-child {
+  margin-bottom: 0;
+}
+
+/* "In addition to" intro text */
+.homepage-deeper-intro {
+  margin: 8px 0 16px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* Schedule meeting link styling */
+.homepage-contact-link {
+  color: #111827;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.homepage-contact-link:hover {
+  color: #198754;
+  text-decoration: underline;
+}
+
+/* Responsive tweak */
+@media (max-width: 900px) {
+  .homepage-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   PARTNER SECTION (FOOTER)
+   ========================= */
+/* Remove the .homepage-partner section and add these instead: */
+
+/* Partner inline within CTA card */
+.partner-inline-text {
+  margin: 20px 0 0 0;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.partner-inline-link {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+  vertical-align: middle;
+}
+
+.partner-inline-link:hover {
+  opacity: 0.8;
+}
+
+.partner-inline-logo {
+  height: 32px;
+  width: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .partner-inline-text {
+    font-size: 15px;
+  }
+  
+  .partner-inline-logo {
+    height: 28px;
+  }
+}
