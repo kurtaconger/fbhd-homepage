@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <title>Health Plan Options — Fact-Based Healthcare Decisions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
+        .logo { width: 80px; height: auto; flex-shrink: 0; }
+        .header-text h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: #1e4f91; margin-bottom: 5px; }
+        .header-text .tagline { font-size: 1.1rem; color: #1e4f91; font-weight: 600; }
+
+        .page-intro { margin-bottom: 32px; }
+        .page-intro p { font-size: 1.05rem; line-height: 1.7; color: #444; }
+
+        .survey { background: #fff; border: 1px solid #d0dff0; border-radius: 10px; padding: 24px 28px; margin-bottom: 24px; }
+        .survey h2 { font-family: 'Merriweather', serif; font-size: 1.15rem; color: #1e4f91; margin-bottom: 20px; }
+        .survey-question { margin-bottom: 18px; }
+        .survey-question label { display: block; font-size: 0.95rem; font-weight: 600; color: #333; margin-bottom: 10px; }
+        .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .q-btn { padding: 9px 20px; border: 2px solid #1e4f91; border-radius: 6px; background: #fff; color: #1e4f91; font-family: 'Open Sans', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.18s ease; }
+        .q-btn:hover { background: #e8f0fa; }
+        .q-btn.selected { background: #1e4f91; color: #fff; }
+        .survey-q2 { display: none; }
+        .survey-q2.visible { display: block; }
+
+        .result-note { display: none; background: #e8f4ea; border-left: 4px solid #198754; border-radius: 0 6px 6px 0; padding: 12px 16px; margin-top: 16px; font-size: 0.92rem; color: #2a5c38; font-weight: 600; }
+        .result-note.visible { display: block; }
+
+        .partnership-note { display: none; background: #fffbe6; border: 1px solid #e6c94a; border-left: 4px solid #c9a400; border-radius: 0 8px 8px 0; padding: 18px 22px; margin-bottom: 28px; }
+        .partnership-note.visible { display: block; }
+        .partnership-note h3 { font-family: 'Merriweather', serif; font-size: 1rem; color: #664d00; margin-bottom: 10px; }
+        .partnership-note p { font-size: 0.92rem; color: #5a4300; line-height: 1.65; }
+        .partnership-note p + p { margin-top: 8px; }
+
+        .table-section { margin-bottom: 48px; }
+        .table-section h2 { font-family: 'Merriweather', serif; font-size: 1.3rem; color: #1e4f91; margin-bottom: 16px; }
+        .table-wrapper { overflow-x: auto; }
+
+        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(30,79,145,0.07); }
+        thead tr:first-child th { background: #1e4f91; color: #fff; font-family: 'Merriweather', serif; font-size: 0.82rem; font-weight: 700; padding: 12px 10px; text-align: left; vertical-align: bottom; border-right: 1px solid rgba(255,255,255,0.15); }
+        thead tr:first-child th:first-child { background: #153a6a; width: 120px; min-width: 100px; }
+        tbody tr td:first-child { background: #f0f4fb; color: #1e4f91; font-weight: 700; font-size: 0.8rem; padding: 11px 10px; border-right: 2px solid #d0dff0; vertical-align: top; text-transform: uppercase; letter-spacing: 0.03em; }
+        tbody tr td { padding: 11px 10px; border-bottom: 1px solid #eaeef5; border-right: 1px solid #eaeef5; vertical-align: top; line-height: 1.55; color: #333; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:nth-child(even) td { background: #f8fafd; }
+        tbody tr:nth-child(even) td:first-child { background: #eaeef5; }
+        .row-best-for td { background: #fffbe6 !important; }
+        .row-best-for td:first-child { background: #f0d800 !important; color: #5a4a00 !important; }
+
+        tr.row-hidden { display: none; }
+        .col-hidden { display: none; }
+
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.76rem; font-weight: 700; margin-bottom: 4px; line-height: 1.6; }
+        .badge-nc      { background: #fce8e8; color: #a02020; }
+        .badge-yes     { background: #d4edda; color: #1a5c2a; }
+        .badge-caution { background: #fff3cd; color: #664d03; }
+        .badge-new     { background: #e0f7ea; color: #0d5c30; }
+        .badge-growing { background: #e8f0ff; color: #1e4f91; }
+
+        .hsa-box { background: #e8f4ea; border-left: 4px solid #198754; border-radius: 0 8px 8px 0; padding: 20px 24px; margin-bottom: 40px; }
+        .hsa-box h3 { font-family: 'Merriweather', serif; font-size: 1.05rem; color: #1a5c2a; margin-bottom: 10px; }
+        .hsa-box p { font-size: 0.92rem; color: #2a5c38; line-height: 1.65; }
+        .hsa-box p + p { margin-top: 8px; }
+        .hsa-box strong { color: #1a5c2a; }
+
+        .footnotes { margin-top: 12px; font-size: 0.8rem; color: #666; line-height: 1.6; }
+        .footnotes p { margin-bottom: 6px; }
+
+        .contact { border-top: 1px solid #ddd; padding-top: 30px; }
+        .contact p { font-size: 1.1rem; margin-bottom: 8px; }
+        .contact p strong { color: #1e4f91; }
+        .contact a { color: #1e4f91; text-decoration: none; font-weight: 600; font-size: 1.1rem; }
+        .contact a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .header { flex-direction: column; text-align: center; }
+            .header-text h1 { font-size: 1.6rem; }
+            table { font-size: 0.8rem; }
+            thead tr:first-child th { font-size: 0.75rem; padding: 10px 7px; }
+            tbody tr td { padding: 9px 7px; }
+            tbody tr td:first-child { font-size: 0.72rem; min-width: 80px; }
+            .survey { padding: 18px 16px; }
+            .btn-group { flex-direction: column; }
+            .q-btn { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <header class="header">
+        <img src="MFHD_LOGO.PNG" alt="Fact-Based Healthcare Decisions Logo" class="logo">
+        <div class="header-text">
+            <h1>Fact-Based Healthcare Decisions</h1>
+            <p class="tagline">Health insurance guidance for North Carolinians</p>
+        </div>
+    </header>
+
+    <div class="page-intro">
+        <p>If you have started or are starting a small business in North Carolina with fewer than 10 employees, here are your main health coverage options — and how they compare. Answer the questions below to see the options most relevant to your situation.</p>
+    </div>
+
+    <div class="survey">
+        <h2>Tell us about your situation</h2>
+        <div class="survey-question">
+            <label>What best describes your business right now?</label>
+            <div class="btn-group">
+                <button class="q-btn" id="q1-solo"        onclick="setQ1('solo')">Solo — just me</button>
+                <button class="q-btn" id="q1-partnership" onclick="setQ1('partnership')">Co-founders / partnership (no W-2 employees yet)</button>
+                <button class="q-btn" id="q1-employees"   onclick="setQ1('employees')">I have W-2 employees to cover</button>
+            </div>
+        </div>
+        <div class="survey-question survey-q2" id="q2-block">
+            <label>Are all your employees based in North Carolina?</label>
+            <div class="btn-group">
+                <button class="q-btn" id="q2-yes" onclick="setQ2('yes')">Yes — all NC-based</button>
+                <button class="q-btn" id="q2-no"  onclick="setQ2('no')">No — some are out of state</button>
+            </div>
+        </div>
+        <div class="result-note" id="result-note"></div>
+    </div>
+
+    <div class="partnership-note" id="partnership-note">
+        <h3>Important note for partnerships and multi-founder businesses</h3>
+        <p>Partners in a multi-member LLC or general partnership are not W-2 employees of their own company — which means ICHRA and QSEHRA do not apply to the founders themselves. Each co-founder handles their own individual health coverage independently, based on their own income, age, and family situation. Two co-founders may end up on entirely different plans.</p>
+        <p>The good news: the partnership can pay each founder's premiums and report them as guaranteed payments on your K-1. Each partner then takes an above-the-line deduction on their personal return — the same tax benefit as the self-employed health insurance deduction. Discuss this structure with your accountant when you set up the business.</p>
+        <p>The table below shows individual coverage options for each founder. If you later hire W-2 employees, revisit this page to see employer-sponsored plan options.</p>
+    </div>
+
+    <div class="table-section">
+        <h2>Health Coverage Options for NC Founders — 2026</h2>
+        <div class="table-wrapper">
+        <table id="options-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th class="col-aca">ACA Marketplace</th>
+                    <th class="col-bcbs">BCBSNC PPO<br><span style="font-weight:400;font-size:0.75rem;">(off-exchange)</span></th>
+                    <th class="col-ichra">ICHRA</th>
+                    <th class="col-qsehra">QSEHRA</th>
+                    <th class="col-peo">PEO</th>
+                    <th class="col-small-group">Small Group Plan<br><span style="font-weight:400;font-size:0.75rem;">(fully insured)</span></th>
+                    <th class="col-chw">Carolina HealthWorks</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>What is it?</td>
+                    <td class="col-aca">Individual plans on healthcare.gov. Premiums subsidized by income.</td>
+                    <td class="col-bcbs">Blue Advantage PPO — available only through a licensed agent in NC. Not on healthcare.gov.</td>
+                    <td class="col-ichra">Employer sets a monthly reimbursement amount; each employee buys their own individual plan. Any company size.</td>
+                    <td class="col-qsehra">Simpler version of ICHRA, designed specifically for businesses under 50 employees. IRS caps the reimbursement amount.</td>
+                    <td class="col-peo">Co-employment firm becomes your HR/payroll partner and employer of record. You get their large-group benefits.</td>
+                    <td class="col-small-group">Traditional employer-sponsored group plan from any NC insurer (BCBSNC, Cigna, Aetna, UnitedHealthcare).<sup>&#8308;</sup></td>
+                    <td class="col-chw">New (Nov 2025) MEWA through NC Chamber + BCBSNC. Small businesses pool together for large-group pricing.</td>
+                </tr>
+
+                <tr>
+                    <td>Why consider it?</td>
+                    <td class="col-aca">Subsidies can make premiums very low in early low-income years. No employer contribution required.</td>
+                    <td class="col-bcbs">Best provider network in NC and nationally — 92% of NC doctors, 97% of US hospitals in-network. Only available through a licensed agent.</td>
+                    <td class="col-ichra">Maximum flexibility — any team size, any state. Employees shop plans locally. Employer controls cost precisely.</td>
+                    <td class="col-qsehra">Simpler than ICHRA — less paperwork, no ACA reporting. Works even for employees on a spouse's plan. Good for very small teams.</td>
+                    <td class="col-peo">Investors expect it. Handles all HR, payroll, and compliance. Works for remote multi-state teams.</td>
+                    <td class="col-small-group">Employer controls plan design. Can offer richer benefits to attract employees. Tax deductible.</td>
+                    <td class="col-chw">Estimates suggest up to 40% savings vs. ACA community-rated plans. BCBSNC network without the marketplace.</td>
+                </tr>
+
+                <tr id="row-req">
+                    <td id="req-label">Key requirements</td>
+                    <td class="col-aca" id="req-aca">Income under ~$62,640/yr for subsidy. Open enrollment Nov–Jan only (or qualifying life event).</td>
+                    <td class="col-bcbs" id="req-bcbs"><span class="badge badge-nc">NC residents only</span><br>No subsidy. Must use a licensed BCBSNC agent.</td>
+                    <td class="col-ichra">Must have at least 1 W-2 employee (not owner-only). IRS Section 105 HRA plan document required.</td>
+                    <td class="col-qsehra">Under 50 employees. Cannot also offer a group health plan. Must offer to all full-time employees on same terms.</td>
+                    <td class="col-peo">Co-employment agreement required. $1,000–$2,000/employee/year PEO fee on top of premiums. Setup ~4 weeks.</td>
+                    <td class="col-small-group"><span class="badge badge-nc">NC residents only</span><br>Min. 2 enrolled employees. Participation requirements vary by insurer.</td>
+                    <td class="col-chw"><span class="badge badge-nc">NC residents only</span><br>2–50 employees, 30+ hrs/week. Must join NC Chamber or a participating local chamber.</td>
+                </tr>
+
+                <tr>
+                    <td>Cost driver</td>
+                    <td class="col-aca">Your income, age, and family size. Lower income = higher subsidy = lower premium. Age and family size set the base premium before subsidies are applied.</td>
+                    <td class="col-bcbs">Your age and family size. No subsidy available. Premiums are age-rated — older founders or those covering dependents will pay significantly more than a comparable marketplace plan.</td>
+                    <td class="col-ichra">The monthly reimbursement cap you set. Employees pay the rest themselves. Admin platforms (PeopleKeep, Take Command, Thatch) typically run $5–$15/employee/month.</td>
+                    <td class="col-qsehra">Your reimbursement cap, up to the IRS limit ($537/mo individual, $1,091/mo family in 2026).</td>
+                    <td class="col-peo">Number of employees. PEO fee + premium. Large-group rates typically offset the PEO fee.</td>
+                    <td class="col-small-group">Age and health status of your team. Older or less healthy group = higher rates.</td>
+                    <td class="col-chw">Health status of your team pool. Healthier group = lower risk-based rate.</td>
+                </tr>
+
+                <tr id="row-oos">
+                    <td>Out-of-state employees?</td>
+                    <td class="col-aca"><span class="badge badge-yes">Yes</span><br>Each enrolls in their own state's marketplace.</td>
+                    <td class="col-bcbs"><span class="badge badge-nc">No</span></td>
+                    <td class="col-ichra"><span class="badge badge-yes">Yes</span><br>Employees shop plans in their own state.</td>
+                    <td class="col-qsehra"><span class="badge badge-yes">Yes</span><br>Employees shop plans in their own state.</td>
+                    <td class="col-peo"><span class="badge badge-yes">Yes</span><br>PEO handles multi-state compliance.</td>
+                    <td class="col-small-group"><span class="badge badge-caution">Complex</span><br>May need separate policies per state.</td>
+                    <td class="col-chw"><span class="badge badge-nc">No</span></td>
+                </tr>
+
+                <tr>
+                    <td>Adoption trend</td>
+                    <td class="col-aca">Dominant for self-employed — 48% of marketplace enrollees are entrepreneurs or small business workers. <strong>2026 warning:</strong> enhanced subsidies expired Jan 1. Premiums doubled for many.</td>
+                    <td class="col-bcbs">Stable niche. Best individual option for founders whose income is too high for subsidies.</td>
+                    <td class="col-ichra"><span class="badge badge-growing">Growing fast</span><br>1,000%+ total adoption since 2019, driven largely by small employers. Now the most-recommended option for small teams by benefits advisors.</td>
+                    <td class="col-qsehra"><span class="badge badge-growing">Growing</span><br>Steady growth since 2017. Often overlooked in favor of ICHRA, but frequently the simpler and cheaper-to-administer choice for teams under 5 — especially when some employees are already covered through a spouse's plan.</td>
+                    <td class="col-peo">Standard for VC-backed startups. Rippling and Justworks dominate. Less common for bootstrapped sub-10 teams.</td>
+                    <td class="col-small-group">Declining — enrollment down 11.9% in 2024, another 10% projected for 2026. Carriers exiting the market.</td>
+                    <td class="col-chw"><span class="badge badge-new">Too new to measure</span><br>Launched Nov 2025. Strong economics on paper — no track record yet.</td>
+                </tr>
+
+                <tr class="row-best-for">
+                    <td>Best for</td>
+                    <td class="col-aca">Solo founder or co-founder with individual income under ~$62K in year 1–2. Family subsidy thresholds are higher — ask your agent.</td>
+                    <td class="col-bcbs">Solo founder or co-founder wanting the best PPO network. Income too high for a meaningful subsidy.</td>
+                    <td class="col-ichra">Any size. Multi-state team. Want flexibility without group plan complexity.</td>
+                    <td class="col-qsehra">1–5 employees. Simple, low admin. Works even when some employees are on a spouse's plan.</td>
+                    <td class="col-peo">VC-backed startups, remote teams, fast-scaling companies that want HR handled end-to-end.</td>
+                    <td class="col-small-group">NC team with older or mixed-health employees. Employer wants direct control over plan design.</td>
+                    <td class="col-chw">NC team of 2–9, young and healthy, willing to join a local chamber. Want BCBSNC network at lower cost.</td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+
+        <div class="footnotes">
+            <p>&#185; 2026 ACA subsidy cliff: Enhanced pandemic-era subsidies expired Jan 1, 2026. Premiums more than doubled on average for 22 million enrollees. Individual subsidy eligibility cuts off at $62,640 income.</p>
+            <p>&#178; Carolina HealthWorks is a self-insured MEWA sponsored by the NC Chamber Benefit Trust; it is not a BCBSNC insurance product and is not backed by a state guaranty association.</p>
+            <p>&#179; QSEHRA 2026 limits: $6,450/year individual ($537/mo), $13,100/year family ($1,091/mo), per IRS Rev. Proc. 2025-32.</p>
+            <p>&#8308; <strong>Level-funded plans — not shown because they are generally not available to early-stage startups.</strong> A level-funded (partially self-insured) plan can offer meaningful savings for healthy teams by replacing community-rated pricing with underwriting based on your group's actual health census. However, minimum enrollment thresholds make them inaccessible to most sub-10 employee companies. In NC, BCBSNC's level-funded product ("Balanced Funding") requires at least 12 eligible employees with 5 enrolled. Other NC carriers offering level-funded products include Cigna, UnitedHealthcare, and Aetna — each with their own minimums, typically 5–10 enrolled employees. Compliance obligations also shift to the employer under a level-funded arrangement (IRS Form 1095-B reporting, PCORI fee, HIPAA data handling), adding meaningful overhead for a company without dedicated HR. If your team grows to 12+ employees and skews young and healthy, ask about level-funded as an alternative to fully insured renewal.</p>
+        </div>
+    </div>
+
+    <div class="hsa-box">
+        <h3>The HSA Advantage — Worth Knowing</h3>
+        <p>If you choose an ACA Bronze plan or an HSA-eligible plan through ICHRA or QSEHRA, you can contribute to a Health Savings Account (HSA). In 2026 the limit is <strong>$4,400 individual / $8,750 family.</strong></p>
+        <p>HSAs are the only account with a <strong>triple tax advantage</strong> — contributions are deductible, growth is tax-free, and withdrawals for medical expenses are tax-free. After age 65, unused funds can be withdrawn for any purpose, like a traditional IRA. Fidelity estimates a 65-year-old will need ~$172,500 for retirement healthcare costs — an HSA is the most tax-efficient way to build that reserve.</p>
+        <p>Many early-stage founders have no IRA or 401k yet. <strong>A Bronze plan + maxed HSA is often the single most tax-efficient financial move an early founder can make.</strong></p>
+    </div>
+
+    <section class="contact">
+        <p><strong>Questions about your specific situation?</strong></p>
+        <p>Contact Kurt Conger</p>
+        <a href="mailto:kurt.conger@factbasedhealthcaredecisions.com">kurt.conger@factbasedhealthcaredecisions.com</a>
+    </section>
+
+</div>
+
+<script>
+    let q1 = null, q2 = null;
+
+    const soloContent = {
+        reqLabel: 'Key considerations',
+        aca: '<strong>Your health history shapes your metal level.</strong> Generally healthy with no chronic conditions? A Bronze or Silver plan keeps premiums low. Regular prescriptions, ongoing care, or planned procedures often make a Gold plan cheaper overall despite the higher premium — the math is less obvious than it looks.<br><br><strong>Your doctors and prescriptions determine your carrier.</strong> Plans within the same metal level can have very different provider networks and drug formularies. Picking the wrong carrier can mean losing your current physician or paying full price for medications you rely on.<br><br><strong>Specific needs shape the plan design.</strong> High mental health utilization, specialist care, or recurring therapies can dramatically change which plan is the right choice — even two Bronze plans can perform very differently for your situation.<br><br><strong>An HSA-eligible plan can double as a retirement account.</strong> A Bronze plan unlocks an HSA — the only savings account with a triple tax advantage. Many founders who think they\'re just picking health insurance are actually making one of their most important long-term financial decisions.',
+        bcbs: '<strong>Your health history determines the right plan design.</strong> BCBSNC PPO plans come in multiple deductible and cost-sharing configurations. Choosing between them depends on how much routine care you use versus how much catastrophic protection you need.<br><br><strong>Verify your specific doctors are in network.</strong> The BCBSNC PPO covers 92% of NC doctors — but "most" still means some aren\'t. It takes two minutes to confirm your physicians are covered before enrolling, and it\'s worth doing.<br><br><strong>No subsidy is available here.</strong> If your income qualifies for ACA marketplace subsidies, this option may cost significantly more than a comparable marketplace plan. A quick comparison is worth the time.<br><br><strong>Founders who travel should take the PPO seriously.</strong> ACA marketplace plans in NC are typically HMO or EPO — they cover you in-network only, except for emergencies. If you regularly work or travel out of state, the BCBSNC PPO\'s national network means you\'re covered wherever you are, not just for emergencies.<br><br><strong>An HSA-eligible option may be available</strong> depending on the specific plan design. Ask your agent — pairing with an HSA dramatically improves the long-term financial value of a higher-deductible plan.'
+    };
+
+    const employerContent = {
+        reqLabel: 'Key requirements',
+        aca: 'Income under ~$62,640/yr for subsidy. Open enrollment Nov–Jan only (or qualifying life event).',
+        bcbs: '<span class="badge badge-nc">NC residents only</span><br>No subsidy. Must use a licensed BCBSNC agent. Best for founders who travel — full national PPO network, not just emergency coverage.'
+    };
+
+    function setQ1(val) {
+        q1 = val;
+        q2 = null;
+
+        ['solo','partnership','employees'].forEach(function(v) {
+            document.getElementById('q1-' + v).classList.toggle('selected', val === v);
+        });
+
+        var q2block = document.getElementById('q2-block');
+        if (val === 'employees') {
+            q2block.classList.add('visible');
+            document.getElementById('q2-yes').classList.remove('selected');
+            document.getElementById('q2-no').classList.remove('selected');
+        } else {
+            q2block.classList.remove('visible');
+        }
+
+        document.getElementById('partnership-note').classList.toggle('visible', val === 'partnership');
+        updateTable();
+    }
+
+    function setQ2(val) {
+        q2 = val;
+        document.getElementById('q2-yes').classList.toggle('selected', val === 'yes');
+        document.getElementById('q2-no').classList.toggle('selected', val === 'no');
+        updateTable();
+    }
+
+    function updateTable() {
+        var allCols = ['aca','bcbs','ichra','qsehra','peo','small-group','chw'];
+        var note = document.getElementById('result-note');
+        var visibleCols = [];
+        var isSoloMode = false;
+
+        if (q1 === 'solo') {
+            visibleCols = ['aca','bcbs'];
+            isSoloMode = true;
+            note.innerHTML = 'Showing individual coverage options for a solo founder. If you bring on employees later, revisit this page.';
+            note.classList.add('visible');
+        } else if (q1 === 'partnership') {
+            visibleCols = ['aca','bcbs'];
+            isSoloMode = true;
+            note.innerHTML = 'Each co-founder evaluates individual coverage independently. The table shows individual plan options relevant to each founder.';
+            note.classList.add('visible');
+        } else if (q1 === 'employees' && q2 === 'yes') {
+            visibleCols = ['ichra','qsehra','peo','small-group','chw'];
+            note.innerHTML = 'Showing employer-sponsored options for an all-NC team.';
+            note.classList.add('visible');
+        } else if (q1 === 'employees' && q2 === 'no') {
+            visibleCols = ['ichra','qsehra','peo'];
+            note.innerHTML = 'Because you have out-of-state employees, NC-only options (BCBSNC PPO, Small Group, Carolina HealthWorks) are not shown. ICHRA and QSEHRA work in any state.';
+            note.classList.add('visible');
+        } else {
+            visibleCols = allCols;
+            note.classList.remove('visible');
+        }
+
+        allCols.forEach(function(col) {
+            var show = visibleCols.indexOf(col) !== -1;
+            document.querySelectorAll('.col-' + col).forEach(function(el) {
+                el.classList.toggle('col-hidden', !show);
+            });
+        });
+
+        var showOOS = (q1 === 'employees' && q2 === 'no');
+        document.getElementById('row-oos').classList.toggle('row-hidden', !showOOS);
+
+        var content = isSoloMode ? soloContent : employerContent;
+        document.getElementById('req-label').textContent = content.reqLabel;
+        document.getElementById('req-aca').innerHTML  = content.aca;
+        document.getElementById('req-bcbs').innerHTML = content.bcbs;
+    }
+</script>
+</body>
+</html>
