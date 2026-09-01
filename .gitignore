@@ -1,0 +1,14 @@
+# Local Claude/editor settings
+.claude/
+
+# Stray nested git repo - not part of the site
+FBHD homepage/
+
+# Scratch and accidental files
+scr
+Untitled.jpg
+
+# OS cruft
+Thumbs.db
+desktop.ini
+.DS_Store

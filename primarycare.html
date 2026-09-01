@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <title>Primary Care Practitioners in the RTP Area — Fact-Based Healthcare Decisions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Header — matches homepage */
+        .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
+        .logo { width: 80px; height: auto; flex-shrink: 0; }
+        .header-text h1 { font-family: 'Merriweather', serif; font-size: 2rem; color: #1e4f91; margin-bottom: 5px; }
+        .header-text .tagline { font-size: 1.1rem; color: #1e4f91; font-weight: 600; }
+
+        /* Page title */
+        .page-title { margin-bottom: 30px; }
+        .page-title h2 { font-family: 'Merriweather', serif; font-size: 1.6rem; color: #1e4f91; margin-bottom: 8px; }
+        .page-title .subtitle { font-size: 1.05rem; color: #555; font-style: italic; }
+
+        /* Intro */
+        .intro { margin-bottom: 30px; }
+        .intro p { font-size: 1.05rem; line-height: 1.7; color: #444; }
+        .intro strong { color: #1e4f91; }
+
+        /* Chart section */
+        .chart-section { background: #fff; border: 1px solid #d0dff0; border-radius: 10px; padding: 28px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(30,79,145,0.07); }
+        .chart-section h3 { font-family: 'Merriweather', serif; font-size: 1.2rem; color: #1e4f91; margin-bottom: 6px; text-align: center; }
+        .chart-section .chart-subtitle { font-size: 0.9rem; color: #666; text-align: center; margin-bottom: 20px; font-style: italic; }
+        .chart-container { position: relative; height: 380px; margin: 0 auto; }
+        .chart-note { font-size: 0.85rem; color: #555; margin-top: 16px; padding-top: 14px; border-top: 1px solid #eaeef5; line-height: 1.55; }
+        .chart-note strong { color: #1e4f91; }
+
+        /* Definitions section */
+        .definitions h2 { font-family: 'Merriweather', serif; font-size: 1.5rem; color: #1e4f91; margin-bottom: 18px; }
+        .definitions > p { font-size: 1rem; line-height: 1.7; margin-bottom: 24px; color: #333; }
+        .definitions > p strong { color: #1e4f91; }
+
+        .definition-card { margin-bottom: 24px; padding: 18px 22px; background: #fff; border-left: 3px solid #198754; border-radius: 0 8px 8px 0; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+        .definition-card h3 { font-family: 'Merriweather', serif; font-size: 1.15rem; color: #1e4f91; margin-bottom: 10px; }
+        .definition-card p { font-size: 0.97rem; color: #444; line-height: 1.65; margin-bottom: 10px; }
+        .definition-card p:last-child { margin-bottom: 0; }
+        .definition-card .nc-callout { background: #fffbe6; border-left: 3px solid #c9a400; border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 12px 0; font-size: 0.92rem; color: #5a4300; }
+        .definition-card .nc-callout strong { color: #664d00; }
+        .definition-card .stat { font-size: 0.92rem; color: #1a5c2a; background: #e8f4ea; padding: 8px 14px; border-radius: 6px; margin-top: 10px; display: inline-block; }
+        .definition-card .stat strong { color: #1a5c2a; }
+
+        /* Implication box */
+        .implication-box { background: #e8f4ea; border-left: 4px solid #198754; border-radius: 0 8px 8px 0; padding: 22px 26px; margin: 30px 0; }
+        .implication-box h3 { font-family: 'Merriweather', serif; font-size: 1.15rem; color: #1a5c2a; margin-bottom: 12px; }
+        .implication-box p { font-size: 0.97rem; color: #2a5c38; line-height: 1.7; margin-bottom: 10px; }
+        .implication-box p:last-child { margin-bottom: 0; }
+        .implication-box strong { color: #1a5c2a; }
+
+        /* References */
+        .references { margin-top: 50px; padding-top: 24px; border-top: 1px solid #ddd; }
+        .references h4 { font-family: 'Merriweather', serif; font-size: 0.95rem; color: #555; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .references ol { list-style: decimal; padding-left: 22px; font-size: 0.78rem; color: #666; line-height: 1.65; }
+        .references li { margin-bottom: 5px; }
+        .references a { color: #1e4f91; text-decoration: none; word-break: break-word; }
+        .references a:hover { text-decoration: underline; }
+        .references .vintage { font-size: 0.78rem; color: #888; font-style: italic; margin-top: 12px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header { flex-direction: column; text-align: center; }
+            .header-text h1 { font-size: 1.6rem; }
+            .header-text .tagline { font-size: 1rem; }
+            .page-title h2 { font-size: 1.35rem; }
+            .chart-container { height: 320px; }
+            .chart-section { padding: 20px 16px; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 20px 15px; }
+            .header-text h1 { font-size: 1.4rem; }
+            .definitions h2 { font-size: 1.3rem; }
+            .definition-card { padding: 14px 16px; }
+            .chart-container { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="MFHD_LOGO.PNG" alt="Fact-Based Healthcare Decisions Logo" class="logo">
+            <div class="header-text">
+                <h1>Fact-Based Healthcare Decisions</h1>
+                <p class="tagline">Health insurance guidance for North Carolinians</p>
+            </div>
+        </header>
+
+        <section class="page-title">
+            <h2>Primary Care Practitioners in the Research Triangle</h2>
+            <p class="subtitle">What you're actually choosing when you pick a "PCP" on your health plan</p>
+        </section>
+
+        <section class="intro">
+            <p>When you select an ACA Marketplace plan, COBRA continuation, or a private policy, the network directory will list your primary care options under one umbrella — "Primary Care Provider" — but the credentials behind that label vary widely. The differences matter for both your out-of-pocket cost and the depth of clinical judgment you're paying for.</p>
+            <br>
+            <p>The federal Affordable Care Act (Section 5501) recognizes four credential types as <strong>"primary care practitioners"</strong>: <strong>physicians, physician assistants, nurse practitioners, and clinical nurse specialists</strong>, practicing in family medicine, internal medicine, pediatric medicine, or geriatric medicine.<sup>1</sup> Most commercial insurers and the BlueCross BlueShield of NC marketplace plans use this same four-credential framework when designating in-network PCPs.</p>
+        </section>
+
+        <section class="chart-section">
+            <h3>Active Primary Care Practitioners — RTP Region, 2024</h3>
+            <p class="chart-subtitle">10-county Raleigh–Durham–Cary CSA, by ACA primary care specialty</p>
+            <div class="chart-container">
+                <canvas id="primaryCareChart"></canvas>
+            </div>
+            <div class="chart-note">
+                <strong>Reading this chart:</strong> Each bar shows the total practitioners in the 10-county RTP region who hold that specialty as their primary area of practice. <strong>Family Medicine</strong> is the largest category by a wide margin, followed by Internal Medicine and Pediatrics. <strong>Geriatric Medicine is strikingly thin</strong> — only 99 practitioners across the entire region, and zero geriatricians in Franklin, Person, or Harnett counties despite the region's aging population. <em>Note: Nurse Practitioners are not broken out by specialty in the source data — the RTP CSA had 3,488 active NPs in 2024 across all specialties combined.</em>
+            </div>
+        </section>
+
+        <section class="definitions">
+            <h2>Primary Care Practitioner Types</h2>
+
+            <div class="definition-card">
+                <h3>Physician (MD or DO)</h3>
+                <p>A <strong>Doctor of Medicine (MD)</strong> or <strong>Doctor of Osteopathic Medicine (DO)</strong> completes 4 years of undergraduate education, 4 years of medical school, and a 3-year primary care residency (longer for subspecialties). Both must pass national licensing examinations (USMLE for MDs, COMLEX for DOs) and maintain board certification through the American Board of Family Medicine, American Board of Internal Medicine, American Board of Pediatrics, or American Osteopathic Boards. <strong>Total training: roughly 11 years post-high-school</strong> for general primary care, 12+ for those with a fellowship (e.g., geriatrics).<sup>2</sup></p>
+                <p>Both MDs and DOs have full, independent practice authority in North Carolina and nationally. The clinical training is functionally equivalent; DOs receive additional training in <strong>osteopathic manipulative medicine (OMM)</strong> — a hands-on technique used primarily for musculoskeletal pain. Most DOs in NC primary care practice essentially the same medicine as MDs; ask your specific DO whether they use OMM in routine visits if that's relevant to your care needs. For insurance purposes there is no distinction — both bill under the same physician fee schedule.</p>
+                <span class="stat"><strong>2,072</strong> active MDs/DOs in the four ACA primary care specialties across the RTP region in 2024.<sup>3</sup></span>
+            </div>
+
+            <div class="definition-card">
+                <h3>Physician Assistant (PA)</h3>
+                <p>A <strong>PA</strong> completes 4 years of undergraduate education plus a 24- to 27-month master's-level PA program at an ARC-PA accredited institution, then passes the Physician Assistant National Certifying Exam (PANCE) through the NCCPA.<sup>4</sup> <strong>Total training: roughly 6–7 years post-high-school.</strong> PA programs require prior clinical experience for admission, and the curriculum mirrors medical school in compressed form — coursework in pharmacology, pathophysiology, and rotations in surgery, internal medicine, pediatrics, and family medicine.</p>
+                <div class="nc-callout">
+                    <strong>Material change in NC, effective July 1, 2025:</strong> Under the Healthcare Workforce Reforms law (Session Law 2025-37 / HB 67),<sup>5</sup> experienced PAs — those with more than 4,000 hours of general clinical experience plus 1,000 hours in their chosen specialty — can now practice in team-based settings without a designated supervising physician. Less-experienced PAs and PAs in pain-management practices still require formal physician supervision and monthly quality-improvement meetings for the first six months.
+                </div>
+                <p>In practice, an experienced PA can serve as your designated PCP, write prescriptions (including most controlled substances), order labs and imaging, and bill independently. PA visits are typically reimbursed at 85% of the physician fee schedule under Medicare; commercial plans often pay similarly. <strong>Out-of-pocket costs for the patient are usually identical to a physician visit under most ACA plans.</strong></p>
+                <span class="stat"><strong>647</strong> active PAs in the four ACA primary care specialties across the RTP region in 2024.<sup>3</sup></span>
+            </div>
+
+            <div class="definition-card">
+                <h3>Nurse Practitioner (NP)</h3>
+                <p>An <strong>NP</strong> holds a Bachelor of Science in Nursing (BSN), an active RN license, and a Master of Science in Nursing (MSN) or Doctor of Nursing Practice (DNP) with a population-focused specialty (e.g., Family NP, Adult-Gerontology Primary Care NP, Pediatric NP). <strong>Total training: 6–8 years post-high-school.</strong> NPs are nationally certified through the American Nurses Credentialing Center or the American Academy of Nurse Practitioners Certification Board, and licensed by the North Carolina Board of Nursing.<sup>6</sup></p>
+                <div class="nc-callout">
+                    <strong>Important NC distinction:</strong> North Carolina is classified by the American Association of Nurse Practitioners as a <strong>"restricted practice"</strong> state. Every NP providing care in NC must hold a written <strong>Collaborative Practice Agreement (CPA)</strong> with a supervising physician that defines their scope, prescribing authority, and oversight protocols. Within their CPA, NPs have full prescriptive authority including controlled substances. The proposed <strong>SAVE Act</strong>, which would grant NPs full independent practice authority, has been introduced in multiple sessions but has not passed as of 2026.<sup>6</sup>
+                </div>
+                <p>For insurance: NPs are in-network PCP options on virtually all ACA Marketplace plans in NC and are reimbursed at 85% of the physician fee schedule by Medicare. The patient experience is generally indistinguishable from a PA or physician visit at the same practice.</p>
+                <span class="stat"><strong>3,488</strong> active NPs (all specialties combined) in the RTP region in 2024 — the largest single category of primary care clinicians.<sup>3</sup></span>
+            </div>
+
+            <div class="definition-card">
+                <h3>Clinical Nurse Specialist (CNS)</h3>
+                <p>A <strong>CNS</strong> holds an MSN or DNP with specialty preparation in a defined population (acute care, oncology, pediatrics, etc.) and certification through the ANCC. The ACA recognizes CNSs as primary care practitioners, but in practice CNSs in North Carolina overwhelmingly work in hospital and specialty settings rather than as community-based PCPs. <strong>You are unlikely to see a CNS listed as your in-network PCP option on an ACA Marketplace plan.</strong></p>
+            </div>
+
+            <div class="implication-box">
+                <h3>What This Means for Your Insurance Selection</h3>
+                <p>When evaluating a plan's PCP network, the credential mix matters in three concrete ways:</p>
+                <p><strong>Network depth.</strong> In NC's restricted-practice environment, plans rely heavily on NPs to meet network adequacy standards. A "wide network" plan may have many PAs and NPs but fewer physicians accepting new patients. If you specifically want a physician as your PCP, verify acceptance status before choosing.</p>
+                <p><strong>Continuity.</strong> Physician PCPs are more likely to remain in the same practice for 5+ years. PA and NP roles often turn over more frequently; if continuity matters to you (chronic conditions, complex history), this is worth weighing.</p>
+                <p><strong>Cost equivalence.</strong> For a routine ACA-mandated preventive visit (the "free annual checkup"), all four practitioner types deliver the same covered services at the same out-of-pocket cost ($0) when in-network. The credential difference matters most when problems are discovered — a physician's diagnostic depth and ability to order without consultation can shorten the path to specialty care.</p>
+            </div>
+        </section>
+
+        <section class="references">
+            <h4>References</h4>
+            <ol>
+                <li>Centers for Medicare &amp; Medicaid Services. <em>Increased Medicaid Payment for Primary Care</em> (ACA Section 5501 definition of primary care practitioner). <a href="https://www.cms.gov/newsroom/fact-sheets/increased-medicaid-payment-primary-care">https://www.cms.gov/newsroom/fact-sheets/increased-medicaid-payment-primary-care</a></li>
+                <li>American Board of Family Medicine. <em>Certification.</em> <a href="https://www.theabfm.org/">https://www.theabfm.org/</a></li>
+                <li>NC Health Professions Data System (HPDS), Cecil G. Sheps Center for Health Services Research, University of North Carolina at Chapel Hill. <em>2024 licensure data, active practitioners as of October 31, 2024.</em> 10-county Raleigh-Durham-Cary CSA: Wake, Durham, Orange, Chatham, Person, Franklin, Johnston, Vance, Harnett, Lee. <a href="https://nchealthworkforce.unc.edu/interactive/supply/">https://nchealthworkforce.unc.edu/interactive/supply/</a></li>
+                <li>National Commission on Certification of Physician Assistants. <em>About the PANCE.</em> <a href="https://www.nccpa.net/">https://www.nccpa.net/</a></li>
+                <li>North Carolina General Assembly. <em>Session Law 2025-37 / House Bill 67 — Healthcare Workforce Reforms.</em> Signed July 1, 2025. <a href="https://www.ncleg.gov/Sessions/2025/Bills/House/PDF/H67v6.pdf">https://www.ncleg.gov/Sessions/2025/Bills/House/PDF/H67v6.pdf</a> &nbsp;|&nbsp; American Academy of Physician Associates announcement: <a href="https://www.aapa.org/news-central/2025/07/north-carolina-enacts-law-removing-supervision-requirements-for-experienced-pas/">https://www.aapa.org/news-central/2025/07/north-carolina-enacts-law-removing-supervision-requirements-for-experienced-pas/</a></li>
+                <li>North Carolina Board of Nursing. <em>Nurse Practitioner (NP) Scope of Practice — North Carolina.</em> <a href="https://www.ncbon.com/aprn-nurse-practitioner">https://www.ncbon.com/aprn-nurse-practitioner</a></li>
+                <li>U.S. Office of Management and Budget, Bulletin No. 23-01 (July 21, 2023). <em>Revised delineations of Metropolitan Statistical Areas, Micropolitan Statistical Areas, and Combined Statistical Areas.</em> Raleigh-Durham-Cary CSA composition. NC OSBM reference: <a href="https://www.osbm.nc.gov/facts-figures/geography/core-based-statistical-area-reference-maps/2023-core-based-statistical-area-maps">https://www.osbm.nc.gov/facts-figures/geography/core-based-statistical-area-reference-maps/2023-core-based-statistical-area-maps</a></li>
+            </ol>
+            <p class="vintage">Page last updated May 2026. Practitioner counts reflect 2024 NC HPDS data (latest available). Statutory references current as of May 2026.</p>
+        </section>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('primaryCareChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Family Medicine', 'Internal Medicine', 'Pediatric Medicine', 'Geriatric Medicine'],
+                datasets: [
+                    {
+                        label: 'Physicians (MD/DO)',
+                        data: [790, 665, 550, 67],
+                        backgroundColor: '#1e4f91',
+                        borderColor: '#153a6a',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Physician Assistants',
+                        data: [485, 92, 38, 32],
+                        backgroundColor: '#198754',
+                        borderColor: '#146c43',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { family: "'Open Sans', sans-serif", size: 13 },
+                            padding: 16,
+                            usePointStyle: true,
+                            pointStyle: 'rect'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            footer: function(items) {
+                                const total = items.reduce((sum, item) => sum + item.parsed.y, 0);
+                                return 'Combined: ' + total.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        ticks: { font: { family: "'Open Sans', sans-serif", size: 12, weight: '600' }, color: '#333' },
+                        grid: { display: false }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        ticks: { font: { family: "'Open Sans', sans-serif", size: 11 }, color: '#666' },
+                        grid: { color: '#eaeef5' },
+                        title: {
+                            display: true,
+                            text: 'Number of Practitioners',
+                            font: { family: "'Open Sans', sans-serif", size: 12, weight: '600' },
+                            color: '#555'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

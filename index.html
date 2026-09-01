@@ -22,49 +22,52 @@
         </header>
 
         <section class="intro">
-            <p>Navigating health insurance options can be complex — whether you're starting a business, retiring early, or losing coverage for any reason. We use <strong>data and advanced software tools</strong> to analyze every plan available to you, so you can make informed decisions based on data.</p>
+            <p>Navigating health insurance options can be complex — whether you're starting a business, managing benefits for an existing small business, retiring early, or losing coverage for any reason. We provide <strong>data and advanced software tools</strong> to help you review and analyze every plan available, then meet with you to offer additional guidance and assist with enrollment.</p>
         </section>
 
         <section class="who-we-help">
             <h2>Who We Help</h2>
-            
+
             <div class="help-item">
                 <h3>Individuals & Families</h3>
-                <p>Whether you're self-employed, retiring before Medicare kicks in, or lost coverage due to a job change or other life event — we'll help you find the right ACA-qualified plan. We can enroll you on the Marketplace (with potential subsidies) or work directly with insurers to access off-exchange options. Some of the best plans, like Blue Cross NC's PPO options, are only available through licensed agents in RTP area.</p>
+                <p>Whether you're self-employed, retiring before Medicare kicks in, or losing coverage due to a job change or other life event, we'll help you find the right ACA-qualified plan. We can enroll you through the Marketplace (including evaluating potential subsidies) or work directly with insurers to access off-exchange options. Some top options — such as select Blue Cross NC PPO plans — are available exclusively through licensed agents in the RTP area.</p>
             </div>
-            
+
             <div class="help-item">
-                <h3>Small Business Owners with Employees</h3>
-                <p>We'll help you evaluate your options: individual plans, Small Group coverage, or ICHRA (where you reimburse employees for their own coverage). We'll show you the numbers so you can choose what actually makes sense for your specific situation.</p>
+                <h3>Small Business Owners</h3>
+                <p>We'll help you evaluate your full range of options, including individual plans, traditional Small Group coverage, ICHRA/QSEHRA, and MEWA arrangements (like Carolina Healthworks). We present the numbers clearly so you can choose what truly makes sense for your specific team and budget.</p>
             </div>
         </section>
 
         <section class="what-we-do">
-            <h2>What We Do</h2>
+            <h2>How We Are Different</h2>
             <ul class="features-list">
-                <li><strong>Mobile firendly Data Collection</strong> — We will provide you with a mobile app to collect your data and show you options</li>
-                <li><strong>Analyze your options</strong> — We compare plans across all NC insurers using real cost data, not just premiums and make recommendations</li>
-                <li><strong>Handle enrollment</strong> — We guide you through the application process and make sure everything is set up correctly.</li>
-                <li><strong>Support you year-round</strong> — Have questions about claims, network issues, or life changes? We're here to help.</li>
+                <li><strong>Mobile-Friendly Data Collection</strong> — We provide a mobile app to collect your information seamlessly and display tailored individual or small business coverage options.</li>
+                <li><strong>In-Depth Plan Comparison & Analysis</strong> — Our tool allows you to export full details for any subset of plans you are considering. Run your own calculations based on expected healthcare usage, perform "what-if" risk analyses, or even copy-paste anonymized plan data into your favorite GenAI tool for customized secondary analysis.</li>
+                <li><strong>Seamless Enrollment</strong> — We guide you through the application process to ensure everything is set up correctly, including determining subsidy eligibility.</li>
+                <li><strong>Year-Round Support</strong> — Have questions about policy terms, claims, or network issues down the road? We are here to support you anytime throughout the year.</li>
             </ul>
         </section>
 
         <section class="why-us">
             <h2>Why Work With Us</h2>
-            <p>We're based in the Triangle and built our tools specifically for North Carolina. We don't earn more by steering you toward expensive plans — we just want to help you make the smartest choice for your business and your family.</p>
-            <p>As an independent, licensed agent, our services are free to you.</p>
+            <ul class="features-list">
+                <li><strong>Local Focus</strong> — We're based in the Triangle and built our proprietary tools specifically for North Carolina residents and businesses.</li>
+                <li><strong>Unbiased Guidance</strong> — We don't earn more by steering you toward expensive plans. Our sole focus is helping you make the smartest financial and coverage decision for your business and family.</li>
+                <li><strong>Zero Cost to You</strong> — As independent, licensed agents, our advisory and enrollment services are completely free to you.</li>
+            </ul>
         </section>
 
         <div class="buttons-container">
-            <button class="btn" onclick="openModal('planCompareModal')">Plan Comparison</button>
-            <button class="btn btn-blue" onclick="openModal('networkModal')">HCP Networks</button>
-            <button class="btn" onclick="openModal('ichraModal')">ICHRA Feasibility & Benefits</button>
+            <button class="btn" onclick="openModal('planCompareModal')">Plan Comparison Mobile App</button>
+            <button class="btn" onclick="openModal('ichraModal')">Export Selected Plan Data for Analysis</button>
+            <button class="btn btn-blue" onclick="openModal('planOptionsModal')">Small Business Insurance Options Comparison Tool</button>
         </div>
 
         <section class="contact">
             <p><strong>Ready to talk?</strong></p>
             <p>Contact Kurt Conger</p>
-            <a href="mailto:kurt.conger@gmai.com">kurt.conger@gmail.com</a>
+            <a href="mailto:kurt.conger@gmail.com">kurt.conger@gmail.com</a>
         </section>
     </div>
 
@@ -72,6 +75,13 @@
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('planCompareModal')">&times;</button>
             <img src="MFHD_COMPARE.JPG" alt="Plan Comparison">
+        </div>
+    </div>
+
+    <div id="planOptionsModal" class="modal-overlay" onclick="closeModalOutside(event, 'planOptionsModal')" style="align-items: flex-start; padding: 20px;">
+        <div class="modal-content" style="width: 95vw; max-width: 1200px; height: 90vh; max-height: none; padding: 0; position: relative;">
+            <button class="close-btn" onclick="closeModal('planOptionsModal')" style="position: absolute; top: 8px; right: 8px; z-index: 10;">&times;</button>
+            <iframe src="planoptions.html" style="width: 100%; height: 100%; border: none; border-radius: 8px;"></iframe>
         </div>
     </div>
 
@@ -85,7 +95,7 @@
     <div id="ichraModal" class="modal-overlay" onclick="closeModalOutside(event, 'ichraModal')">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('ichraModal')">&times;</button>
-            <img src="MFHD_RECOMMEND.JPG" alt="ICHRA Feasibility & Benefits">
+            <img src="MFHD_EXPORT.png" alt="Export Selected Plan Data for Analysis">
         </div>
     </div>
 

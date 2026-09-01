@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <title>ACA Plan Selector for ACA Agents | Fact-Based Healthcare Decisions</title>
+    <meta name="description" content="ACA Plan Selector helps ACA agents and brokers enroll more clients in less time during Open Enrollment — while maintaining compliance and control.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #19854c;
+            --green-dark: #0e6338;
+            --green-tint: #e8f4ee;
+            --blue: #174f8f;
+            --blue-dark: #103c6e;
+            --blue-tint: #e9f0f9;
+            --amber: #f0a92e;
+            --ink: #21313f;
+            --ink-soft: #4a5a68;
+            --bg: #f6f9f7;
+            --card: #ffffff;
+            --radius: 14px;
+            --shadow: 0 2px 10px rgba(23, 49, 79, 0.08);
+            --shadow-hover: 0 8px 24px rgba(23, 49, 79, 0.16);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+        h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; line-height: 1.3; }
+        .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header */
+        .site-header {
+            background: #fff;
+            border-bottom: 4px solid var(--green);
+            padding: 18px 0;
+        }
+        .site-header .wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .site-header img.logo { height: 62px; width: auto; }
+        .brand h1 { font-size: 1.35rem; color: var(--blue); }
+        .brand .sub { font-size: 0.9rem; color: var(--ink-soft); }
+        .agent-badge {
+            margin-left: auto;
+            background: var(--blue);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 999px;
+            white-space: nowrap;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 60%, #0c2f57 100%);
+            color: #fff;
+            padding: 52px 0 60px;
+        }
+        .hero h2 {
+            font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+            max-width: 22em;
+            margin-bottom: 14px;
+        }
+        .hero .lede {
+            max-width: 46em;
+            color: #d7e3f2;
+            margin-bottom: 30px;
+            font-size: 1.02rem;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-left: 4px solid var(--amber);
+            border-radius: 10px;
+            padding: 16px 18px;
+            font-size: 0.93rem;
+            color: #eaf1f9;
+        }
+        .stat-card strong { color: #fff; }
+
+        /* Sections */
+        section.block { padding: 46px 0 8px; }
+        section.block h2 {
+            color: var(--blue);
+            font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+            margin-bottom: 16px;
+        }
+        section.block p.wide { max-width: 52em; color: var(--ink-soft); margin-bottom: 14px; }
+        .accent-bar { display: inline-block; width: 48px; height: 4px; background: var(--green); border-radius: 2px; margin-bottom: 10px; }
+
+        /* Quotes */
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+            margin: 10px 0 6px;
+        }
+        .quote {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 18px 20px;
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            border-top: 4px solid var(--green);
+        }
+        .quote::before { content: "\201C"; font-family: Merriweather, serif; font-size: 1.9rem; color: var(--green); line-height: 0.4; display: block; margin-bottom: 10px; }
+
+        /* Use cases */
+        .usecase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; margin-top: 8px; }
+        .usecase {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 22px 24px;
+        }
+        .usecase h3 { color: var(--green-dark); font-size: 1.05rem; margin-bottom: 8px; }
+        .usecase p { font-size: 0.95rem; color: var(--ink-soft); }
+        .usecase .tag {
+            display: inline-block;
+            background: var(--green-tint);
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 0.8rem;
+            border-radius: 999px;
+            padding: 4px 12px;
+            margin-top: 12px;
+        }
+
+        /* Process flow */
+        .flow-section { background: #fff; padding: 46px 0 54px; margin-top: 40px; border-top: 1px solid #e3ebe6; }
+        .flow-hint { color: var(--ink-soft); margin-bottom: 26px; max-width: 46em; }
+        .flow {
+            display: flex;
+            align-items: stretch;
+            gap: 6px;
+        }
+        .flow-step {
+            flex: 1 1 0;
+            background: linear-gradient(180deg, #ffffff 0%, #f3f8f5 100%);
+            border: 2px solid var(--blue);
+            border-radius: 16px;
+            padding: 46px 16px 18px;
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--ink);
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .flow-step:hover, .flow-step:focus-visible {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--green);
+            outline: none;
+        }
+        .flow-step .num {
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        .flow-step .step-title { font-weight: 700; color: var(--blue); font-size: 0.95rem; }
+        .flow-step .step-sub { color: var(--ink-soft); font-size: 0.84rem; }
+        .flow-step .see {
+            margin-top: auto;
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .flow-arrow {
+            align-self: center;
+            flex: 0 0 auto;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+        }
+        .flow-arrow svg { width: 26px; height: 26px; }
+
+        /* Pay for success */
+        .pay-card {
+            background: var(--blue-tint);
+            border-left: 5px solid var(--blue);
+            border-radius: var(--radius);
+            padding: 22px 26px;
+            max-width: 56em;
+        }
+        .pay-card p { color: var(--ink-soft); font-size: 0.97rem; margin-bottom: 10px; }
+        .pay-card p:last-child { margin-bottom: 0; }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 30px 28px;
+            margin: 40px 0 60px;
+            text-align: center;
+        }
+        .contact h2 { color: #fff; margin-bottom: 8px; font-size: 1.3rem; }
+        .contact a.btn {
+            display: inline-block;
+            margin-top: 14px;
+            background: #fff;
+            color: var(--green-dark);
+            font-weight: 700;
+            text-decoration: none;
+            padding: 12px 26px;
+            border-radius: 999px;
+            transition: transform 0.15s ease;
+        }
+        .contact a.btn:hover { transform: scale(1.04); }
+
+        footer { text-align: center; color: var(--ink-soft); font-size: 0.82rem; padding-bottom: 30px; }
+        footer a { color: var(--blue); }
+
+        /* Carousel modal */
+        .carousel-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(12, 27, 45, 0.82);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .carousel-overlay.active { display: flex; }
+        .carousel-box {
+            background: #fff;
+            border-radius: 18px;
+            width: min(560px, 96vw);
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .carousel-top {
+            background: linear-gradient(135deg, var(--blue-tint) 0%, var(--green-tint) 100%);
+            padding: 26px 20px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 240px;
+        }
+        .carousel-top img {
+            max-width: 100%;
+            max-height: min(52vh, 430px);
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(23,49,79,0.18);
+        }
+        .carousel-text { padding: 18px 26px 14px; text-align: center; }
+        .carousel-text h3 { color: var(--blue); font-size: 1.02rem; margin-bottom: 6px; }
+        .carousel-text p { color: var(--ink-soft); font-size: 0.93rem; }
+        .carousel-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 18px 18px;
+        }
+        .car-btn {
+            border: none;
+            background: var(--green);
+            color: #fff;
+            width: 46px; height: 46px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+        .car-btn:hover { background: var(--green-dark); transform: scale(1.06); }
+        .car-btn:disabled { background: #c3d2c9; cursor: default; transform: none; }
+        .car-dots { display: flex; gap: 7px; }
+        .car-dots span {
+            width: 9px; height: 9px; border-radius: 50%;
+            background: #c9d6cf; cursor: pointer; transition: background 0.15s ease;
+        }
+        .car-dots span.on { background: var(--green); }
+        .car-close {
+            position: absolute;
+            top: 10px; right: 10px;
+            width: 36px; height: 36px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.92);
+            color: var(--ink);
+            font-size: 1.25rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            z-index: 2;
+        }
+        .car-count { font-size: 0.78rem; color: var(--ink-soft); text-align: center; padding-bottom: 10px; }
+
+        /* Mobile */
+        @media (max-width: 760px) {
+            .flow { flex-direction: column; gap: 4px; }
+            .flow-step { padding-top: 40px; }
+            .flow-arrow { transform: rotate(90deg); margin: 8px auto; }
+            .agent-badge { margin-left: 0; }
+            .site-header img.logo { height: 50px; }
+            .carousel-text { padding: 14px 18px 8px; }
+            .car-dots { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap">
+            <img src="MFHD_LOGO.png" alt="Fact-Based Healthcare Decisions logo" class="logo">
+            <div class="brand">
+                <h1>Fact-Based Healthcare Decisions</h1>
+                <div class="sub">ACA Plan Selector&trade; &mdash; built for ACA agents &amp; brokers</div>
+            </div>
+            <span class="agent-badge">For Agents &amp; Brokers</span>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="wrap">
+            <h2>This fall's ACA Open Enrollment will be even more challenging than last year</h2>
+            <p class="lede">North Carolina licensed Health Agents and Brokers are squeezed from two directions this Open Enrollment: not enough time to enroll new and existing clients, and changing customer preferences about how that work gets done.</p>
+            <div class="stat-grid">
+                <div class="stat-card"><strong>Dramatically more plans.</strong> The 2027 federal rule ends the cap on how many plans each insurer can offer &mdash; analysts project 100+ options per shopper, especially in populous counties like Wake.</div>
+                <div class="stat-card"><strong>Consent must be documented &mdash; compliantly.</strong> CMS requires upfront consent captured in an auditable form (signed or recorded, retained 10 years) &mdash; an unstructured document on your hard drive doesn't cut it.</div>
+                <div class="stat-card"><strong>AI-empowered clients.</strong> ChatGPT is becoming the new &ldquo;Dr.&nbsp;Google&rdquo; for health insurance &mdash; clients arrive with their own research.</div>
+                <div class="stat-card"><strong>Phone-first clients.</strong> More than two-thirds already manage their health coverage from a phone &mdash; and many would rather choose their plan there too.</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="block">
+        <div class="wrap">
+            <span class="accent-bar"></span>
+            <h2>Your clients are already telling you what slows the process down</h2>
+            <div class="quote-grid">
+                <div class="quote">I'm too busy right now &mdash; can you just send me a link with my options so I can look on my phone?</div>
+                <div class="quote">Can I see all the data so I can analyze it in Excel or ask a chatbot?</div>
+                <div class="quote">Can't I just use my phone to scan my medication names and doctors?</div>
+                <div class="quote">I can do 90% of this on my own &mdash; I just want you as a second set of eyes to catch anything I'm missing.</div>
+            </div>
+            <p class="wide" style="margin-top:16px;">Meeting clients where they are &mdash; instead of fighting these behaviors &mdash; is how Agents will survive and prosper this Open Enrollment.</p>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="wrap">
+            <span class="accent-bar"></span>
+            <h2>What is ACA Plan Selector?</h2>
+            <p class="wide"><strong>ACA Plan Selector</strong> is a web app that reduces the friction your customers experience, resulting in higher Agent throughput during Open Enrollment &mdash; while maintaining compliance and strengthening your client relationships.</p>
+            <div class="usecase-grid">
+                <div class="usecase">
+                    <h3>1. New Customer Acquisition</h3>
+                    <p>After a conversation like &ldquo;just send me my options so I can review on my phone,&rdquo; you send the customer a link. The client does their own analysis in the app, selects one or more plans they like, and the app sends that information back to you &mdash; in a compliant way.</p>
+                    <span class="tag">The Agent maintains control</span>
+                </div>
+                <div class="usecase">
+                    <h3>2. Reenrollments</h3>
+                    <p>For existing clients, send a link before Open Enrollment. The client reviews their current plan, compares it to other available plans, and the app routes their selection back to you &mdash; in a compliant way &mdash; ready for a quick finalization call.</p>
+                    <span class="tag">Faster renewals, fewer surprises</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="wrap">
+            <span class="accent-bar"></span>
+            <h2>The focus remains the Agent</h2>
+            <p class="wide">Health insurance is a complex, high-stakes decision &mdash; which is why human Agents keep gaining ground. Per CMS, Agents and Brokers assisted roughly <strong>3 out of 4 HealthCare.gov enrollments</strong> in recent Open Enrollments (78% in 2025, 76% in 2026), up from about half a decade ago.</p>
+            <p class="wide">We see ACA Plan Selector as a tool that makes it easier for clients to do the initial analysis themselves &mdash; then come to <em>you</em> to get their tough questions answered and finalize with confidence.</p>
+        </div>
+    </section>
+
+    <section class="flow-section" id="see-it">
+        <div class="wrap">
+            <span class="accent-bar"></span>
+            <h2 style="color:var(--blue); font-family:Merriweather,serif; font-size:clamp(1.3rem,2.6vw,1.7rem); margin-bottom:10px;">See ACA Plan Selector in action</h2>
+            <p class="flow-hint">Click on the process steps below to see how ACA Plan Selector can accelerate the process.</p>
+
+            <div class="flow" role="list">
+                <div class="flow-step" role="listitem" tabindex="0" onclick="openCarousel(0)" onkeydown="if(event.key==='Enter')openCarousel(0)">
+                    <span class="num">1</span>
+                    <span class="step-title">Agent sends link</span>
+                    <span class="step-sub">You text or email a personalized link to a potential client</span>
+                    <span class="see">See it &rsaquo;</span>
+                </div>
+                <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="flow-step" role="listitem" tabindex="0" onclick="openCarousel(1)" onkeydown="if(event.key==='Enter')openCarousel(1)">
+                    <span class="num">2</span>
+                    <span class="step-title">Client reviews plans by phone</span>
+                    <span class="step-sub">Plan data can also be exported to a spreadsheet &mdash; or an AI chatbot &mdash; for deeper analysis</span>
+                    <span class="see">See it &rsaquo;</span>
+                </div>
+                <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="flow-step" role="listitem" tabindex="0" onclick="openCarousel(5)" onkeydown="if(event.key==='Enter')openCarousel(5)">
+                    <span class="num">3</span>
+                    <span class="step-title">Selections come back to you</span>
+                    <span class="step-sub">The app sends plan selection(s) to the Agent and schedules the finalization call</span>
+                    <span class="see">See it &rsaquo;</span>
+                </div>
+                <div class="flow-arrow"><svg viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <div class="flow-step" role="listitem" tabindex="0" onclick="openCarousel(8)" onkeydown="if(event.key==='Enter')openCarousel(8)">
+                    <span class="num">4</span>
+                    <span class="step-title">Finalize &amp; enroll together</span>
+                    <span class="step-sub">Client and Agent meet virtually to finalize the selection using an enrollment tool like HealthSherpa</span>
+                    <span class="see">See it &rsaquo;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="wrap">
+            <span class="accent-bar"></span>
+            <h2>Only pay for success</h2>
+            <div class="pay-card">
+                <p>Agents use ACA Plan Selector <strong>for free</strong>, and pay only when the app successfully sends a plan-selection message from a Client to the Agent. That takes the risk out of trying the app.</p>
+                <p>You register with the site so the app can display your information to your clients &mdash; name, phone number, calendar link, and more.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="wrap">
+        <div class="contact">
+            <h2>Ready to enroll more clients in less time?</h2>
+            <p>Contact Kurt Conger to get started.</p>
+            <a class="btn" href="mailto:kurt.conger@gmail.com">kurt.conger@gmail.com</a>
+        </div>
+    </div>
+
+    <footer>
+        Fact-Based Healthcare Decisions &middot; Serving North Carolina Agents &amp; Brokers
+    </footer>
+
+    <!-- Carousel modal -->
+    <div class="carousel-overlay" id="carousel" onclick="if(event.target===this)closeCarousel()">
+        <div class="carousel-box" role="dialog" aria-modal="true" aria-label="ACA Plan Selector walkthrough">
+            <button class="car-close" onclick="closeCarousel()" aria-label="Close">&times;</button>
+            <div class="carousel-top"><img id="car-img" src="" alt=""></div>
+            <div class="carousel-text">
+                <h3 id="car-title"></h3>
+                <p id="car-text"></p>
+            </div>
+            <div class="carousel-nav">
+                <button class="car-btn" id="car-prev" onclick="moveCarousel(-1)" aria-label="Previous">&#10094;</button>
+                <div class="car-dots" id="car-dots"></div>
+                <button class="car-btn" id="car-next" onclick="moveCarousel(1)" aria-label="Next">&#10095;</button>
+            </div>
+            <div class="car-count" id="car-count"></div>
+        </div>
+    </div>
+
+    <script>
+        var slides = [
+            { img: 'lfe/slide2.jpg',  title: 'Step 1 • Agent sends the link',
+              text: 'The process starts with the Agent sending a link to the ACA Plan Selector app via text or email — typically initiated from your CRM’s outbound messaging.' },
+            { img: 'lfe/slide3.jpg',  title: 'Step 2 • Client collects meds & providers',
+              text: 'Clients scan pill bottles and existing medical documents with their phone camera — no typing long medication names.' },
+            { img: 'lfe/slide4.jpg',  title: 'Step 2 • Compare plans with a swipe',
+              text: 'Swipe left or right to compare plans. Filter and Sort make short work of 40+ options.' },
+            { img: 'lfe/slide5.jpg',  title: 'Step 2 • Every benefit, every drug cost',
+              text: 'Any benefit can be shown on the compare screen, and drug costs are looked up in the latest formulary for NC’s largest ACA carriers (Blue Cross NC and Ambetter).' },
+            { img: 'lfe/slide6.jpg',  title: 'Step 2 • Export for deeper analysis',
+              text: 'Plan data can be exported to a spreadsheet — or copied into the client’s favorite AI chatbot for more analysis.' },
+            { img: 'lfe/slide7.jpg',  title: 'Step 3 • Selections routed to the Agent',
+              text: 'Selected plans are routed back to you, the Agent, with one tap.' },
+            { img: 'lfe/slide8.jpg',  title: 'Step 3 • Compliant by design',
+              text: 'The plan selection arrives via text or email — and includes NO personal information.' },
+            { img: 'lfe/slide9.jpg',  title: 'Step 3 • Upfront consent, captured',
+              text: 'A follow-up message captures the “upfront” consent requirement with a documented “I AGREE” reply.' },
+            { img: 'lfe/slide10.jpg', title: 'Step 4 • Schedule the enrollment call',
+              text: 'The app opens your calendar so the client books the finalization call — then you enroll together using a tool like HealthSherpa.' }
+        ];
+        var current = 0;
+        var overlay = document.getElementById('carousel');
+        var dotsEl = document.getElementById('car-dots');
+
+        slides.forEach(function (s, i) {
+            var d = document.createElement('span');
+            d.onclick = function () { showSlide(i); };
+            dotsEl.appendChild(d);
+            var pre = new Image(); pre.src = s.img;
+        });
+
+        function showSlide(i) {
+            current = (i + slides.length) % slides.length;
+            var s = slides[current];
+            document.getElementById('car-img').src = s.img;
+            document.getElementById('car-img').alt = s.title;
+            document.getElementById('car-title').textContent = s.title;
+            document.getElementById('car-text').textContent = s.text;
+            document.getElementById('car-count').textContent = (current + 1) + ' of ' + slides.length;
+            var dots = dotsEl.children;
+            for (var k = 0; k < dots.length; k++) dots[k].className = (k === current) ? 'on' : '';
+        }
+        function openCarousel(i) {
+            showSlide(i);
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCarousel() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        function moveCarousel(dir) { showSlide(current + dir); }
+
+        document.addEventListener('keydown', function (e) {
+            if (!overlay.classList.contains('active')) return;
+            if (e.key === 'Escape') closeCarousel();
+            if (e.key === 'ArrowRight') moveCarousel(1);
+            if (e.key === 'ArrowLeft') moveCarousel(-1);
+        });
+
+        /* touch swipe */
+        var touchX = null;
+        overlay.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+        overlay.addEventListener('touchend', function (e) {
+            if (touchX === null) return;
+            var dx = e.changedTouches[0].clientX - touchX;
+            if (Math.abs(dx) > 45) moveCarousel(dx < 0 ? 1 : -1);
+            touchX = null;
+        }, { passive: true });
+    </script>
+</body>
+</html>

@@ -12,6 +12,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; background-color: #f8f9fa; }
+        .table-wrapper { overflow-x: auto; }
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
 
         .header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
@@ -44,9 +45,10 @@
 
         .table-section { margin-bottom: 48px; }
         .table-section h2 { font-family: 'Merriweather', serif; font-size: 1.3rem; color: #1e4f91; margin-bottom: 16px; }
-        .table-wrapper { overflow-x: auto; }
 
-        table { width: 100%; border-collapse: collapse; font-size: 0.88rem; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(30,79,145,0.07); }
+
+        table { width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0; font-size: 0.88rem; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px rgba(30,79,145,0.07); }
+        table td, table th { word-wrap: break-word; overflow-wrap: break-word; }
         thead tr:first-child th { background: #1e4f91; color: #fff; font-family: 'Merriweather', serif; font-size: 0.82rem; font-weight: 700; padding: 12px 10px; text-align: left; vertical-align: bottom; border-right: 1px solid rgba(255,255,255,0.15); }
         thead tr:first-child th:first-child { background: #153a6a; width: 120px; min-width: 100px; }
         tbody tr td:first-child { background: #f0f4fb; color: #1e4f91; font-weight: 700; font-size: 0.8rem; padding: 11px 10px; border-right: 2px solid #d0dff0; vertical-align: top; text-transform: uppercase; letter-spacing: 0.03em; }
@@ -93,6 +95,73 @@
             .btn-group { flex-direction: column; }
             .q-btn { width: 100%; text-align: center; }
         }
+
+        /* ── Mobile card view ── */
+        .cards-view { display: none; }
+
+        @media (max-width: 600px) {
+            .table-wrapper { display: none; }
+            .cards-view { display: block; }
+
+            .plan-card {
+                background: #fff;
+                border: 1px solid #d0dff0;
+                border-radius: 10px;
+                box-shadow: 0 2px 12px rgba(30,79,145,0.07);
+                margin-bottom: 20px;
+                overflow: hidden;
+            }
+            .plan-card.col-hidden { display: none; }
+
+            .plan-card-header {
+                background: #1e4f91;
+                color: #fff;
+                font-family: 'Merriweather', serif;
+                font-size: 0.95rem;
+                font-weight: 700;
+                padding: 14px 16px;
+                line-height: 1.4;
+            }
+
+            .plan-card-row {
+                display: flex;
+                border-bottom: 1px solid #eaeef5;
+            }
+            .plan-card-row:last-child { border-bottom: none; }
+            .plan-card-row.row-hidden { display: none; }
+
+            .plan-card-label {
+                background: #f0f4fb;
+                color: #1e4f91;
+                font-weight: 700;
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+                padding: 10px 10px;
+                width: 100px;
+                min-width: 100px;
+                border-right: 2px solid #d0dff0;
+                display: flex;
+                align-items: flex-start;
+                line-height: 1.4;
+            }
+
+            .plan-card-value {
+                padding: 10px 12px;
+                font-size: 0.86rem;
+                line-height: 1.55;
+                color: #333;
+                flex: 1;
+            }
+
+            .plan-card-best-for .plan-card-label {
+                background: #f0d800;
+                color: #5a4a00;
+            }
+            .plan-card-best-for .plan-card-value {
+                background: #fffbe6;
+            }
+        }
     </style>
 </head>
 <body>
@@ -138,7 +207,7 @@
     </div>
 
     <div class="table-section">
-        <h2>Health Coverage Options for NC Founders — 2026</h2>
+        <h2>Health Coverage Options for NC Founders and Small Business Owners — 2026</h2>
         <div class="table-wrapper">
         <table id="options-table">
             <thead>
@@ -162,7 +231,7 @@
                     <td class="col-ichra">Employer sets a monthly reimbursement amount; each employee buys their own individual plan. Any company size.</td>
                     <td class="col-qsehra">Simpler version of ICHRA, designed specifically for businesses under 50 employees. IRS caps the reimbursement amount.</td>
                     <td class="col-peo">Co-employment firm becomes your HR/payroll partner and employer of record. You get their large-group benefits.</td>
-                    <td class="col-small-group">Traditional employer-sponsored group plan from any NC insurer (BCBSNC, Cigna, Aetna, UnitedHealthcare).<sup>&#8308;</sup></td>
+                    <td class="col-small-group">Traditional employer-sponsored group plan from any NC insurer (BCBSNC, Cigna, Aetna, UHC).<sup>&#8308;</sup></td>
                     <td class="col-chw">New (Nov 2025) MEWA through NC Chamber + BCBSNC. Small businesses pool together for large-group pricing.</td>
                 </tr>
 
@@ -172,7 +241,7 @@
                     <td class="col-bcbs">Best provider network in NC and nationally — 92% of NC doctors, 97% of US hospitals in-network. Only available through a licensed agent.</td>
                     <td class="col-ichra">Maximum flexibility — any team size, any state. Employees shop plans locally. Employer controls cost precisely.</td>
                     <td class="col-qsehra">Simpler than ICHRA — less paperwork, no ACA reporting. Works even for employees on a spouse's plan. Good for very small teams.</td>
-                    <td class="col-peo">Investors expect it. Handles all HR, payroll, and compliance. Works for remote multi-state teams.</td>
+                    <td class="col-peo">Some investors expect it. Handles all HR, payroll, and compliance. Works for remote multi-state teams.</td>
                     <td class="col-small-group">Employer controls plan design. Can offer richer benefits to attract employees. Tax deductible.</td>
                     <td class="col-chw">Estimates suggest up to 40% savings vs. ACA community-rated plans. BCBSNC network without the marketplace.</td>
                 </tr>
@@ -182,7 +251,7 @@
                     <td class="col-aca" id="req-aca">Income under ~$62,640/yr for subsidy. Open enrollment Nov–Jan only (or qualifying life event).</td>
                     <td class="col-bcbs" id="req-bcbs"><span class="badge badge-nc">NC residents only</span><br>No subsidy. Must use a licensed BCBSNC agent.</td>
                     <td class="col-ichra">Must have at least 1 W-2 employee (not owner-only). IRS Section 105 HRA plan document required.</td>
-                    <td class="col-qsehra">Under 50 employees. Cannot also offer a group health plan. Must offer to all full-time employees on same terms.</td>
+                    <td class="col-qsehra">Under 50 employees. Cannot also offer a group health plan. Must offer to all full-time employees on the same terms.</td>
                     <td class="col-peo">Co-employment agreement required. $1,000–$2,000/employee/year PEO fee on top of premiums. Setup ~4 weeks.</td>
                     <td class="col-small-group"><span class="badge badge-nc">NC residents only</span><br>Min. 2 enrolled employees. Participation requirements vary by insurer.</td>
                     <td class="col-chw"><span class="badge badge-nc">NC residents only</span><br>2–50 employees, 30+ hrs/week. Must join NC Chamber or a participating local chamber.</td>
@@ -191,29 +260,20 @@
                 <tr>
                     <td>Cost driver</td>
                     <td class="col-aca">Your income, age, and family size. Lower income = higher subsidy = lower premium. Age and family size set the base premium before subsidies are applied.</td>
-                    <td class="col-bcbs">Your age and family size. No subsidy available. Premiums are age-rated — older founders or those covering dependents will pay significantly more than a comparable marketplace plan.</td>
+                    <td class="col-bcbs">Your age and family size. No subsidy available in RTP. Premiums are age-rated — older founders or those covering dependents will pay significantly more than a comparable marketplace plan.</td>
                     <td class="col-ichra">The monthly reimbursement cap you set. Employees pay the rest themselves. Admin platforms (PeopleKeep, Take Command, Thatch) typically run $5–$15/employee/month.</td>
                     <td class="col-qsehra">Your reimbursement cap, up to the IRS limit ($537/mo individual, $1,091/mo family in 2026).</td>
-                    <td class="col-peo">Number of employees. PEO fee + premium. Large-group rates typically offset the PEO fee.</td>
+                    <td class="col-peo">Number of employees. PEO fee + premium. Large-group rates typically offset the PEO fee. Often, contracts run for 1 year, so unlike insurance, they are difficult to exit mid-year.</td>
                     <td class="col-small-group">Age and health status of your team. Older or less healthy group = higher rates.</td>
                     <td class="col-chw">Health status of your team pool. Healthier group = lower risk-based rate.</td>
                 </tr>
 
-                <tr id="row-oos">
-                    <td>Out-of-state employees?</td>
-                    <td class="col-aca"><span class="badge badge-yes">Yes</span><br>Each enrolls in their own state's marketplace.</td>
-                    <td class="col-bcbs"><span class="badge badge-nc">No</span></td>
-                    <td class="col-ichra"><span class="badge badge-yes">Yes</span><br>Employees shop plans in their own state.</td>
-                    <td class="col-qsehra"><span class="badge badge-yes">Yes</span><br>Employees shop plans in their own state.</td>
-                    <td class="col-peo"><span class="badge badge-yes">Yes</span><br>PEO handles multi-state compliance.</td>
-                    <td class="col-small-group"><span class="badge badge-caution">Complex</span><br>May need separate policies per state.</td>
-                    <td class="col-chw"><span class="badge badge-nc">No</span></td>
-                </tr>
+
 
                 <tr>
                     <td>Adoption trend</td>
                     <td class="col-aca">Dominant for self-employed — 48% of marketplace enrollees are entrepreneurs or small business workers. <strong>2026 warning:</strong> enhanced subsidies expired Jan 1. Premiums doubled for many.</td>
-                    <td class="col-bcbs">Stable niche. Best individual option for founders whose income is too high for subsidies.</td>
+                    <td class="col-bcbs">Stable niche. Best individual option for founders who want a broad network and are willing to pay more</td>
                     <td class="col-ichra"><span class="badge badge-growing">Growing fast</span><br>1,000%+ total adoption since 2019, driven largely by small employers. Now the most-recommended option for small teams by benefits advisors.</td>
                     <td class="col-qsehra"><span class="badge badge-growing">Growing</span><br>Steady growth since 2017. Often overlooked in favor of ICHRA, but frequently the simpler and cheaper-to-administer choice for teams under 5 — especially when some employees are already covered through a spouse's plan.</td>
                     <td class="col-peo">Standard for VC-backed startups. Rippling and Justworks dominate. Less common for bootstrapped sub-10 teams.</td>
@@ -246,8 +306,8 @@
 
     <div class="hsa-box">
         <h3>The HSA Advantage — Worth Knowing</h3>
-        <p>If you choose an ACA Bronze plan or an HSA-eligible plan through ICHRA or QSEHRA, you can contribute to a Health Savings Account (HSA). In 2026 the limit is <strong>$4,400 individual / $8,750 family.</strong></p>
-        <p>HSAs are the only account with a <strong>triple tax advantage</strong> — contributions are deductible, growth is tax-free, and withdrawals for medical expenses are tax-free. After age 65, unused funds can be withdrawn for any purpose, like a traditional IRA. Fidelity estimates a 65-year-old will need ~$172,500 for retirement healthcare costs — an HSA is the most tax-efficient way to build that reserve.</p>
+        <p>If you choose an ACA Bronze plan or an HSA-eligible plan through ICHRA or QSEHRA, you can contribute to a Health Savings Account (HSA). In 2026, the limit is <strong>$4,400 individual / $8,750 family.</strong></p>
+        <p>HSAs are the only accounts with a <strong>triple tax advantage</strong> — contributions are deductible, growth is tax-free, and withdrawals for medical expenses are tax-free. After age 65, unused funds can be withdrawn for any purpose, like a traditional IRA. Fidelity estimates a 65-year-old will need ~$172,500 for retirement healthcare costs — an HSA is the most tax-efficient way to build that reserve.</p>
         <p>Many early-stage founders have no IRA or 401k yet. <strong>A Bronze plan + maxed HSA is often the single most tax-efficient financial move an early founder can make.</strong></p>
     </div>
 
@@ -261,6 +321,101 @@
 
 <script>
     let q1 = null, q2 = null;
+    var cardCells = {}; // stores refs to card value/label divs that have dynamic content
+
+    // Build card markup from the existing table — called once on load
+    function buildCards() {
+        var table = document.getElementById('options-table');
+        var headers = Array.from(table.querySelectorAll('thead th'));
+        var rows    = Array.from(table.querySelectorAll('tbody tr'));
+
+        var cardsView = document.createElement('div');
+        cardsView.className = 'cards-view';
+        cardsView.id = 'cards-view';
+
+        // headers[0] is the blank label column; real plan columns start at index 1
+        headers.slice(1).forEach(function(th, ci) {
+            var colClass = th.className; // e.g. "col-aca"
+            var colKey   = colClass.replace('col-', '');
+
+            var card = document.createElement('div');
+            card.className = 'plan-card ' + colClass;
+            card.setAttribute('data-col', colKey);
+
+            var cardHeader = document.createElement('div');
+            cardHeader.className = 'plan-card-header';
+            cardHeader.innerHTML = th.innerHTML;
+            card.appendChild(cardHeader);
+
+            rows.forEach(function(row) {
+                var cells = row.querySelectorAll('td');
+                var valueCell = cells[ci + 1]; // +1 because cells[0] is the label column
+                if (!valueCell) return;
+
+                var labelCell = cells[0];
+
+                var cardRow = document.createElement('div');
+                cardRow.className = 'plan-card-row';
+                if (row.classList.contains('row-best-for')) cardRow.classList.add('plan-card-best-for');
+                if (row.id === 'row-oos') cardRow.classList.add('card-row-oos');
+
+                var labelDiv = document.createElement('div');
+                labelDiv.className = 'plan-card-label';
+                labelDiv.textContent = labelCell.textContent.trim();
+
+                var valueDiv = document.createElement('div');
+                valueDiv.className = 'plan-card-value';
+                valueDiv.innerHTML = valueCell.innerHTML;
+
+                // Keep references to cells that updateTable() mutates
+                if (row.id === 'row-req') {
+                    cardCells[colClass + '-req-label'] = labelDiv;
+                    cardCells[colClass + '-req-value'] = valueDiv;
+                }
+
+                cardRow.appendChild(labelDiv);
+                cardRow.appendChild(valueDiv);
+                card.appendChild(cardRow);
+            });
+
+            cardsView.appendChild(card);
+        });
+
+        var tableWrapper = document.querySelector('.table-wrapper');
+        tableWrapper.parentNode.insertBefore(cardsView, tableWrapper.nextSibling);
+    }
+
+    // Sync card visibility and dynamic content to match the table after each filter change
+    function syncCards() {
+        // Sync dynamic "Key requirements" cell content from table → cards
+        var reqLabel = document.getElementById('req-label');
+        var reqAca   = document.getElementById('req-aca');
+        var reqBcbs  = document.getElementById('req-bcbs');
+        var allCols  = ['col-aca','col-bcbs','col-ichra','col-qsehra','col-peo','col-small-group','col-chw'];
+
+        allCols.forEach(function(col) {
+            if (cardCells[col + '-req-label'] && reqLabel) {
+                cardCells[col + '-req-label'].textContent = reqLabel.textContent.trim();
+            }
+        });
+        if (cardCells['col-aca-req-value']  && reqAca)  cardCells['col-aca-req-value'].innerHTML  = reqAca.innerHTML;
+        if (cardCells['col-bcbs-req-value'] && reqBcbs) cardCells['col-bcbs-req-value'].innerHTML = reqBcbs.innerHTML;
+
+        // Sync column visibility
+        allCols.forEach(function(col) {
+            var th   = document.querySelector('thead th.' + col);
+            var card = document.querySelector('.plan-card[data-col="' + col.replace('col-','') + '"]');
+            if (th && card) card.classList.toggle('col-hidden', th.classList.contains('col-hidden'));
+        });
+
+        // Sync row-oos visibility inside cards
+        var oosHidden = document.getElementById('row-oos').classList.contains('row-hidden');
+        document.querySelectorAll('.card-row-oos').forEach(function(el) {
+            el.classList.toggle('row-hidden', oosHidden);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', buildCards);
 
     const soloContent = {
         reqLabel: 'Key considerations',
@@ -270,7 +425,7 @@
 
     const employerContent = {
         reqLabel: 'Key requirements',
-        aca: 'Income under ~$62,640/yr for subsidy. Open enrollment Nov–Jan only (or qualifying life event).',
+        aca: 'Income under ~$62,640/yr for subsidy for individual. Open enrollment Nov–Jan only (or qualifying life event).',
         bcbs: '<span class="badge badge-nc">NC residents only</span><br>No subsidy. Must use a licensed BCBSNC agent. Best for founders who travel — full national PPO network, not just emergency coverage.'
     };
 
@@ -345,6 +500,8 @@
         document.getElementById('req-label').textContent = content.reqLabel;
         document.getElementById('req-aca').innerHTML  = content.aca;
         document.getElementById('req-bcbs').innerHTML = content.bcbs;
+
+        syncCards();
     }
 </script>
 </body>
