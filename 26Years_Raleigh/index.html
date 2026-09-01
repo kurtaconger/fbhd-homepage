@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turning 26 in Raleigh — Fact-Based Healthcare Decisions</title>
+<meta name="description" content="What health coverage actually costs a 26-year-old in Raleigh in 2026, from Bronze to Gold, at every income level.">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="apple-touch-icon" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1e4f91;
+    --navy-deep:#12314D;
+    --green:#198754;
+    --green-dark:#146c43;
+    --mint:#e8f4ea;
+    --bronze:#4A7FA5;
+    --ink:#333;
+    --muted:#5A646E;
+    --grid:#E3E8EE;
+    --rule:#C9D1D9;
+    --bg:#f8f9fa;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Open Sans',sans-serif;
+    line-height:1.6;
+    color:var(--ink);
+    background:var(--bg);
+  }
+  .container{max-width:900px;margin:0 auto;padding:40px 20px 0}
+
+  /* Header */
+  .header{display:flex;align-items:center;gap:20px;margin-bottom:34px}
+  .logo{width:80px;height:auto;flex-shrink:0}
+  .header-text h1{font-family:'Merriweather',serif;font-size:1.6rem;color:var(--navy);margin-bottom:5px;line-height:1.3}
+  .header-text .tagline{font-size:1.05rem;color:var(--navy);font-weight:600}
+
+  /* Intro */
+  .intro{margin-bottom:32px}
+  .intro h2{font-family:'Merriweather',serif;font-size:1.5rem;color:var(--navy);margin-bottom:14px;line-height:1.35}
+  .intro p{font-size:1.05rem;line-height:1.75;margin-bottom:14px}
+  .intro p:last-child{margin-bottom:0}
+  .intro strong{color:var(--navy)}
+
+  .note{
+    background:var(--mint);
+    border-radius:8px;
+    padding:20px 22px;
+    margin-bottom:38px;
+  }
+  .note h3{font-family:'Merriweather',serif;font-size:1.1rem;color:var(--navy);margin-bottom:8px}
+  .note p{font-size:1rem;color:var(--ink)}
+
+  /* Chart block */
+  .chart-block{margin-bottom:34px}
+  .chart-block h2{font-family:'Merriweather',serif;font-size:1.35rem;color:var(--navy);margin-bottom:6px;line-height:1.35}
+  .chart-sub{font-size:.95rem;color:var(--muted);margin-bottom:18px}
+
+  .card{
+    background:#fff;
+    border:1px solid var(--grid);
+    border-radius:10px;
+    padding:18px 16px 16px;
+  }
+
+  .legend{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:14px;padding:0 4px}
+  .legend-item{display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:600;color:var(--ink)}
+  .swatch{width:18px;height:4px;border-radius:2px;flex-shrink:0}
+  .legend-item .full{font-weight:400;color:var(--muted)}
+
+  /* Readout */
+  .readout{
+    background:#f4f7fb;
+    border:1px solid var(--grid);
+    border-radius:8px;
+    padding:12px 14px;
+    margin-bottom:14px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:8px 26px;
+  }
+  .readout-income{font-size:.85rem;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;width:100%}
+  .readout-income b{color:var(--navy-deep);font-size:1.15rem;letter-spacing:normal;text-transform:none}
+  .ro{display:flex;align-items:baseline;gap:8px}
+  .ro-label{font-size:.9rem;font-weight:600}
+  .ro-val{font-family:'Merriweather',serif;font-size:1.45rem;font-weight:700;line-height:1.1}
+  .ro-unit{font-size:.85rem;color:var(--muted)}
+  .ro.gold .ro-label,.ro.gold .ro-val{color:var(--navy-deep)}
+  .ro.bronze .ro-label,.ro.bronze .ro-val{color:var(--bronze)}
+
+  #chart{width:100%;display:block;touch-action:pan-y;cursor:crosshair;-webkit-tap-highlight-color:transparent}
+
+  .slider-row{margin-top:12px;padding:0 4px}
+  .slider-row label{display:block;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+  input[type=range]{width:100%;accent-color:var(--green);height:28px}
+
+  .callouts{display:flex;flex-wrap:wrap;gap:14px;margin-top:20px}
+  .callout{
+    flex:1;min-width:220px;
+    border-left:3px solid var(--green);
+    padding:2px 0 2px 14px;
+  }
+  .callout h3{font-size:1.05rem;color:var(--navy);margin-bottom:4px}
+  .callout p{font-size:.98rem;color:#555}
+
+  .footnote{font-size:.82rem;color:var(--muted);line-height:1.6;margin-top:22px}
+
+  /* Contact */
+  .contact{border-top:1px solid #ddd;padding-top:28px;margin-top:40px;padding-bottom:44px}
+  .contact h2{font-family:'Merriweather',serif;font-size:1.35rem;color:var(--navy);margin-bottom:10px}
+  .contact p{font-size:1.05rem;margin-bottom:8px}
+  .contact p strong{color:var(--navy)}
+  .contact a.email{color:var(--navy);text-decoration:none;font-weight:600;font-size:1.1rem}
+  .contact a.email:hover{text-decoration:underline}
+
+  /* Bottom banner */
+  .banner{
+    display:block;
+    background:var(--green);
+    color:#fff;
+    text-align:center;
+    text-decoration:none;
+    font-weight:600;
+    font-size:1.05rem;
+    padding:22px 20px;
+    transition:background-color .3s ease;
+  }
+  .banner:hover{background:var(--green-dark)}
+  .banner .arrow{display:inline-block;margin-left:8px;transition:transform .2s ease}
+  .banner:hover .arrow{transform:translateX(4px)}
+
+  @media (max-width:768px){
+    .container{padding:26px 18px 0}
+    .header{flex-direction:column;text-align:center;gap:14px}
+    .header-text h1{font-size:1.35rem}
+    .header-text .tagline{font-size:.98rem}
+    .intro h2{font-size:1.3rem}
+    .intro p{font-size:1rem}
+    .chart-block h2{font-size:1.2rem}
+    .callouts{flex-direction:column;gap:16px}
+  }
+  @media (max-width:480px){
+    .container{padding:22px 14px 0}
+    .header-text h1{font-size:1.25rem}
+    .card{padding:14px 10px 12px}
+    .legend{gap:6px 16px}
+    .ro-val{font-size:1.3rem}
+    .readout{gap:8px 20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="header">
+    <img src="../MFHD_LOGO.png" alt="Fact-Based Healthcare Decisions logo" class="logo">
+    <div class="header-text">
+      <h1>Fact-Based Healthcare Decisions</h1>
+      <p class="tagline">Health insurance guidance for North Carolinians</p>
+    </div>
+  </header>
+
+  <section class="intro">
+    <h2>Turning 26? Here's what coverage actually costs.</h2>
+    <p>When you turn 26 you age off a parent's health plan. That loss of coverage is a qualifying life event, which opens a <strong>Special Enrollment Period</strong> — normally 60 days — to choose your own plan without waiting for open enrollment. You can usually start the application before your coverage ends.</p>
+    <p>Your exact end date is set by your parent's plan, not by your birthday alone. Many plans run coverage through the last day of your birthday month; some end it on the birthday itself. It's worth confirming that date early, because it starts the clock.</p>
+  </section>
+
+  <div class="note">
+    <h3>The number that moves the price is your income</h3>
+    <p>The sticker price of a plan doesn't change with income — the premium tax credit does. As your income rises, that credit shrinks, so what you actually pay each month climbs even though the plan is identical. Below is that curve for a 26-year-old non-smoker in the Raleigh area, comparing the cheapest Bronze plan to a strong Gold plan.</p>
+  </div>
+
+  <section class="chart-block">
+    <h2>ACA Coverage for a 26-Year-Old, Non-Smoker</h2>
+    <p class="chart-sub">Net monthly premium after subsidy, by annual income · Raleigh (ZIP 27615), 2026</p>
+
+    <div class="card">
+      <div class="legend">
+        <div class="legend-item"><span class="swatch" style="background:#12314D"></span>Gold — Premier A <span class="full">· $491/mo full price</span></div>
+        <div class="legend-item"><span class="swatch" style="background:#4A7FA5"></span>Bronze — Basic <span class="full">· $357/mo full price</span></div>
+      </div>
+
+      <div class="readout">
+        <div class="readout-income">At an income of <b id="ro-income">$45,000</b></div>
+        <div class="ro gold">
+          <span class="ro-label">Gold</span>
+          <span class="ro-val" id="ro-gold">$378</span>
+          <span class="ro-unit">/mo</span>
+        </div>
+        <div class="ro bronze">
+          <span class="ro-label">Bronze</span>
+          <span class="ro-val" id="ro-bronze">$244</span>
+          <span class="ro-unit">/mo</span>
+        </div>
+      </div>
+
+      <svg id="chart" role="img" aria-label="Line chart of net monthly premium versus annual income for a Gold and a Bronze plan"></svg>
+
+      <div class="slider-row">
+        <label for="income-slider">Drag the chart, or move this slider, to see the premium at any income</label>
+        <input type="range" id="income-slider" min="23" max="80" step="1" value="45"
+               aria-label="Annual income in thousands of dollars">
+      </div>
+    </div>
+
+    <div class="callouts">
+      <div class="callout">
+        <h3>Bronze is free below about $28K</h3>
+        <p>At the low end the subsidy covers the entire Bronze premium — the plan costs $0 a month up to roughly $26–28K of income.</p>
+      </div>
+      <div class="callout">
+        <h3>Both flatten near $60K</h3>
+        <p>The subsidy phases out at 400% of the federal poverty level. Past that point you pay the full sticker price, and earning more no longer raises your premium.</p>
+      </div>
+    </div>
+
+    <p class="footnote">Net premium = full-price premium minus APTC (benchmark SLCSP = Blue Home Silver Standard) · age 26, single non-smoker, ZIP 27615, 2026 · illustration, not advice. Your own figures depend on household size, tobacco use, exact ZIP code and the plan you choose.</p>
+  </section>
+
+  <section class="contact">
+    <h2>Want your actual numbers?</h2>
+    <p>Premium is only part of the picture — deductible, out-of-pocket maximum and whether your doctors are in network all matter. I'll pull every plan available to you, lay out the real tradeoffs, and handle the enrollment. There's no cost to you.</p>
+    <p><strong>Contact Kurt Conger</strong></p>
+    <a class="email" href="mailto:kurt.conger@gmail.com">kurt.conger@gmail.com</a>
+  </section>
+
+</div>
+
+<a class="banner" href="https://factbasedhealthcaredecisions.com">See my home page for more information<span class="arrow">&rarr;</span></a>
+
+<script>
+(function(){
+  "use strict";
+
+  var GOLD = [90.7,104.53,114.55,125.09,136.14,147.71,159.79,172.38,185.49,197.99,210.43,223.29,236.56,250.25,264.35,278.86,293.78,307.26,320.78,334.61,348.74,363.19,377.94,392.99,407.99,416.29,424.59,432.89,441.19,449.49,457.79,466.09,474.39,482.69,490.99,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24,491.24];
+  var BRONZE = [0,0,0,0,2.05,13.62,25.7,38.29,51.4,63.9,76.34,89.2,102.47,116.16,130.26,144.77,159.7,173.17,186.69,200.52,214.66,229.1,243.85,258.9,273.9,282.2,290.5,298.8,307.1,315.4,323.7,332,340.3,348.6,356.9,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15,357.15];
+
+  var START = 23;                 // first income, in $K
+  var N = GOLD.length;            // 58 points -> $23K .. $80K
+  var YMAX = 520;
+
+  var C = {
+    gold:   "#12314D",
+    bronze: "#4A7FA5",
+    grid:   "#E3E8EE",
+    rule:   "#C9D1D9",
+    label:  "#5A646E",
+    guide:  "#198754"
+  };
+
+  var svg     = document.getElementById("chart");
+  var slider  = document.getElementById("income-slider");
+  var roInc   = document.getElementById("ro-income");
+  var roGold  = document.getElementById("ro-gold");
+  var roBronze= document.getElementById("ro-bronze");
+
+  var idx = 22;                   // default: $45K
+  var geom = null;
+
+  function money(v){ return "$" + Math.round(v).toLocaleString("en-US"); }
+
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;"); }
+
+  function computeGeom(){
+    var W = svg.clientWidth || svg.parentNode.clientWidth || 600;
+    var narrow = W < 480;
+    var H = narrow ? 290 : (W < 700 ? 330 : 380);
+    var m = {
+      t: 14,
+      r: narrow ? 10 : 14,
+      b: 42,
+      l: narrow ? 42 : 50
+    };
+    return {
+      W: W, H: H, m: m, narrow: narrow,
+      pw: W - m.l - m.r,
+      ph: H - m.t - m.b
+    };
+  }
+
+  function xAt(i){ return geom.m.l + (i / (N - 1)) * geom.pw; }
+  function yAt(v){ return geom.m.t + (1 - v / YMAX) * geom.ph; }
+
+  function path(arr){
+    var d = "", i;
+    for (i = 0; i < N; i++){
+      d += (i ? "L" : "M") + xAt(i).toFixed(1) + " " + yAt(arr[i]).toFixed(1);
+    }
+    return d;
+  }
+
+  function render(){
+    geom = computeGeom();
+    var g = geom, m = g.m;
+    var s = [];
+
+    s.push('<svg xmlns="http://www.w3.org/2000/svg"></svg>'); // placeholder, removed below
+    s.length = 0;
+
+    // --- horizontal gridlines + y labels ---
+    var yTicks = [0,100,200,300,400,500];
+    for (var k = 0; k < yTicks.length; k++){
+      var v = yTicks[k], y = yAt(v);
+      s.push('<line x1="'+m.l+'" y1="'+y.toFixed(1)+'" x2="'+(m.l+g.pw)+'" y2="'+y.toFixed(1)+
+             '" stroke="'+(v===0?C.rule:C.grid)+'" stroke-width="1"/>');
+      s.push('<text x="'+(m.l-8)+'" y="'+(y+4).toFixed(1)+'" text-anchor="end" fill="'+C.label+
+             '" font-size="'+(g.narrow?10:11)+'" font-family="Open Sans, sans-serif">$'+v+'</text>');
+    }
+
+    // --- x labels ---
+    var xTicks = g.narrow ? [30,50,70] : [30,40,50,60,70,80];
+    for (var j = 0; j < xTicks.length; j++){
+      var inc = xTicks[j], x = xAt(inc - START);
+      s.push('<line x1="'+x.toFixed(1)+'" y1="'+m.t+'" x2="'+x.toFixed(1)+'" y2="'+(m.t+g.ph)+
+             '" stroke="'+C.grid+'" stroke-width="1"/>');
+      s.push('<text x="'+x.toFixed(1)+'" y="'+(m.t+g.ph+18)+'" text-anchor="middle" fill="'+C.label+
+             '" font-size="'+(g.narrow?10:11)+'" font-family="Open Sans, sans-serif">$'+inc+'K</text>');
+    }
+
+    // --- 400% FPL marker (wide screens only) ---
+    if (!g.narrow){
+      var xf = xAt(60 - START);
+      s.push('<line x1="'+xf.toFixed(1)+'" y1="'+m.t+'" x2="'+xf.toFixed(1)+'" y2="'+(m.t+g.ph)+
+             '" stroke="'+C.rule+'" stroke-width="1" stroke-dasharray="4 4"/>');
+      s.push('<text x="'+(xf+7).toFixed(1)+'" y="'+(m.t+g.ph-10)+'" fill="'+C.label+
+             '" font-size="10.5" font-family="Open Sans, sans-serif">400% FPL &mdash; full price above here</text>');
+    }
+
+    // --- series ---
+    s.push('<path d="'+path(GOLD)+'" fill="none" stroke="'+C.gold+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>');
+    s.push('<path d="'+path(BRONZE)+'" fill="none" stroke="'+C.bronze+'" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>');
+
+    // --- guide (updated in place afterwards) ---
+    s.push('<g id="guide">');
+    s.push('<line id="g-line" x1="0" y1="'+m.t+'" x2="0" y2="'+(m.t+g.ph)+'" stroke="'+C.guide+'" stroke-width="1.5" stroke-dasharray="3 3"/>');
+    s.push('<circle id="g-gold" r="5" fill="#fff" stroke="'+C.gold+'" stroke-width="2.5"/>');
+    s.push('<circle id="g-bronze" r="5" fill="#fff" stroke="'+C.bronze+'" stroke-width="2.5"/>');
+    s.push('</g>');
+
+    // --- axis titles ---
+    s.push('<text x="'+(m.l+g.pw/2)+'" y="'+(g.H-2)+'" text-anchor="middle" fill="'+C.label+
+           '" font-size="10.5" font-family="Open Sans, sans-serif">Annual income</text>');
+
+    svg.setAttribute("viewBox", "0 0 " + g.W + " " + g.H);
+    svg.setAttribute("width", g.W);
+    svg.setAttribute("height", g.H);
+    svg.style.height = g.H + "px";
+    svg.innerHTML = s.join("");
+
+    updateGuide();
+  }
+
+  function updateGuide(){
+    if (!geom) return;
+    var x = xAt(idx);
+    var ln = document.getElementById("g-line");
+    var cg = document.getElementById("g-gold");
+    var cb = document.getElementById("g-bronze");
+    if (!ln) return;
+    ln.setAttribute("x1", x.toFixed(1));
+    ln.setAttribute("x2", x.toFixed(1));
+    cg.setAttribute("cx", x.toFixed(1));
+    cg.setAttribute("cy", yAt(GOLD[idx]).toFixed(1));
+    cb.setAttribute("cx", x.toFixed(1));
+    cb.setAttribute("cy", yAt(BRONZE[idx]).toFixed(1));
+  }
+
+  function updateReadout(){
+    roInc.textContent = "$" + ((START + idx) * 1000).toLocaleString("en-US");
+    roGold.textContent = money(GOLD[idx]);
+    roBronze.textContent = BRONZE[idx] < 0.5 ? "$0" : money(BRONZE[idx]);
+    svg.setAttribute("aria-label",
+      "Net monthly premium by income. At " + ((START + idx)) + " thousand dollars of income, Gold is " +
+      money(GOLD[idx]) + " and Bronze is " + (BRONZE[idx] < 0.5 ? "$0" : money(BRONZE[idx])) + " per month.");
+  }
+
+  function setIdx(i, syncSlider){
+    i = Math.max(0, Math.min(N - 1, Math.round(i)));
+    if (i === idx && syncSlider !== "force") { updateGuide(); return; }
+    idx = i;
+    if (syncSlider !== false) slider.value = String(START + idx);
+    updateGuide();
+    updateReadout();
+  }
+
+  function idxFromClientX(clientX){
+    var r = svg.getBoundingClientRect();
+    var px = clientX - r.left;
+    var t = (px - geom.m.l) / geom.pw;
+    return t * (N - 1);
+  }
+
+  var dragging = false;
+
+  function onDown(e){
+    dragging = true;
+    var cx = e.touches ? e.touches[0].clientX : e.clientX;
+    setIdx(idxFromClientX(cx));
+  }
+  function onMove(e){
+    var cx;
+    if (e.touches){
+      if (!dragging) return;
+      cx = e.touches[0].clientX;
+      e.preventDefault();
+    } else {
+      cx = e.clientX;
+    }
+    setIdx(idxFromClientX(cx));
+  }
+  function onUp(){ dragging = false; }
+
+  svg.addEventListener("mousedown", onDown);
+  svg.addEventListener("mousemove", onMove);
+  window.addEventListener("mouseup", onUp);
+  svg.addEventListener("touchstart", onDown, {passive:true});
+  svg.addEventListener("touchmove", onMove, {passive:false});
+  window.addEventListener("touchend", onUp);
+
+  slider.addEventListener("input", function(){
+    setIdx(Number(slider.value) - START, false);
+  });
+
+  var rt;
+  window.addEventListener("resize", function(){
+    clearTimeout(rt);
+    rt = setTimeout(render, 120);
+  });
+
+  if (document.fonts && document.fonts.ready){
+    document.fonts.ready.then(render);
+  }
+
+  render();
+  updateReadout();
+})();
+</script>
+
+</body>
+</html>
