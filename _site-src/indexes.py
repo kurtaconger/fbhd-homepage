@@ -3,13 +3,13 @@ from counties import COUNTIES, ZONES, LIVE_ZONES
 
 GUIDES = [
     ("/questions/bronze-vs-silver-medications/", "Bronze vs. Silver when you take medications",
-     "Premium is the wrong number. Year-long cost comparisons for generic, brand-name and specialty drug users on real 2027 Blue Cross NC plans, including the free-Bronze-vs-$150-Silver question for subsidized households."),
+     "Premium is often the wrong number. Year-long cost comparisons for generic, brand-name and specialty drug users on real 2027 Blue Cross NC plans, including the free-Bronze-vs-$150-Silver question for subsidized households."),
     ("/questions/self-employed-north-carolina-2027/", "Health insurance for the self-employed in NC (2027)",
      "How the subsidy treats business income, the 400% cliff in dollars, and the four levers (SEP-IRA, HSA, timing, the premium deduction) that keep you under the line."),
     ("/questions/retiring-before-65-north-carolina/", "Retiring before 65 in NC: bridging to Medicare",
      "COBRA or the Marketplace, what a 64-year-old really pays, which retirement income counts, the $46,000 cliff for couples, and the hand-off to Medicare."),
     ("/questions/blue-care-vs-blue-advantage-eastern-nc/", "Blue Care vs. Blue Advantage: is the PPO worth 5.5% more?",
-     "Same benefits, different network. What the PPO actually buys on the coast and in the Albemarle counties (snowbirds, Virginia hospitals, college students, cruisers), what it costs by age, and a two-question test."),
+     "Same benefits, different network. What the PPO actually buys on the coast (college students, families with second homes, individuals who travel frequently), what it costs by age, and a two-question test."),
 ]
 
 
@@ -111,14 +111,14 @@ home_body = f"""
         </header>
 
         <section class="intro">
-            <p>Starting a business, retiring early, or losing coverage? We use <strong>data and software</strong> from <a href="{APP}" target="_blank" rel="noopener" class="brand-link">Covanu</a> to compare every ACA plan available to you on total yearly cost, then meet with you to finish the choice and enroll. Independent, licensed in North Carolina, and <strong>free to you</strong>.</p>
+            <p>Starting a business, retiring early, or losing coverage? We use data and software from <a href="{APP}" target="_blank" rel="noopener" class="brand-link">Covanu</a> to compare every ACA plan available to you on total yearly cost, then meet with you to finish the choice and enroll. Independent, licensed in North Carolina, and free to you.</p>
         </section>
 
         <section class="ways">
             <div class="ways-grid">
                 <div class="way-card">
                     <h3>Start on my own</h3>
-                    <p>Enter your county, household and income, scan your medications, and see every plan with your subsidy applied and your drugs priced. When you're ready, we finish it together.</p>
+                    <p>Answer a questionnaire about your goals, family size and care needs, enter or scan your medications and preferred providers, and see the plans that best fit your situation. When you're ready, we finish it together.</p>
                     <div class="way-actions">
                         <a class="btn" href="{APP}" target="_blank" rel="noopener">Compare plans with Covanu</a>
                     </div>

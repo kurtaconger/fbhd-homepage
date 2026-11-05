@@ -33,7 +33,7 @@ body = f"""
 <ul>
 <li><strong>Age rating is 3 to 1.</strong> In Carteret County the cheapest Bronze plan is $571 a month at 21 and $1,713 at 64; Gold runs $2,400 and up for a 64-year-old at full price.</li>
 <li><strong>The subsidy looks at income, not wealth.</strong> IRA withdrawals, Roth conversions, capital gains, dividends and all of Social Security count. Roth withdrawals, HSA withdrawals and spending down cash do not.</li>
-<li><strong>Keep MAGI under 400% of the poverty level</strong> ($63,840 single, $86,560 couple) and the same 64-year-old pays $0 for Bronze and about $500 for Silver. Cross it by a dollar and the premium is full price: a $21,900-a-year swing for one person, $46,200 for a couple.</li>
+<li><strong>Keep MAGI under 400% of the poverty level</strong> ($63,840 single, $86,560 couple) and the same 64-year-old's monthly premium after the credit is $0 for Bronze Basic and about $500 for Silver; a couple of 64 and 62 at $85,000 likewise pays $0 a month for Bronze Basic and about $700 for Silver, because the credit at that age is larger than the Bronze premium. Cross the line by a dollar and the premium is full price: a $21,900-a-year swing for one person, $46,200 for a couple.</li>
 <li><strong>COBRA is rarely the better bridge</strong> unless your retirement income is over the line or you are mid-treatment with out-of-network doctors.</li>
 <li><strong>Medicare at 65 ends the credit.</strong> Enroll in Parts A and B during the 7-month window, cancel the Marketplace plan the day Medicare starts, and stop HSA contributions in time.</li>
 </ul>
@@ -42,7 +42,7 @@ body = f"""
 <h2>Your three options when the employer plan ends</h2>
 <p>Losing employer coverage, including by retiring, opens a 60-day special enrollment period on HealthCare.gov. In that window you can choose among:</p>
 <ul>
-<li><strong>COBRA</strong>: keep the employer plan for up to 18 months at the full premium plus a 2% fee. For a couple that is typically $1,800 to $2,800 a month in 2027. No income test, same doctors, same deductible progress for the rest of the year.</li>
+<li><strong>COBRA</strong>: keep the employer plan for up to 18 months. The shock is the price: while you were working, your employer paid most of the premium (on average 83% for single coverage and 72% for family coverage, per KFF's 2025 employer survey); on COBRA you pay the entire premium plus a 2% administrative fee. For a couple that is typically $1,800 to $2,800 a month in 2027. No income test, same doctors, same deductible progress for the rest of the year.</li>
 <li><strong>A Marketplace plan</strong>: priced by age and county, reduced by a premium tax credit based on your retirement income. Deductibles reset on January 1 and whenever you switch plans.</li>
 <li><strong>A spouse's employer plan</strong>, if there is one; usually the cheapest option and it also blocks the Marketplace credit if it is affordable.</li>
 </ul>
@@ -103,35 +103,20 @@ body = f"""
 <li><strong>Income under 250%:</strong> Silver Preferred or Silver Standard with cost-sharing reductions. The low deductible matters more at 62 than at 32.</li>
 <li><strong>Income between 250% and 400%, healthy, with savings:</strong> Bronze Basic or Bronze HSA Eligible Plus at $0 to $19 a month, with the HSA funded. You are self-insuring the $7,000 to $8,700 deductible from money you would have spent on premiums.</li>
 <li><strong>Taking brand-name or specialty drugs, or expecting a joint replacement:</strong> Gold Standard A ($8,600 out-of-pocket maximum, $250 specialty copay) or Gold All Copay A ($2,500 per hospital stay). See <a href="/questions/bronze-vs-silver-medications/">Bronze vs. Silver when you take medications</a>.</li>
-<li><strong>Snowbirds and travelers:</strong> the Blue Advantage version of any design, for nationwide in-network doctors at about 5.5% more. Blue Care covers only emergencies outside North Carolina.</li>
+<li><strong>Travelers, and anyone who wants access to nationally known specialists:</strong> the Blue Advantage version of any design, for nationwide in-network doctors at about 5.5% more. If you travel often, or want the option of being seen at Mayo Clinic, Memorial Sloan Kettering, MD Anderson or Johns Hopkins, those providers need to be in network, and only Blue Advantage puts them there. Blue Care covers only emergencies outside North Carolina.</li>
 <li><strong>Over 400% and unable to get under:</strong> compare off-exchange Blue Cross plans sold through agents (same prices, a few additional designs) and consider whether a part-time business with a SEP-IRA could bring MAGI down; our <a href="/questions/self-employed-north-carolina-2027/">self-employed guide</a> covers the levers.</li>
 </ul>
 
 <h2>The hand-off to Medicare</h2>
 <ol>
-<li><strong>Three months before your 65th birthday month,</strong> apply for Medicare Parts A and B at ssa.gov (or by phone). Your initial enrollment period runs seven months: three before, the birthday month, three after. Enrolling in the first three months starts coverage on the first of your birthday month.</li>
+<li><strong>Three months before your 65th birthday month,</strong> apply for Medicare Parts A and B at ssa.gov (or by phone). Your initial enrollment period runs seven months: three before, the birthday month, three after. Enrolling in the first three months starts coverage on the first day of your birthday month; enrolling later starts it the first of the following month, so apply early.</li>
 <li><strong>Choose how to fill the gaps</strong>: Original Medicare with a Medigap policy and a Part D drug plan, or a Medicare Advantage plan. Medigap has a guaranteed-issue window of six months from your Part B start date; after that, insurers in North Carolina can underwrite you.</li>
-<li><strong>Cancel the Marketplace plan</strong> effective the day before Medicare starts, and no later. Once you are eligible for premium-free Part A, the premium tax credit stops; a Marketplace plan kept alongside Medicare is full price and pays second.</li>
+<li><strong>Cancel the Marketplace plan</strong> effective the last day of the month before Medicare starts, and no later. Medicare always begins on the first of a month, whatever your birthday: enroll during the three months before your birthday month and Part A and B start on the first day of that month (if your birthday is the 1st, they start on the first day of the month before). So a July 18 birthday means Medicare on July 1 and a Marketplace end date of June 30. Set that end date on HealthCare.gov at least two weeks ahead; there is no gap and no overlap. Once you are eligible for premium-free Part A, the premium tax credit stops; a Marketplace plan kept alongside Medicare is full price and pays second.</li>
 <li><strong>If your spouse is younger,</strong> update the HealthCare.gov application to remove you. Her credit is recalculated for a household of two with one enrolled.</li>
 <li><strong>Stop HSA contributions</strong> the month Medicare begins. If you delay Part A past 65 and later claim Social Security, Part A is backdated up to six months, so stop six months ahead in that case.</li>
 <li><strong>Do not rely on the Marketplace plan to delay Part B.</strong> Only current employer coverage (yours or a spouse's, from an employer with 20 or more workers) lets you delay Part B without a 10%-per-year lifetime penalty.</li>
 </ol>
 
-<h2>A timeline for a couple retiring at 62</h2>
-<div class="table-wrap">
-<table class="data">
-<thead><tr><th>When</th><th>What to do</th></tr></thead>
-<tbody>
-<tr><td>Year before retiring</td><td>Do any Roth conversions now, while you still have employer coverage. Build two to three years of spending in cash and taxable accounts. Open HSAs if your current plan allows.</td></tr>
-<tr><td>Retirement month</td><td>Within 60 days of losing coverage, enroll on HealthCare.gov with an estimate of <em>retirement</em> income. Elect COBRA only if you are mid-treatment or retiring in the fourth quarter with the deductible met.</td></tr>
-<tr><td>Each October</td><td>Check year-to-date MAGI against the 400% line ($86,560 for two) and the 250% line ($54,100). Adjust withdrawals and report changes.</td></tr>
-<tr><td>Each November 1&ndash;December 15</td><td>Re-shop during Open Enrollment. Premiums and plan designs change every year; the credit is recalculated.</td></tr>
-<tr><td>Three months before the first spouse turns 65</td><td>Apply for Medicare A and B. Choose Medigap plus Part D, or Medicare Advantage. Stop that spouse's HSA contributions.</td></tr>
-<tr><td>First spouse's 65th birthday month</td><td>Medicare starts; remove that spouse from the Marketplace application the same day. The younger spouse continues with a recalculated credit.</td></tr>
-<tr><td>Second spouse at 65</td><td>Repeat. The Marketplace chapter closes.</td></tr>
-</tbody>
-</table>
-</div>
 
 {cta("See what your bridge-year plan would cost", "Enter your county, ages and the income you expect in retirement and our Covanu tool shows every plan with the credit applied, flags the 250% and 400% lines, and checks your medications against each plan's drug list. Then book a call and we will map the years to 65 together. Our help is free.")}
 
@@ -144,6 +129,7 @@ body = f"""
     '<a href="https://www.healthcare.gov/medicare/" target="_blank" rel="noopener">HealthCare.gov: Medicare and the Marketplace</a>.',
     '<a href="https://www.medicare.gov/basics/get-started-with-medicare/sign-up/when-does-medicare-coverage-start" target="_blank" rel="noopener">Medicare.gov: initial enrollment period and coverage start dates</a>.',
     '<a href="https://www.healthcare.gov/unemployed/cobra-coverage/" target="_blank" rel="noopener">HealthCare.gov: COBRA and the Marketplace</a>.',
+    '<a href="https://www.kff.org/health-costs/report/2025-employer-health-benefits-survey/" target="_blank" rel="noopener">KFF 2025 Employer Health Benefits Survey</a> (employer share of premiums).',
     'IRS Rev. Proc. 2026-24 (2027 HSA limits); IRS Notice 2026-5 (Bronze Marketplace plans treated as HDHPs).',
 ])}
 """

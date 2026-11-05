@@ -188,8 +188,7 @@ def author_box():
     return """<div class="author-box">
     <img src="/MFHD_LOGO.png" alt="">
     <div>
-        <p><strong>About the author.</strong> Kurt Conger is an independent, licensed North Carolina health insurance agent (NPN 21720013) and the founder of Fact-Based Healthcare Decisions and <a href="https://covanu.com" target="_blank" rel="noopener">Covanu</a>, a plan-selection tool built on HealthCare.gov data. He lives in Carteret County and helps self-employed North Carolinians, small business owners and early retirees choose and enroll in ACA plans.</p>
-        <p><a href="/#about">More about Kurt</a></p>
+        <p><strong>About the author.</strong> Kurt Conger is an independent, licensed North Carolina health insurance agent (NPN 21720013) and the founder of Fact-Based Healthcare Decisions and <a href="https://covanu.com" target="_blank" rel="noopener">Covanu</a>, a plan-selection tool built on HealthCare.gov data. He lives in Carteret County and helps North Carolinians who are starting a business, retiring early or losing coverage compare every ACA plan available to them on total yearly cost, then finish the choice and enroll.</p>
     </div>
 </div>"""
 
@@ -218,6 +217,7 @@ def page(path, title, desc, current, crumbs, body, faq=None, extra_ld=None, read
     doc += body
     if faq:
         doc += "\n" + faq_html(faq)
+    doc += '\n<p class="back-home"><a href="/">&larr; Back to the home page</a></p>'
     doc += "\n</article>\n    </div>\n"
     doc += footer()
     write(path, doc)

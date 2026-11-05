@@ -18,6 +18,8 @@ FAQ = [
      "No. Blue Care does not require referrals to see a specialist, and you do not have to pick a primary care doctor. In that respect it works like a PPO within North Carolina."),
     ("Can I switch from Blue Care to Blue Advantage mid-year?",
      "Only with a qualifying life event (a move, marriage, loss of other coverage). Otherwise you choose during Open Enrollment, November 1 to January 15, for the coming year. If you are planning to spend next winter out of state, decide now."),
+    ("My child's college offers a student health plan. Does that change the decision?",
+     "It can. Most universities sell a student health insurance plan (SHIP), typically $2,000 to $4,000 a year, built around the campus health center and usually with a nationwide network for care away from school. If the student is the only reason you would buy Blue Advantage, compare the two: the PPO upgrade costs 5.5% on every family member's premium for the whole year, while a SHIP covers just the student. For a family of four on a Gold plan the PPO upgrade runs about $2,200 a year, so a SHIP can be the cheaper way to cover an out-of-state student, and the rest of the family stays on Blue Care. Check that the SHIP is ACA-compliant (most are), what it covers during summers at home, and whether it is required (some schools require proof of coverage and charge for the SHIP unless you waive it). Children can stay on your Marketplace plan until 26 either way."),
     ("Does the PPO cost more if I get a subsidy?",
      "The premium tax credit is a fixed dollar amount, so the PPO costs the same extra dollars whether or not you are subsidized: about 5.5% of the full premium. For households whose credit already exceeds the Bronze premium, that extra can be partly or fully absorbed; a family of four at $90,000 pays $0 for Blue Care Bronze Basic and about $1 for Blue Advantage Bronze Standard."),
 ]
@@ -80,9 +82,9 @@ body = f"""
 
 <h2>Who should pay for Blue Advantage</h2>
 <ul>
-<li><strong>Snowbirds and second-home owners.</strong> Three months in Florida or Arizona means three months in which only the emergency room is covered on Blue Care. Any ongoing condition, a prescription refill that needs a visit, physical therapy after a fall: all in network on Blue Advantage, all out of pocket on Blue Care.</li>
+<li><strong>Second-home owners.</strong> Three months in Florida or Arizona means three months in which only the emergency room is covered on Blue Care. Any ongoing condition, a prescription refill that needs a visit, physical therapy after a fall: all in network on Blue Advantage, all out of pocket on Blue Care.</li>
 <li><strong>Albemarle counties that use Virginia hospitals.</strong> If you live in Currituck, Camden, Pasquotank, Gates or Perquimans and your cardiologist is at Sentara Norfolk or your hospital is Chesapeake Regional, those are out of state. Blue Advantage puts them in network through the Virginia Blue plan; Blue Care does not.</li>
-<li><strong>Parents of out-of-state college students.</strong> The student's routine care near campus is in network on the PPO only. (Students at UNC, NC State, ECU, App State or any other North Carolina school are fine on Blue Care.)</li>
+<li><strong>Parents of out-of-state college students.</strong> The student's routine care near campus is in network on the PPO only. (Students at UNC, NC State, ECU, App State or any other North Carolina school are fine on Blue Care.) Compare the PPO upgrade with the college's own student health plan, which covers just the student; see the question below.</li>
 <li><strong>Cruisers and people who work on the water or the road.</strong> If you spend the season moving down the Intracoastal from Oriental or Beaufort, drive a truck, or consult in other states, you want in-network care wherever you stop.</li>
 <li><strong>Anyone who wants a specific out-of-state hospital.</strong> MUSC in Charleston, Mayo, Johns Hopkins, MD Anderson. On Blue Advantage they are typically in network; on Blue Care they are out of network except for emergencies.</li>
 </ul>

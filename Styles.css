@@ -1138,3 +1138,17 @@ details.plan > p:last-child {
 html:not(.geo-in) .geo-gate {
     display: none !important;
 }
+
+.back-home {
+    margin-top: 28px;
+    font-weight: 600;
+}
+
+.back-home a {
+    color: #198754;
+    text-decoration: none;
+}
+
+.back-home a:hover {
+    text-decoration: underline;
+}
