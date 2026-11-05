@@ -1,0 +1,54 @@
+# Fact-Based Healthcare Decisions
+
+> Independent, licensed ACA (Affordable Care Act) health insurance guidance for North Carolina individuals, families, self-employed people and early retirees, written by Kurt Conger (NC Health Producer, NPN 21720013). Guides are built from the official HealthCare.gov Marketplace API data for the current plan year (2027) and state the date they were last checked. Help is free to consumers; insurers pay agent commissions.
+
+## Common questions (2027 plan year)
+
+- [Bronze vs. Silver when you take medications](https://factbasedhealthcaredecisions.com/questions/bronze-vs-silver-medications/): year-long total cost (premium plus deductible, copays, coinsurance) for generic, brand-name and specialty drug users on real Blue Cross NC plans; why a $0 Bronze plan often costs more than a $150 Silver plan with cost-sharing reductions.
+- [Health insurance for the self-employed in North Carolina (2027)](https://factbasedhealthcaredecisions.com/questions/self-employed-north-carolina-2027/): how premium tax credits use MAGI, the 400% federal-poverty-level cliff in dollars ($5,500 to $46,000 a year), the self-employed health insurance deduction, SEP-IRA and HSA levers, elimination of repayment caps.
+- [Retiring before 65 in North Carolina](https://factbasedhealthcaredecisions.com/questions/retiring-before-65-north-carolina/): COBRA vs. Marketplace, what a 64-year-old pays, which retirement income counts toward MAGI, income planning for the bridge years, the hand-off to Medicare.
+- [Blue Care vs. Blue Advantage in eastern NC](https://factbasedhealthcaredecisions.com/questions/blue-care-vs-blue-advantage-eastern-nc/): the HMO and PPO versions of each Blue Cross NC plan have identical benefits; the PPO costs about 5.5% more and buys nationwide in-network access (BlueCard), not meaningful out-of-network coverage; who should pay for it.
+
+## County guides
+
+21 eastern North Carolina counties share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
+
+- [Beaufort County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/beaufort/): Washington, Belhaven, Chocowinity.
+- [Bertie County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/bertie/): Windsor, Aulander, Colerain.
+- [Camden County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/camden/): Camden, South Mills.
+- [Carteret County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/carteret/): Morehead City, Beaufort, Newport, Emerald Isle.
+- [Chowan County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/chowan/): Edenton.
+- [Craven County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/craven/): New Bern, Havelock, Trent Woods.
+- [Currituck County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/currituck/): Moyock, Corolla, Grandy.
+- [Dare County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/dare/): Nags Head, Kill Devil Hills, Kitty Hawk, Manteo.
+- [Gates County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/gates/): Gatesville, Sunbury.
+- [Halifax County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/halifax/): Roanoke Rapids, Weldon, Scotland Neck.
+- [Hertford County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/hertford/): Ahoskie, Murfreesboro, Winton.
+- [Hyde County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/hyde/): Swan Quarter, Engelhard, Ocracoke.
+- [Jones County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/jones/): Trenton, Pollocksville, Maysville.
+- [Lenoir County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/lenoir/): Kinston, La Grange, Pink Hill.
+- [Martin County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/martin/): Williamston, Robersonville.
+- [Northampton County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/northampton/): Jackson, Gaston, Conway, Lake Gaston.
+- [Pamlico County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pamlico/): Bayboro, Oriental, Grantsboro.
+- [Pasquotank County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pasquotank/): Elizabeth City.
+- [Perquimans County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/perquimans/): Hertford, Winfall.
+- [Tyrrell County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/tyrrell/): Columbia.
+- [Washington County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/washington/): Plymouth, Roper, Creswell.
+
+## Key facts stated on this site (2027)
+
+- 2027 Marketplace income thresholds use 2026 federal poverty guidelines: $15,960 (1 person), $21,640 (2), $33,000 (4). 400% = $63,840 / $86,560 / $132,000. NC Medicaid expansion line (138%) = $22,025 / $29,863 / $45,540.
+- Enhanced premium tax credits expired after 2025; the 400% FPL cliff applies for 2027. Repayment caps on excess credits are eliminated from the 2026 tax year.
+- All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
+- In the 21 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+
+## Coming soon
+
+Guides for the other 14 CMS rating areas are in preparation; placeholder pages at https://factbasedhealthcaredecisions.com/counties/zone-N/ list each area's counties and carriers.
+
+## About
+
+- [How we work](https://factbasedhealthcaredecisions.com/about/)
+- [Covanu plan selector](https://app.covanu.com/agent/21720013): compares every plan in a county with the user's subsidy, medications and doctors.
+- [Schedule a call](https://calendly.com/kurt-conger)
+- Contact: Kurt Conger, kurt.conger@gmail.com

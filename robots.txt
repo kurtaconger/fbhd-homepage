@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /unsubscribe.html
+Disallow: /planoptions.html
+Disallow: /primarycare.html
+Disallow: /local_healtcare.html
+
+Sitemap: https://factbasedhealthcaredecisions.com/sitemap.xml

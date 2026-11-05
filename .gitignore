@@ -12,3 +12,8 @@ Untitled.jpg
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# local backups and parked files
+*.bak-*
+_to_delete/
+guides-OLD-DELETE-ME/

@@ -1,0 +1,284 @@
+{
+ "1": {
+  "counties": [
+   "Avery",
+   "Buncombe",
+   "Cherokee",
+   "Clay",
+   "Graham",
+   "Haywood",
+   "Henderson",
+   "Jackson",
+   "Macon",
+   "Madison",
+   "McDowell",
+   "Mitchell",
+   "Polk",
+   "Rutherford",
+   "Swain",
+   "Transylvania",
+   "Yancey"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 28,
+  "plans_max": 62
+ },
+ "2": {
+  "counties": [
+   "Alexander",
+   "Burke",
+   "Caldwell",
+   "Catawba",
+   "Iredell"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 72,
+  "plans_max": 72
+ },
+ "3": {
+  "counties": [
+   "Alleghany",
+   "Ashe",
+   "Watauga",
+   "Wilkes"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc"
+  ],
+  "plans_min": 28,
+  "plans_max": 74
+ },
+ "4": {
+  "counties": [
+   "Anson",
+   "Cabarrus",
+   "Mecklenburg",
+   "Rowan",
+   "Stanly",
+   "Union"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 47,
+  "plans_max": 79
+ },
+ "5": {
+  "counties": [
+   "Cleveland",
+   "Gaston",
+   "Lincoln"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc"
+  ],
+  "plans_min": 66,
+  "plans_max": 72
+ },
+ "6": {
+  "counties": [
+   "Davidson",
+   "Davie",
+   "Forsyth",
+   "Stokes",
+   "Surry",
+   "Yadkin"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 53,
+  "plans_max": 87
+ },
+ "7": {
+  "counties": [
+   "Guilford",
+   "Randolph",
+   "Rockingham"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 60,
+  "plans_max": 81
+ },
+ "8": {
+  "counties": [
+   "Montgomery",
+   "Moore"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "Blue Cross and Blue Shield of NC"
+  ],
+  "plans_min": 39,
+  "plans_max": 39
+ },
+ "9": {
+  "counties": [
+   "Bladen",
+   "Cumberland",
+   "Harnett",
+   "Hoke",
+   "Richmond",
+   "Robeson",
+   "Sampson",
+   "Scotland"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 54,
+  "plans_max": 62
+ },
+ "10": {
+  "counties": [
+   "Granville",
+   "Vance",
+   "Warren"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC"
+  ],
+  "plans_min": 47,
+  "plans_max": 47
+ },
+ "11": {
+  "counties": [
+   "Alamance",
+   "Caswell",
+   "Chatham",
+   "Durham",
+   "Lee",
+   "Orange",
+   "Person"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "AmeriHealth Caritas Next",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 10,
+  "plans_max": 44
+ },
+ "12": {
+  "counties": [
+   "Bertie",
+   "Camden",
+   "Chowan",
+   "Currituck",
+   "Gates",
+   "Halifax",
+   "Hertford",
+   "Martin",
+   "Northampton",
+   "Pasquotank",
+   "Perquimans"
+  ],
+  "issuers": [
+   "Blue Cross and Blue Shield of NC"
+  ],
+  "plans_min": 20,
+  "plans_max": 20
+ },
+ "13": {
+  "counties": [
+   "Franklin",
+   "Johnston",
+   "Wake"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "Blue Cross and Blue Shield of NC",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 44,
+  "plans_max": 44
+ },
+ "14": {
+  "counties": [
+   "Edgecombe",
+   "Greene",
+   "Nash",
+   "Pitt",
+   "Wayne",
+   "Wilson"
+  ],
+  "issuers": [
+   "Blue Cross and Blue Shield of NC"
+  ],
+  "plans_min": 20,
+  "plans_max": 30
+ },
+ "15": {
+  "counties": [
+   "Brunswick",
+   "Columbus",
+   "Duplin",
+   "New Hanover",
+   "Onslow",
+   "Pender"
+  ],
+  "issuers": [
+   "Ambetter of North Carolina",
+   "Blue Cross and Blue Shield of NC",
+   "Oscar Health Plan of North Carolina, Inc",
+   "UnitedHealthcare"
+  ],
+  "plans_min": 30,
+  "plans_max": 75
+ },
+ "16": {
+  "counties": [
+   "Beaufort",
+   "Carteret",
+   "Craven",
+   "Dare",
+   "Hyde",
+   "Jones",
+   "Lenoir",
+   "Pamlico",
+   "Tyrrell",
+   "Washington"
+  ],
+  "issuers": [
+   "Blue Cross and Blue Shield of NC"
+  ],
+  "plans_min": 20,
+  "plans_max": 20
+ }
+}

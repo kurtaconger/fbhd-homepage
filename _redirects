@@ -1,1 +1,2 @@
 /agents        /agents.html   200
+/guides/*      /questions/:splat   301!

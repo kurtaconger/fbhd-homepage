@@ -58,6 +58,17 @@ body {
     color: #1e4f91;
 }
 
+/* Brand links (e.g. Covanu) */
+.brand-link {
+    color: #1e4f91;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.brand-link:hover {
+    color: #153a6a;
+}
+
 /* Who We Help section */
 .who-we-help {
     margin-bottom: 35px;
@@ -80,6 +91,11 @@ body {
     font-size: 1.1rem;
     color: #1e4f91;
     margin-bottom: 8px;
+}
+
+/* What we don't recommend: an amber line instead of green. */
+.help-item-caution {
+    border-left-color: #b45309;
 }
 
 .help-item p {
@@ -175,6 +191,103 @@ body {
     transform: translateY(0);
 }
 
+/* Multiple Ways to Work with Us */
+.ways {
+    margin-bottom: 40px;
+}
+
+.ways h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    color: #1e4f91;
+    margin-bottom: 12px;
+}
+
+.ways-intro {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.ways-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.way-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-top: 4px solid #198754;
+    border-radius: 8px;
+    padding: 22px;
+}
+
+.way-card h3 {
+    font-size: 1.15rem;
+    color: #1e4f91;
+    margin-bottom: 10px;
+}
+
+.way-card p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 18px;
+    flex: 1;
+}
+
+.way-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.way-actions .btn {
+    display: block;
+    text-decoration: none;
+    min-width: unset;
+    padding: 13px 20px;
+}
+
+.btn-outline {
+    background-color: #fff;
+    color: #198754;
+    border: 2px solid #198754;
+}
+
+.btn-outline:hover {
+    background-color: #e8f4ea;
+}
+
+/* Phones only: the "text me" option */
+.phone-only {
+    display: none;
+}
+
+.is-phone .phone-only {
+    display: inline;
+}
+
+.way-actions .btn.phone-only {
+    display: none;
+}
+
+.is-phone .way-actions .btn.phone-only {
+    display: block;
+}
+
+.is-phone .not-phone {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .ways-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Contact section */
 .contact {
     border-top: 1px solid #ddd;
@@ -234,6 +347,13 @@ body {
     height: auto;
     object-fit: contain;
     border-radius: 8px;
+}
+
+/* Phone-screenshot modals: force a consistent display size regardless of the
+   source image's native resolution (e.g. Plan Comparison vs. Scan Meds/Providers) */
+.modal-img-phone {
+    width: 377px;
+    max-width: 90vw;
 }
 
 .close-btn {
@@ -332,4 +452,689 @@ body {
     .help-item h3 {
         font-size: 1rem;
     }
+}
+/* =========================================================
+   Site navigation, articles, guides, footer (added Nov 2026)
+   ========================================================= */
+
+.site-nav {
+    background: #fff;
+    border-bottom: 1px solid #d7e3e5;
+}
+
+.site-nav .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.site-nav .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #1e4f91;
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.site-nav .nav-brand img {
+    width: 36px;
+    height: auto;
+}
+
+.site-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.site-nav a.nav-link {
+    color: #1e4f91;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.site-nav a.nav-link:hover,
+.site-nav a.nav-link[aria-current="page"] {
+    text-decoration: underline;
+}
+
+.site-nav a.nav-cta {
+    background: #198754;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.site-nav a.nav-cta:hover {
+    background: #146c43;
+}
+
+.breadcrumb {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+.breadcrumb a {
+    color: #1e4f91;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Articles (guides and county pages) */
+.article h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.9rem;
+    color: #1e4f91;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+.article .byline {
+    font-size: 0.92rem;
+    color: #666;
+    margin-bottom: 22px;
+}
+
+.article .byline a {
+    color: #1e4f91;
+}
+
+.article .lede {
+    font-size: 1.12rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.article h2 {
+    font-family: 'Merriweather', serif;
+    font-size: 1.45rem;
+    color: #1e4f91;
+    margin: 36px 0 12px;
+}
+
+.article h3 {
+    font-size: 1.12rem;
+    color: #1e4f91;
+    margin: 24px 0 8px;
+}
+
+.article p,
+.article li {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 12px;
+}
+
+.article ul,
+.article ol {
+    margin: 0 0 14px 24px;
+}
+
+.article li {
+    margin-bottom: 6px;
+}
+
+.article a {
+    color: #1e4f91;
+}
+
+.article strong {
+    color: #1e4f91;
+}
+
+/* Key-takeaways box */
+.takeaways {
+    background: #e8f4ea;
+    border-left: 4px solid #198754;
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 0 0 26px;
+}
+
+.takeaways h2 {
+    margin: 0 0 10px;
+    font-size: 1.15rem;
+}
+
+.takeaways ul {
+    margin-bottom: 0;
+}
+
+/* Callouts */
+.callout {
+    border-left: 4px solid #1e4f91;
+    background: #eef3fa;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 18px 0;
+}
+
+.callout.caution {
+    border-left-color: #b45309;
+    background: #fdf3e7;
+}
+
+.callout p:last-child {
+    margin-bottom: 0;
+}
+
+/* Tables */
+.table-wrap {
+    overflow-x: auto;
+    margin: 14px 0 22px;
+}
+
+table.data {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.93rem;
+    background: #fff;
+}
+
+table.data th,
+table.data td {
+    border: 1px solid #d7e3e5;
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+table.data th {
+    background: #eef3fa;
+    color: #1e4f91;
+    font-weight: 600;
+}
+
+table.data td.num,
+table.data th.num {
+    text-align: right;
+    white-space: nowrap;
+}
+
+table.data tr.best td {
+    background: #e8f4ea;
+    font-weight: 600;
+}
+
+table.data caption {
+    caption-side: bottom;
+    font-size: 0.85rem;
+    color: #666;
+    text-align: left;
+    padding-top: 6px;
+}
+
+/* Plan cards on county pages */
+.plan {
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-left: 4px solid #198754;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 14px 0;
+}
+
+.plan.silver { border-left-color: #8a8f98; }
+.plan.gold { border-left-color: #c9a227; }
+.plan.bronze { border-left-color: #b4713d; }
+
+.plan h3 {
+    margin: 0 0 6px;
+}
+
+.plan .plan-meta {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.plan .best-for {
+    font-weight: 600;
+    color: #198754;
+    margin-bottom: 0;
+}
+
+/* FAQ */
+.faq details {
+    border: 1px solid #d7e3e5;
+    border-radius: 6px;
+    background: #fff;
+    padding: 10px 16px;
+    margin-bottom: 10px;
+}
+
+.faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #1e4f91;
+    font-size: 1rem;
+}
+
+.faq details p {
+    margin: 10px 0 4px;
+}
+
+/* Guide index cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 16px 0 10px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-top: 4px solid #1e4f91;
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    font-size: 1.08rem;
+    color: #1e4f91;
+    margin: 0 0 8px;
+}
+
+.card h3 a {
+    color: #1e4f91;
+    text-decoration: none;
+}
+
+.card h3 a:hover {
+    text-decoration: underline;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
+    flex: 1;
+}
+
+.card .more {
+    font-weight: 600;
+    color: #198754;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.section-heading {
+    font-family: 'Merriweather', serif;
+    font-size: 1.5rem;
+    color: #1e4f91;
+    margin-bottom: 8px;
+}
+
+.section-sub {
+    color: #555;
+    margin-bottom: 14px;
+}
+
+.guides-home {
+    margin-bottom: 40px;
+}
+
+/* CTA block at the end of articles */
+.cta-block {
+    background: #e8f4ea;
+    border-radius: 8px;
+    padding: 22px 24px;
+    margin: 36px 0 10px;
+}
+
+.cta-block h2 {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+}
+
+.cta-block .way-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.cta-block .way-actions .btn {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* Author box */
+.author-box {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border: 1px solid #d7e3e5;
+    border-radius: 8px;
+    background: #fff;
+    padding: 16px 18px;
+    margin: 28px 0 10px;
+    font-size: 0.95rem;
+}
+
+.author-box img {
+    width: 56px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.author-box p {
+    margin-bottom: 4px;
+}
+
+.sources {
+    font-size: 0.88rem;
+    color: #555;
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+    margin-top: 26px;
+}
+
+.sources ul {
+    margin-left: 20px;
+}
+
+.sources li {
+    font-size: 0.88rem;
+    margin-bottom: 4px;
+}
+
+/* Footer */
+.site-footer {
+    border-top: 1px solid #d7e3e5;
+    background: #fff;
+    margin-top: 40px;
+}
+
+.site-footer .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 24px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.site-footer h4 {
+    color: #1e4f91;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.site-footer ul {
+    list-style: none;
+}
+
+.site-footer li {
+    margin-bottom: 5px;
+}
+
+.site-footer a {
+    color: #1e4f91;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+.site-footer .legal {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 24px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+@media (max-width: 700px) {
+    .card-grid,
+    .site-footer .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .article h1 {
+        font-size: 1.55rem;
+    }
+
+    .site-nav ul {
+        gap: 12px;
+    }
+}
+
+/* Table of contents on long guides */
+.toc {
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 0 0 22px;
+    font-size: 0.95rem;
+}
+
+.toc strong {
+    color: #1e4f91;
+}
+
+.toc ol {
+    margin: 6px 0 0 20px;
+}
+
+.toc li {
+    margin-bottom: 3px;
+}
+
+/* Collapsible plan cards */
+details.plan {
+    padding: 0;
+}
+
+details.plan summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2px 14px;
+    align-items: baseline;
+}
+
+details.plan summary::-webkit-details-marker {
+    display: none;
+}
+
+details.plan .plan-name::before {
+    content: "+ ";
+    color: #198754;
+    font-weight: 700;
+}
+
+details.plan[open] .plan-name::before {
+    content: "\2212\00a0";
+}
+
+details.plan .plan-name {
+    font-weight: 700;
+    color: #1e4f91;
+    font-size: 1.05rem;
+}
+
+details.plan .plan-price {
+    color: #333;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+details.plan .plan-best {
+    grid-column: 1 / -1;
+    font-size: 0.92rem;
+    color: #198754;
+    font-weight: 600;
+}
+
+details.plan .plan-meta,
+details.plan > p {
+    padding: 0 16px;
+}
+
+details.plan > p:last-child {
+    padding-bottom: 14px;
+}
+
+/* County grid */
+.county-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 14px 0 18px;
+}
+
+.county-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-left: 4px solid #198754;
+    border-radius: 6px;
+    padding: 10px 12px;
+    text-decoration: none;
+    color: #333;
+}
+
+.county-card:hover {
+    background: #e8f4ea;
+}
+
+.county-card strong {
+    display: block;
+    color: #1e4f91;
+}
+
+.county-card span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.related {
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 24px;
+}
+
+@media (max-width: 700px) {
+    .county-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    details.plan summary {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Clickable NC rating-area map */
+.map-wrap {
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-radius: 8px;
+    padding: 12px 14px 8px;
+    margin: 14px 0 12px;
+}
+
+.nc-map {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.nc-map path {
+    stroke: #fff;
+    stroke-width: 0.8;
+    transition: fill 0.15s ease;
+}
+
+.nc-map a.soon path {
+    fill: #d9dee3;
+}
+
+.nc-map a.soon:hover path,
+.nc-map a.soon:focus path {
+    fill: #b9c3cc;
+}
+
+.nc-map a.live path {
+    fill: #5fb98a;
+}
+
+.nc-map a.live[data-zone="12"] path {
+    fill: #7cc9a1;
+}
+
+.nc-map a.live:hover path,
+.nc-map a.live:focus path {
+    fill: #198754;
+}
+
+.nc-map a:focus {
+    outline: none;
+}
+
+.nc-map .zone-labels text {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    fill: #1e4f91;
+    text-anchor: middle;
+    pointer-events: none;
+    paint-order: stroke;
+    stroke: #fff;
+    stroke-width: 3px;
+}
+
+.map-legend {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 6px;
+}
+
+.map-legend .sw {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: -2px;
+    margin: 0 4px 0 10px;
+    border-radius: 3px;
+}
+
+.map-legend .sw.live { background: #5fb98a; }
+.map-legend .sw.soon { background: #d9dee3; }
+
+.county-links {
+    font-size: 0.92rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Geo-gated elements: hidden until geo.js confirms the visitor is in a covered area.
+   Add ?geo=in to any URL to force them on (or ?geo=out to force off). */
+html:not(.geo-in) .geo-gate {
+    display: none !important;
 }
