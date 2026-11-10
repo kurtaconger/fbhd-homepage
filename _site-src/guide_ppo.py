@@ -2,7 +2,7 @@ from fbsite import *
 
 PATH = "/questions/blue-care-vs-blue-advantage-eastern-nc/"
 TITLE = "Blue Care vs. Blue Advantage in Eastern NC: Is the PPO Worth 5.5% More? (2027)"
-DESC = "In 21 eastern North Carolina counties every Blue Cross plan comes as a Blue Care HMO or a Blue Advantage PPO with identical benefits. What the PPO actually buys you (nationwide network, not real out-of-network coverage), what it costs by age, and who should pay for it: snowbirds, Virginia hospital users, parents of college students, cruisers."
+DESC = "In much of eastern North Carolina every Blue Cross plan comes as a Blue Care HMO or a Blue Advantage PPO with identical benefits. What the PPO actually buys you (nationwide network, not real out-of-network coverage), what it costs by age, and who should pay for it: snowbirds, Virginia hospital users, parents of college students, cruisers."
 CRUMBS = [("/", "Home"), ("/questions/", "Common Questions"), (None, "Blue Care vs. Blue Advantage")]
 
 FAQ = [
@@ -28,7 +28,7 @@ body = f"""
 <h1>Blue Care vs. Blue Advantage in Eastern NC: Is the PPO Worth 5.5% More?</h1>
 {byline("7 minute read")}
 
-<p class="lede">In the 21 eastern North Carolina counties where Blue Cross NC is the only Marketplace carrier, every plan comes in two versions with identical benefits: <strong>Blue Care</strong>, an HMO with a statewide network, and <strong>Blue Advantage</strong>, a PPO with a nationwide network that costs about 5.5% more. Because nothing else differs, this is the cleanest decision in the whole process, and the one people most often get wrong, in both directions.</p>
+<p class="lede">From the Crystal Coast to the Albemarle Sound and the Virginia line, where Blue Cross NC is the only Marketplace carrier, every plan comes in two versions with identical benefits: <strong>Blue Care</strong>, an HMO with a statewide network, and <strong>Blue Advantage</strong>, a PPO with a nationwide network that costs about 5.5% more. Because nothing else differs, this is the cleanest decision in the whole process, and the one people most often get wrong, in both directions.</p>
 
 <div class="takeaways">
 <h2>Key takeaways</h2>
@@ -101,14 +101,14 @@ body = f"""
 <li><strong>Will I need a non-emergency doctor, hospital or pharmacy visit outside North Carolina in the next year, for myself or a dependent on the plan?</strong> If no, Blue Care.</li>
 <li><strong>If yes, is the provider I would use in the Blue Advantage (BlueCard) network?</strong> Check the <a href="https://healthnav.bcbsnc.com/?ci=COMMERCIAL&network_id=3" target="_blank" rel="noopener">Blue Advantage directory</a>. If yes, Blue Advantage is worth the 5.5%. If no, the PPO's out-of-network benefit will not save you either; find an in-network alternative or reconsider.</li>
 </ol>
-<p>Make the network decision first, then choose the design (Bronze, Silver or Gold) on total cost using your medications; the county guides walk through that step for each of the 21 counties.</p>
+<p>Make the network decision first, then choose the design (Bronze, Silver or Gold) on total cost using your medications; the county guides walk through that step county by county.</p>
 
 {cta("Compare both networks with your numbers")}
 
 {author_box()}
 
 {sources([
-    '<a href="https://www.healthcare.gov/developers/" target="_blank" rel="noopener">HealthCare.gov Marketplace API</a>: 2027 plan benefits, networks and premiums for the 21 counties, retrieved ' + UPDATED_H + '.',
+    '<a href="https://www.healthcare.gov/developers/" target="_blank" rel="noopener">HealthCare.gov Marketplace API</a>: 2027 plan benefits, networks and premiums for rating areas 12 and 16, retrieved ' + UPDATED_H + '.',
     'Blue Cross NC provider directories: <a href="https://healthnav.bcbsnc.com/?ci=COMMERCIAL&network_id=6" target="_blank" rel="noopener">Blue Care</a>, <a href="https://healthnav.bcbsnc.com/?ci=COMMERCIAL&network_id=3" target="_blank" rel="noopener">Blue Advantage</a>.',
     '<a href="https://www.bcbs.com/bluecard" target="_blank" rel="noopener">Blue Cross Blue Shield Association: BlueCard program</a>.',
 ])}

@@ -185,7 +185,7 @@ def county_page(c):
         ("Do the two drug lists cover different drugs?",
          "No. We tested 48 common brand and generic drugs against both lists and found no differences in coverage. The three Standard plans use Blue Cross NC's 4-tier list with flat copays; the other seven designs use the 5-tier list, where the lowest copay applies only to Tier 1 preferred generics. What changes your drug costs is the plan design (copay vs. coinsurance, and whether the deductible applies), not which list it uses."),
         ("Can I keep my plan if I move to another county?",
-         f"Moving to a new county is a qualifying life event. The same 20 plans are sold in 21 eastern North Carolina counties (see the list at the end of this guide), so a move within that group usually lets you keep your plan; the premium changes if the new county is in a different rating area. A move elsewhere gives you a 60-day special enrollment period to pick a new plan."),
+         f"Moving to a new county is a qualifying life event. The same 20 plans are sold in every county from the Crystal Coast to the Albemarle Sound and the Virginia line (see the list at the end of this guide), so a move within that group usually lets you keep your plan; the premium changes if the new county is in a different rating area. A move elsewhere gives you a 60-day special enrollment period to pick a new plan."),
         ("When can I enroll?",
          "Open Enrollment for 2027 coverage runs November 1, 2026 through January 15, 2027 on HealthCare.gov. Enroll by December 15 for coverage starting January 1. Outside Open Enrollment you need a qualifying event, such as losing other coverage, moving, marriage or a new baby."),
     ]

@@ -56,13 +56,13 @@ simple_page("/questions/", "Common Questions: NC Health Insurance Answered (2027
 body = f"""
 <h1>North Carolina county health insurance guides (2027)</h1>
 {byline()}
-<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Guides are live for the 21 counties in rating areas 12 and 16, from the Crystal Coast to the Albemarle Sound and the Virginia line, which all have the same 20 Blue Cross NC plans for 2027 and no other carrier, and for <a href="/counties/new-hanover/">New Hanover County</a> (Wilmington), where four insurers sell 75 plans. Each guide lists every plan with that county's prices by age and income, the network choices, and which plan fits which situation.</p>
+<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Each guide lists every plan sold there, with that county's prices by age and income, the network choices, and which plan fits which situation. From the Crystal Coast to the Albemarle Sound and the Virginia line (rating areas 12 and 16), Blue Cross NC is the only carrier and every county has the same 20 plans; in <a href="/counties/new-hanover/">New Hanover County</a> (Wilmington), four insurers sell 75.</p>
 {county_cards()}
-<p>Guides for the other 14 rating areas (Pitt and Greenville, the rest of the Cape Fear region, the Triangle, the Triad, Charlotte, the mountains) are coming. Our Covanu tool already covers every North Carolina county with the same data, and we are glad to walk through your county's plans on a call.</p>
+<p>More county guides are on the way. Until yours is ready, our Covanu tool already covers every North Carolina county with the same data, and we are glad to walk through your county's plans on a call.</p>
 {cta("See every plan in your county")}
 """
 simple_page("/counties/", "North Carolina County Health Insurance Guides (2027) | Fact-Based Healthcare Decisions",
-            "County-by-county reviews of every ACA Marketplace plan sold in 22 eastern North Carolina counties for 2027, with prices by age and income, networks and plan-by-plan explanations.",
+            "County-by-county reviews of every 2027 ACA Marketplace plan in eastern North Carolina counties, with prices by age and income, networks and plan-by-plan explanations.",
             "/counties/", [("/", "Home"), (None, "County Guides")], body,
             [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "North Carolina county health insurance guides", "url": BASE + "/counties/",
               "hasPart": [{"@type": "Article", "headline": c["name"] + " County, NC health insurance 2027", "url": BASE + "/counties/" + c["slug"] + "/"} for c in ALL_GUIDES]}])
@@ -233,7 +233,7 @@ write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 ## County guides
 
-21 eastern North Carolina counties share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
+The counties from the Crystal Coast to the Albemarle Sound and the Virginia line (CMS rating areas 12 and 16) share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
 
 {county_lines}
 
@@ -246,12 +246,12 @@ New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carrier
 - 2027 Marketplace income thresholds use 2026 federal poverty guidelines: $15,960 (1 person), $21,640 (2), $33,000 (4). 400% = $63,840 / $86,560 / $132,000. NC Medicaid expansion line (138%) = $22,025 / $29,863 / $45,540.
 - Enhanced premium tax credits expired after 2025; the 400% FPL cliff applies for 2027. Repayment caps on excess credits are eliminated from the 2026 tax year.
 - All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
-- In the 21 Blue Cross-only counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- In the rating area 12 and 16 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
 - In New Hanover County the 2027 benchmark (second-lowest-cost Silver) is Ambetter Clear Silver with $0 Insulin Options ($732 a month at age 45). Ambetter's standardized Silver costs $740 at 45; the identical standardized design costs $978 to $1,184 from Blue Cross, Oscar and UnitedHealthcare. Novant Health New Hanover Regional Medical Center was in network on every Ambetter, Blue Cross and UnitedHealthcare plan and on no Oscar plan (HealthCare.gov lookup, November 10, 2026). No catastrophic plan is offered.
 
 ## Coming soon
 
-Guides for the other 14 CMS rating areas are in preparation; placeholder pages at {BASE}/counties/zone-N/ list each area's counties and carriers.
+Guides for more counties are in preparation; placeholder pages at {BASE}/counties/zone-N/ list the counties and carriers in each rating area not yet covered.
 
 ## About
 
