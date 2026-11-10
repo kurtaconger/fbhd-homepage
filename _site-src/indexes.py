@@ -55,13 +55,13 @@ simple_page("/questions/", "Common Questions: NC Health Insurance Answered (2027
 body = f"""
 <h1>North Carolina county health insurance guides (2027)</h1>
 {byline()}
-<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Each guide lists every plan sold there, with that county's prices by age and income, the network choices, and which plan fits which situation. In much of eastern North Carolina Blue Cross NC is the only Marketplace insurer; around the Triangle, the Sandhills and Wilmington, up to four insurers compete, and each guide shows which of the area's hospitals every network includes.</p>
+<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Each guide lists every plan sold there, with that county's prices by age and income, the network choices, and which plan fits which situation. In much of eastern North Carolina Blue Cross NC is the only Marketplace insurer; around Charlotte, the Triad, the Triangle, Asheville and Wilmington up to five insurers compete, and each guide shows which of the area's hospitals every network includes.</p>
 {county_cards()}
-<p>More county guides are on the way. Until yours is ready, our Covanu tool already covers every North Carolina county with the same data, and we are glad to walk through your county's plans on a call.</p>
+<p>Every North Carolina county now has a guide. Our Covanu tool uses the same data to compare the plans with your own subsidy, medications and doctors, and we are glad to walk through your county's plans on a call.</p>
 {cta("See every plan in your county")}
 """
 simple_page("/counties/", "North Carolina County Health Insurance Guides (2027) | Fact-Based Healthcare Decisions",
-            "County-by-county reviews of every 2027 ACA Marketplace plan in eastern North Carolina counties, with prices by age and income, networks and plan-by-plan explanations.",
+            "County-by-county reviews of every 2027 ACA Marketplace plan in all 100 North Carolina counties, with prices by age and income, networks, hospitals and plan-by-plan explanations.",
             "/counties/", [("/", "Home"), (None, "County Guides")], body,
             [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "North Carolina county health insurance guides", "url": BASE + "/counties/",
               "hasPart": [{"@type": "Article", "headline": c["name"] + " County, NC health insurance 2027", "url": BASE + "/counties/" + c["slug"] + "/"} for c in ALL_GUIDES]}])
@@ -219,6 +219,13 @@ Sitemap: {BASE}/sitemap.xml
 
 county_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in sorted(COUNTIES, key=lambda c: c["name"]))
 other_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in sorted(OTHER_GUIDES, key=lambda c: c["name"]) if c["slug"] != "new-hanover")
+nh = [c for c in OTHER_GUIDES if c["slug"] == "new-hanover"][0]
+nh_line = f"- [New Hanover County, NC health insurance 2027]({BASE}/counties/new-hanover/): {nh['short']}."
+import json as _json, os as _os
+_Z = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "zones_2027.json"), encoding="utf-8"))
+_tot = {c["county"]: c["total"] for c in _Z["counties"].values()}
+_lo, _hi = min(_tot.values()), max(_tot.values())
+plan_range = f"from {_lo} plans in {' and '.join(sorted(k for k, v in _tot.items() if v == _lo))} County to {_hi} in {', '.join(sorted(k for k, v in _tot.items() if v == _hi))}"
 write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 > Independent, licensed ACA (Affordable Care Act) health insurance guidance for North Carolina individuals, families, self-employed people and early retirees, written by Kurt Conger (NC Health Producer, NPN 21720013). Guides are built from the official HealthCare.gov Marketplace API data for the current plan year (2027) and state the date they were last checked. Help is free to consumers; insurers pay agent commissions.
@@ -236,13 +243,13 @@ The counties from the Crystal Coast to the Albemarle Sound and the Virginia line
 
 {county_lines}
 
-The counties in rating areas 9, 10, 11, 13 and 15 and Nash County have more than one insurer or more than one Blue Cross network (from 10 plans in Chatham County to 75 in Brunswick and Pender). Each guide is built from the HealthCare.gov Marketplace API (retrieved November 10, 2026) and compares the networks, the standardized "Easy Pricing" plans across insurers, the subsidy benchmark, every plan design, and the network status of the area's main hospitals in HealthCare.gov's doctor and hospital lookup.
+The counties in every other rating area (1 to 11, 13 and 15) and Nash County have more than one insurer or more than one Blue Cross network ({plan_range}). Each guide is built from the HealthCare.gov Marketplace API (retrieved November 10, 2026) and compares the networks, the standardized "Easy Pricing" plans across insurers, the subsidy benchmark, every plan design, and the network status of the area's main hospitals in HealthCare.gov's doctor and hospital lookup.
 
 {other_lines}
 
 New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carriers for 2027 (Ambetter, Blue Cross NC, UnitedHealthcare, Oscar) and 75 plans (38 designs). Its guide compares the six networks, the standardized "Easy Pricing" plans across carriers, subsidies pegged to an Ambetter benchmark, and which networks include Novant Health New Hanover Regional Medical Center.
 
-{other_lines}
+{nh_line}
 
 ## Key facts stated on this site (2027)
 
@@ -251,11 +258,8 @@ New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carrier
 - All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
 - In the rating area 12 and 16 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
 - Around the Triangle (rating areas 11 and 13: Alamance, Caswell, Chatham, Durham, Franklin, Johnston, Lee, Orange, Person and Wake counties) Blue Cross sells only Blue Home with UNC Health Alliance, an EPO, and no Blue Advantage PPO, so no Marketplace plan there has a nationwide network. In HealthCare.gov's lookup on November 10, 2026, in Wake County, WakeMed, Duke Raleigh Hospital and Duke University Hospital were in network on Ambetter plans and not on Blue Home or UnitedHealthcare plans, while UNC Health Rex and UNC Medical Center were in network on Blue Home and UnitedHealthcare plans and not on Ambetter plans. Chatham County's 10 plans are all Blue Home.
+- Around Charlotte and the Triad (rating areas 3 to 7) Blue Cross adds narrow EPO networks: Blue Local with Atrium Health, Blue Home with Novant Health and, in Guilford, Randolph and Rockingham counties, Blue Home with Cone Health; Ambetter and Oscar sell plans "with Atrium Health" there. In HealthCare.gov's lookup on November 10, 2026, in Mecklenburg County, Atrium Health Carolinas Medical Center was in network on every plan except Blue Home's, and Novant Health Presbyterian Medical Center was in network on Blue Home, Blue Care and Blue Advantage plans and not on Ambetter, Blue Local or UnitedHealthcare plans.
 - In New Hanover County the 2027 benchmark (second-lowest-cost Silver) is Ambetter Clear Silver with $0 Insulin Options ($732 a month at age 45). Ambetter's standardized Silver costs $740 at 45; the identical standardized design costs $978 to $1,184 from Blue Cross, Oscar and UnitedHealthcare. Novant Health New Hanover Regional Medical Center was in network on every Ambetter, Blue Cross and UnitedHealthcare plan and on no Oscar plan (HealthCare.gov lookup, November 10, 2026). No catastrophic plan is offered.
-
-## Coming soon
-
-Guides for more counties are in preparation; placeholder pages at {BASE}/counties/zone-N/ list the counties and carriers in each rating area not yet covered (rating areas 1 to 8).
 
 ## About
 

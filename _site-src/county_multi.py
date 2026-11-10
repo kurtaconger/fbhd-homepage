@@ -1,4 +1,5 @@
-"""County guides for the counties in NC rating areas 9, 10, 11, 13 and 15, and Nash County (rating area 14), 2027 plan year.
+"""County guides for the NC counties with more than one insurer or more than one Blue Cross network (every county in
+rating areas 1 to 11, 13 and 15, and Nash County in rating area 14), 2027 plan year.
 
 Data: zones_2027.json, built by covanu-insure/Research/zones-2027 (pull_zones.mjs, then prep_zones.py) from the
 HealthCare.gov Marketplace API on November 10, 2026: every plan in each county for the same eight households used on
@@ -25,10 +26,11 @@ INS_FULL = {"AMB": "Ambetter of North Carolina", "AMH": "AmeriHealth Caritas Nex
             "UHC": "UnitedHealthcare", "OSC": "Oscar"}
 INS_SHORT = {"AMB": "Ambetter", "AMH": "AmeriHealth Caritas Next", "BCBS": "Blue Cross NC", "UHC": "UnitedHealthcare", "OSC": "Oscar"}
 INS_ORDER = ["AMB", "AMH", "BCBS", "UHC", "OSC"]
-NET_ORDER = ["Ambetter", "AmeriHealth Caritas Next", "Blue Value", "Blue Home", "Blue Care", "Blue Advantage", "UnitedHealthcare", "Oscar"]
-NET_INS = {"Ambetter": "AMB", "AmeriHealth Caritas Next": "AMH", "Blue Value": "BCBS", "Blue Home": "BCBS", "Blue Care": "BCBS",
+# Networks by short name (unique within a county); each county's data maps them to the full marketed name
+# ("Blue Home" is Blue Home with UNC Health Alliance, with Novant Health or with Cone Health depending on the county).
+NET_ORDER = ["Ambetter", "AmeriHealth Caritas Next", "Blue Value", "Blue Local", "Blue Home", "Blue Care", "Blue Advantage", "UnitedHealthcare", "Oscar"]
+NET_INS = {"Ambetter": "AMB", "AmeriHealth Caritas Next": "AMH", "Blue Value": "BCBS", "Blue Local": "BCBS", "Blue Home": "BCBS", "Blue Care": "BCBS",
            "Blue Advantage": "BCBS", "UnitedHealthcare": "UHC", "Oscar": "OSC"}
-NET_LONG = {"Blue Home": "Blue Home with UNC Health Alliance"}
 STD_NAME = {"AMB": "Signature", "AMH": "Signature", "BCBS": "Standard (Gold Standard A for Gold)", "UHC": "Standard", "OSC": "Classic Standard"}
 
 # ---------- county facts (towns for the title and lede; the hospitals residents use) ----------
@@ -88,6 +90,100 @@ CFG = {
                    hospitals="Onslow Memorial Hospital in Jacksonville, managed by UNC Health, is the local hospital, with CarolinaEast in New Bern and Novant Health New Hanover Regional in Wilmington nearby"),
     "pender": dict(towns="Burgaw, Hampstead, Surf City, Topsail Beach, Rocky Point and Atkinson",
                    hospitals="Novant Health Pender Medical Center in Burgaw is the local hospital, and many residents use Novant Health New Hanover Regional in Wilmington or its Scotts Hill Medical Center near Hampstead"),
+    "avery": dict(towns="Newland, Banner Elk, Linville, Crossnore, Elk Park and Sugar Mountain",
+                    hospitals="Charles A. Cannon Jr. Memorial Hospital in Linville is the local hospital, with Blue Ridge Regional Hospital in Spruce Pine and Watauga Medical Center in Boone nearby and Mission Hospital in Asheville for specialty care"),
+    "buncombe": dict(towns="Asheville, Black Mountain, Weaverville, Woodfin, Arden, Candler, Fairview and Swannanoa",
+                       hospitals="Mission Hospital in Asheville is the region's main hospital, and AdventHealth Hendersonville and UNC Health Pardee are a short drive south"),
+    "cherokee": dict(towns="Murphy, Andrews, Marble and the Hiwassee Lake communities",
+                       hospitals="Erlanger Western Carolina Hospital in Murphy is the local hospital, with Mission Hospital in Asheville for specialty care"),
+    "clay": dict(towns="Hayesville, Warne, Brasstown and the Lake Chatuge communities",
+                   hospitals="the nearest hospitals are Erlanger Western Carolina Hospital in Murphy and Angel Medical Center in Franklin, with Mission Hospital in Asheville for specialty care"),
+    "graham": dict(towns="Robbinsville, Stecoah, Santeetlah and the Fontana Lake communities",
+                     hospitals="the county has no hospital; the nearest are Erlanger Western Carolina Hospital in Murphy, Swain Community Hospital in Bryson City and Harris Regional Hospital in Sylva"),
+    "haywood": dict(towns="Waynesville, Canton, Clyde, Maggie Valley, Lake Junaluska and Bethel",
+                      hospitals="Haywood Regional Medical Center in Clyde is the local hospital, with Mission Hospital in Asheville for specialty care"),
+    "henderson": dict(towns="Hendersonville, Fletcher, Mills River, Laurel Park, Flat Rock and Etowah",
+                        hospitals="UNC Health Pardee and AdventHealth Hendersonville are the local hospitals, with Mission Hospital in Asheville for specialty care"),
+    "jackson": dict(towns="Sylva, Cullowhee, Dillsboro, Cashiers and Webster",
+                      hospitals="Harris Regional Hospital in Sylva is the local hospital; residents around Cashiers also use Highlands-Cashiers Hospital, and Mission Hospital in Asheville handles specialty care"),
+    "macon": dict(towns="Franklin, Highlands, Otto and Scaly Mountain",
+                    hospitals="Angel Medical Center in Franklin and Highlands-Cashiers Hospital in Highlands are the local hospitals, with Mission Hospital in Asheville for specialty care"),
+    "madison": dict(towns="Marshall, Mars Hill, Hot Springs and Walnut",
+                      hospitals="the county has no hospital; residents use Mission Hospital in Asheville"),
+    "mcdowell": dict(towns="Marion, Old Fort, Nebo and the Lake James communities",
+                       hospitals="Mission Hospital McDowell in Marion is the local hospital, with Mission Hospital in Asheville for specialty care"),
+    "mitchell": dict(towns="Bakersville, Spruce Pine and Little Switzerland",
+                       hospitals="Blue Ridge Regional Hospital in Spruce Pine is the local hospital, with Mission Hospital in Asheville for specialty care"),
+    "polk": dict(towns="Columbus, Tryon, Saluda, Mill Spring and Green Creek",
+                   hospitals="AdventHealth Polk in Columbus (formerly St. Luke's Hospital) is the local hospital, with UNC Health Pardee in Hendersonville and Mission Hospital in Asheville nearby"),
+    "rutherford": dict(towns="Rutherfordton, Forest City, Spindale, Lake Lure and Chimney Rock",
+                         hospitals="Rutherford Regional Medical Center in Rutherfordton is the local hospital; residents also use Atrium Health Cleveland in Shelby and Mission Hospital in Asheville"),
+    "swain": dict(towns="Bryson City, Whittier, Almond and the Swain County part of Cherokee",
+                    hospitals="Swain Community Hospital in Bryson City is the local hospital, with Harris Regional Hospital in Sylva and Mission Hospital in Asheville"),
+    "transylvania": dict(towns="Brevard, Rosman, Pisgah Forest, Lake Toxaway and Sapphire",
+                           hospitals="Transylvania Regional Hospital in Brevard is the local hospital, with UNC Health Pardee in Hendersonville and Mission Hospital in Asheville nearby"),
+    "yancey": dict(towns="Burnsville, Micaville, Celo and Green Mountain",
+                     hospitals="the county has no hospital; residents use Blue Ridge Regional Hospital in Spruce Pine and Mission Hospital in Asheville"),
+    "alexander": dict(towns="Taylorsville, Hiddenite, Stony Point and Bethlehem",
+                        hospitals="the county has no hospital; residents use Frye Regional Medical Center and Catawba Valley Medical Center in Hickory and Iredell Memorial Hospital in Statesville"),
+    "burke": dict(towns="Morganton, Valdese, Hildebran, Connelly Springs, Drexel and Glen Alpine",
+                    hospitals="UNC Health Blue Ridge in Morganton is the local hospital, with Frye Regional Medical Center and Catawba Valley Medical Center in Hickory nearby"),
+    "caldwell": dict(towns="Lenoir, Granite Falls, Hudson, Sawmills, Cajah's Mountain and Gamewell",
+                       hospitals="UNC Health Caldwell in Lenoir is the local hospital, with Frye Regional Medical Center and Catawba Valley Medical Center in Hickory nearby"),
+    "catawba": dict(towns="Hickory, Newton, Conover, Maiden, Claremont and Sherrills Ford",
+                      hospitals="Catawba Valley Medical Center and Frye Regional Medical Center, both in Hickory, are the local hospitals"),
+    "iredell": dict(towns="Statesville, Mooresville, Troutman, Harmony and Love Valley",
+                      hospitals="Iredell Memorial Hospital in Statesville and Duke Health Lake Norman Hospital in Mooresville are the local hospitals, and residents in the south of the county also use Novant Health Huntersville Medical Center"),
+    "alleghany": dict(towns="Sparta, Glade Valley, Ennice and Laurel Springs",
+                        hospitals="Alleghany Health in Sparta is the local hospital; residents also use Atrium Health Wake Forest Baptist Wilkes Medical Center in North Wilkesboro and Hugh Chatham Health in Elkin"),
+    "ashe": dict(towns="Jefferson, West Jefferson, Lansing, Warrensville and Creston",
+                   hospitals="Ashe Memorial Hospital in Jefferson is the local hospital, with Watauga Medical Center in Boone nearby and Atrium Health Wake Forest Baptist Medical Center in Winston-Salem for specialty care"),
+    "watauga": dict(towns="Boone, Blowing Rock, Beech Mountain, Seven Devils, Deep Gap and Vilas",
+                      hospitals="Watauga Medical Center in Boone is the local hospital, with its UNC Health Appalachian sister hospital, Charles A. Cannon Jr. Memorial Hospital in Linville, nearby and Atrium Health Wake Forest Baptist Medical Center in Winston-Salem for specialty care"),
+    "wilkes": dict(towns="Wilkesboro, North Wilkesboro, Moravian Falls, Ronda and Roaring River",
+                     hospitals="Atrium Health Wake Forest Baptist Wilkes Medical Center in North Wilkesboro is the local hospital; residents also use Hugh Chatham Health in Elkin and Atrium Health Wake Forest Baptist Medical Center in Winston-Salem"),
+    "anson": dict(towns="Wadesboro, Polkton, Ansonville, Lilesville, Morven and Peachland",
+                    hospitals="Atrium Health Anson in Wadesboro is the local hospital, with Atrium Health Union in Monroe and Atrium Health Carolinas Medical Center in Charlotte for specialty care"),
+    "cabarrus": dict(towns="Concord, Kannapolis, Harrisburg, Midland, Mount Pleasant and Locust",
+                       hospitals="Atrium Health Cabarrus in Concord is the local hospital; residents also use Atrium Health Carolinas Medical Center and Novant Health Presbyterian Medical Center in Charlotte"),
+    "mecklenburg": dict(towns="Charlotte, Huntersville, Matthews, Mint Hill, Cornelius, Davidson and Pineville",
+                          hospitals="two systems run the hospitals: Atrium Health (Carolinas Medical Center, Pineville, Mercy and University City) and Novant Health (Presbyterian, Matthews, Huntersville, Mint Hill and Ballantyne)"),
+    "rowan": dict(towns="Salisbury, China Grove, Spencer, Landis, Rockwell and Granite Quarry",
+                    hospitals="Novant Health Rowan Medical Center in Salisbury is the local hospital; residents also use Atrium Health Cabarrus in Concord and the Charlotte hospitals"),
+    "stanly": dict(towns="Albemarle, Locust, Norwood, Oakboro, New London and Badin",
+                     hospitals="Atrium Health Stanly in Albemarle is the local hospital; residents also use Atrium Health Cabarrus in Concord and Novant Health Rowan Medical Center in Salisbury"),
+    "union": dict(towns="Monroe, Indian Trail, Waxhaw, Stallings, Weddington, Wingate and Marshville",
+                    hospitals="Atrium Health Union in Monroe is the local hospital; residents also use Novant Health Matthews Medical Center and the Charlotte hospitals"),
+    "cleveland": dict(towns="Shelby, Kings Mountain, Boiling Springs, Lawndale and Grover",
+                        hospitals="Atrium Health Cleveland in Shelby and its Kings Mountain hospital are the local hospitals; residents also use CaroMont Regional Medical Center in Gastonia and Atrium Health Carolinas Medical Center in Charlotte",
+                        hosp_note="Atrium Health Kings Mountain, a facility of Atrium Health Cleveland, did not appear as a separate hospital in HealthCare.gov's lookup, so it is not in the table; ask the insurer whether it is in network."),
+    "gaston": dict(towns="Gastonia, Belmont, Mount Holly, Cramerton, Lowell, Dallas, Stanley and Cherryville",
+                     hospitals="CaroMont Regional Medical Center in Gastonia is the local hospital; residents also use Atrium Health Carolinas Medical Center and Novant Health Presbyterian Medical Center in Charlotte"),
+    "lincoln": dict(towns="Lincolnton, Denver, Iron Station and Crouse",
+                      hospitals="Atrium Health Lincoln in Lincolnton is the local hospital; residents also use CaroMont Regional Medical Center in Gastonia, Catawba Valley Medical Center in Hickory and, around Denver, the Lake Norman hospitals"),
+    "davidson": dict(towns="Lexington, Thomasville, Denton, Welcome, Midway and Wallburg",
+                       hospitals="Atrium Health Wake Forest Baptist Lexington Medical Center and Novant Health Thomasville Medical Center are the local hospitals, with the Winston-Salem hospitals for specialty care"),
+    "davie": dict(towns="Mocksville, Bermuda Run, Advance and Cooleemee",
+                    hospitals="Atrium Health Wake Forest Baptist Davie Medical Center in Bermuda Run is the local hospital, with Atrium Health Wake Forest Baptist Medical Center and Novant Health Forsyth Medical Center in Winston-Salem"),
+    "forsyth": dict(towns="Winston-Salem, Kernersville, Clemmons, Lewisville, Walkertown and Rural Hall",
+                      hospitals="Atrium Health Wake Forest Baptist Medical Center and Novant Health Forsyth Medical Center are the main hospitals, with Novant Health's Kernersville and Clemmons medical centers in the suburbs"),
+    "stokes": dict(towns="King, Walnut Cove, Danbury, Pinnacle and Germanton",
+                     hospitals="Community Hospital of Stokes in Danbury, now part of Novant Health, is the local hospital, and most residents also use the Winston-Salem hospitals"),
+    "surry": dict(towns="Mount Airy, Elkin, Dobson and Pilot Mountain",
+                    hospitals="Northern Regional Hospital in Mount Airy and Hugh Chatham Health in Elkin are the local hospitals, with the Winston-Salem hospitals for specialty care"),
+    "yadkin": dict(towns="Yadkinville, Jonesville, East Bend, Boonville and Hamptonville",
+                     hospitals="the county has no hospital; residents use Hugh Chatham Health in Elkin and the Winston-Salem hospitals"),
+    "guilford": dict(towns="Greensboro, High Point, Jamestown, Summerfield, Oak Ridge, Gibsonville and Pleasant Garden",
+                       hospitals="Cone Health's Moses Cone and Wesley Long hospitals in Greensboro and Atrium Health Wake Forest Baptist High Point Medical Center are the main hospitals"),
+    "randolph": dict(towns="Asheboro, Archdale, Randleman, Liberty, Ramseur, Seagrove and Trinity",
+                       hospitals="Randolph Health in Asheboro is the local hospital; residents also use Atrium Health Wake Forest Baptist High Point Medical Center and Cone Health in Greensboro"),
+    "rockingham": dict(towns="Reidsville, Eden, Madison, Mayodan, Stoneville and Wentworth",
+                         hospitals="UNC Health Rockingham in Eden and Cone Health Annie Penn Hospital in Reidsville are the local hospitals, with Cone Health's Moses Cone Hospital in Greensboro for specialty care",
+                         hosp_note="Cone Health Annie Penn Hospital in Reidsville did not appear as a separate hospital in HealthCare.gov's lookup, so it is not in the table; ask the insurer whether it is in network."),
+    "montgomery": dict(towns="Troy, Biscoe, Candor, Mount Gilead, Star and the Lake Tillery communities",
+                         hospitals="FirstHealth Montgomery Memorial Hospital in Troy is the local hospital, with FirstHealth Moore Regional Hospital in Pinehurst and Atrium Health Stanly in Albemarle nearby"),
+    "moore": dict(towns="Southern Pines, Pinehurst, Aberdeen, Carthage, Whispering Pines, Vass and Robbins",
+                    hospitals="FirstHealth Moore Regional Hospital in Pinehurst is the main hospital, with Central Carolina Hospital in Sanford nearby"),
 }
 
 # ---------- plan designs: (best for, description). Benefits are the same in every county and network. ----------
@@ -113,6 +209,8 @@ TEXT = {
         "The federally standardized Gold, with flat copays and no deductible for office visits ($30 primary care, $60 specialists, $45 urgent care) and for every drug tier ($15 generics, $30 preferred brand, $60 non-preferred, $250 specialty). Hospital care is 25% coinsurance after the deductible."),
     "AMB|Complete Gold": ("frequent doctor visits with generic or preferred-brand prescriptions",
         "Richer everyday benefits than Signature Gold: $15 primary care, $35 specialists and urgent care, $3 generics and $30 preferred brands, with 20% coinsurance for imaging and hospital care after a $1,450 deductible. The trade-offs are a higher out-of-pocket maximum ($9,500 against $8,600) and coinsurance (25% and 30%) rather than copays for non-preferred and specialty drugs."),
+    "AMB|Focused Silver": ("subsidized households on Ambetter's Atrium Health network who take generics or a preferred brand drug",
+        "Sold only on Ambetter's Atrium Health network. $40 primary care, $85 specialists, $60 urgent care, $3 generics and $75 preferred brand drugs from day one; non-preferred and specialty drugs (45% and 50%) and imaging, the emergency room and hospital care (50%) come after the $6,300 deductible. Its $9,600 out-of-pocket maximum is the lowest of Ambetter's Silver plans on that network."),
     # AmeriHealth Caritas Next
     "AMH|Bronze Signature": ("Bronze buyers who want copays for office visits",
         "The federally standardized Bronze: $50 primary care, $100 specialists and $75 urgent care from day one, $25 generics, and after the deductible flat copays of $50 (preferred brand), $100 (non-preferred) and $500 (specialty). Imaging, the emergency room and hospital stays are 50% coinsurance after the deductible."),
@@ -187,6 +285,16 @@ TEXT = {
         "A $9,000 deductible at full price, with $50 primary care, $90 specialists, $4 generics and $150 preferred brands; imaging and hospital care are 50% after the deductible. Cost-sharing reductions change it more than most Silver plans."),
     "OSC|Silver Simple Diabetes": ("people with diabetes whose doctors are in Oscar's network",
         "Designed for people with diabetes: primary care visits and the lowest-tier generics are free, specialists are $40 and urgent care $35, preferred brands are $75 after the deductible, insulin is capped at $100 for a 30-day supply, and imaging and hospital care are 45% after it."),
+    "OSC|Bronze Simple Breathe Easy with Enhanced COPD Benefits": ("people with asthma or COPD whose doctors are in Oscar's network",
+        "Designed for asthma and COPD: pulmonologist visits and common generic inhalers are free, and the first three primary care visits are free (then $50). Other specialists are $150, urgent care $40 and other generics $4; preferred brand drugs are $75 after the $5,500 deductible, and imaging, hospital care and other brand and specialty drugs are 50% after it."),
+    "OSC|Bronze Simple Chronic Care CKM": ("people managing heart, kidney or metabolic conditions (diabetes, high cholesterol) on Oscar's network",
+        "Built for cardiovascular, kidney and metabolic conditions: qualifying cardiology, pulmonology and endocrinology visits, diabetic eye and foot exams, and common generic statins and inhalers are free, insulin is capped at $100 for a 30-day supply, and the first three primary care visits are free (then $50). Other specialists are $150 and urgent care $40; preferred brands are $75 after the $5,500 deductible, and imaging, hospital care and other brand drugs are 50% after it."),
+    "OSC|Silver Simple Breathe Easy with Enhanced COPD Benefits": ("people with asthma or COPD who want Silver coverage on Oscar's network",
+        "Designed for asthma and COPD: primary care, pulmonologist visits and common generic inhalers are free; other specialists are $40, urgent care $35 and other generics $4. Preferred brand drugs are $75 after the $6,200 deductible; imaging and hospital care are 45%, and other brand and specialty drugs 50%, after it."),
+    "OSC|Silver Simple Chronic Care CKM": ("people managing heart, kidney or metabolic conditions who want Silver coverage on Oscar's network",
+        "Built for cardiovascular, kidney and metabolic conditions: primary care, qualifying cardiology, pulmonology and endocrinology visits, diabetic eye and foot exams, and common generic statins and inhalers are free, and insulin is capped at $100 for a 30-day supply. Other specialists and urgent care are $35 and other generics $4; preferred brands are $75 after the $6,500 deductible, and imaging and hospital care are 45% after it."),
+    "OSC|Silver Simple Women's Health with Menopause Benefits": ("women in or near menopause who use Oscar's network",
+        "Oscar's menopause plan: primary care and gynecologist visits are free, as are common generic hormone replacement therapy and SSRI antidepressants. Other specialists are $40, urgent care $35 and other generics $4; preferred brand drugs are $75 after the $6,000 deductible, and imaging and hospital care are 45% after it."),
     "OSC|Gold Classic Standard": ("people whose doctors are in Oscar's network and who need Gold coverage",
         "The standardized Gold benefits: flat copays with no deductible for office visits and every drug tier, including $250 specialty drugs."),
 }
@@ -252,7 +360,9 @@ class County:
         silv = sorted((p for p in self.P.values() if p["metal"] == "silver"), key=lambda p: p["p45"])
         self.bench = silv[1]["id"]
         self.hosp = d.get("hosp", {})
+        self.hosp_bh = d.get("hosp_bh", {})
         self.listed = d.get("hosp_listed", {})
+        assert all(n in NET_ORDER for n in d["net_long"]), (self.name, d["net_long"])
         # every Bronze plan is HSA-eligible and nothing else is (2027 rule), and no plan needs referrals: checked in prep
         assert all(p["hsa"] == (p["metal"] == "bronze") for p in self.P.values()), self.name
 
@@ -303,6 +413,8 @@ class County:
         if hit == len(ids):
             return "in"
         if hit == 0:
+            if ids and all(i in self.hosp_bh.get(k, []) for i in ids):
+                return "unclear"
             return "out" if self.listed.get(n) else "unlisted"
         return "some"
 
@@ -313,7 +425,28 @@ class County:
         return [n for n in self.nets if self.hstat(k, n) == "in"]
 
     def net_label(self, n):
-        return NET_LONG.get(n, n)
+        return self.d["net_long"][n]
+
+    def bc_nets(self):
+        return [x for x in self.nets if NET_INS[x] == "BCBS"]
+
+    def bc_designs(self, n=None):
+        return {p["design"] for p in self.P.values() if p["ins"] == "BCBS" and (n is None or p["net"] == n)}
+
+    def bc_lineup(self):
+        """How Blue Cross spreads its designs over its networks here, e.g. "all 10 of its designs in Blue Care and
+        Blue Advantage and six of them in Blue Local and Blue Home"; None when every network carries every design."""
+        nets, total = self.bc_nets(), len(self.bc_designs())
+        by = {}
+        for x in nets:
+            by.setdefault(len(self.bc_designs(x)), []).append(x)
+        if len(by) == 1:
+            return None
+        parts = []
+        for cnt, xs in sorted(by.items(), key=lambda kv: -kv[0]):
+            word = NUMW[cnt] if cnt < 10 else str(cnt)
+            parts.append((f"all {word} of its designs" if cnt == total else f"{word} of them") + " in " + join(xs))
+        return join(parts)
 
     def nlist(self, nets):
         """Network names for prose; 'every network' when it is all of them."""
@@ -375,6 +508,10 @@ def build(g):
     has_uhc = "UHC" in c.ins
     has_amb = "AMB" in c.ins
     has_osc = "OSC" in c.ins
+    has_clear = "AMB|Clear Silver with $0 Insulin Options" in c.designs
+    has_ckm = any(k.startswith("OSC|") and "Chronic Care CKM" in k for k in c.designs)
+    has_breathe = any(k.startswith("OSC|") and "Breathe Easy" in k for k in c.designs)
+    has_meno = any(k.startswith("OSC|") and "Menopause" in k for k in c.designs)
     no_cdent = [n for n in c.nets if not c.cdent(n)]
     with_cdent = [n for n in c.nets if c.cdent(n)]
     hosp_keys = [k for k in c.hosp]
@@ -390,31 +527,6 @@ def build(g):
         return f"{INS_SHORT[i]} {n}"
 
     # ---------- hospital summary sentences ----------
-    def hosp_sentence(k):
-        nm = c.hname(k)
-        ins = c.nets_with(k)
-        out = [n for n in c.nets if c.hstat(k, n) == "out"]
-        unl = [n for n in c.nets if c.hstat(k, n) == "unlisted"]
-        some = [n for n in c.nets if c.hstat(k, n) == "some"]
-        if not multi_net:
-            st = c.hstat(k, c.nets[0])
-            return nm + {"in": " was in network", "out": " was not in network", "unlisted": " was not listed", "some": " was in network on some plans"}[st]
-        if not out and not unl and not some:
-            return f"{nm} was in network on every plan"
-        if ins:
-            s = f"{nm} was in network on {join(ins)} plans"
-            if out:
-                s += f" and not on {join(out)} plans"
-        elif out:
-            s = f"{nm} was not in network on {join(out)} plans"
-        else:
-            s = f"{nm} was not listed for any network"
-        if some:
-            s += f" (on some {join(some)} plans)"
-        if unl and (ins or out):
-            s += f"; {join(unl)}'s hospital network is not listed in the lookup"
-        return s
-
     key_hosp = hosp_keys
 
     def hosp_groups():
@@ -429,15 +541,18 @@ def build(g):
         ins_ = [n for n, st in zip(c.nets, sig) if st == "in"]
         out_ = [n for n, st in zip(c.nets, sig) if st == "out"]
         some_ = [n for n, st in zip(c.nets, sig) if st == "some"]
+        unc_ = [n for n, st in zip(c.nets, sig) if st == "unclear"]
+        unc_txt = (f" (for {join(unc_)}, HealthCare.gov's lookup listed only the {'hospital' if was == 'was' else 'hospitals'}' behavioral health unit)".replace("hospital' ", "hospital's ") if unc_ else "")
         if not multi_net:
-            return f"{H} {was} " + {"in": "in network", "out": "not in network", "unlisted": "not listed", "some": "in network on some plans"}[sig[0]]
+            return f"{H} {was} " + {"in": "in network", "out": "not in network", "unlisted": "not listed", "some": "in network on some plans",
+                                    "unclear": "listed only for the behavioral health unit"}[sig[0]]
         if ins_ and not out_ and not some_ and len(ins_) == len(c.nets):
             return f"{H} {was} in network on every plan"
         if ins_ and not out_ and not some_:
             unl_ = [n for n, st in zip(c.nets, sig) if st == "unlisted"]
-            return f"{H} {was} in network on every plan except " + join([f"{n}'s" for n in unl_])
+            return f"{H} {was} in network on every plan except " + join([f"{n}'s" for n in unl_ + unc_]) + unc_txt
         if ins_ and out_ and len(out_) < len(ins_) and not [n for n, st in zip(c.nets, sig) if st == "unlisted"]:
-            t = f"{H} {was} in network on every plan except " + join([f"{n}'s" for n in out_])
+            t = f"{H} {was} in network on every plan except " + join([f"{n}'s" for n in out_ + unc_]) + unc_txt
         elif ins_:
             t = f"{H} {was} in network on {join(ins_)} plans" + (f" and not on {join(out_, 'or')} plans" if out_ else "")
         elif out_:
@@ -446,6 +561,8 @@ def build(g):
             t = f"{H} {was} not listed as in network on any plan"
         if some_:
             t += f" (in network on some {join(some_)} plans)"
+        if unc_ and unc_txt not in t:
+            t += unc_txt
         return t
 
     unl_note = (f" {join(unlisted)}'s hospital network is not listed in the lookup; ask the insurer which hospitals it uses." if unlisted else "")
@@ -467,11 +584,16 @@ def build(g):
     # ---------- FAQ ----------
     FAQ = []
     if multi_ins:
+        bcn = c.bc_nets()
+        adent_who = join([INS_SHORT[i] for i in c.ins if any(p["adent"] for p in P.values() if p["ins"] == i)])
+        bits = []
+        if len(bcn) > 1:
+            bits.append("Blue Cross sells " + (c.bc_lineup() or "each of its designs in " + join(bcn)))
+        if adent_who:
+            bits.append(adent_who + (" sells" if " and " not in adent_who else " sell") + " some designs both with and without adult dental and vision")
         FAQ.append((f"Which insurers sell Marketplace plans in {FULL} for 2027?",
                     f"{NUMW[len(c.ins)].capitalize()}: " + join([f"{INS_FULL[i]} ({c.count_ins(i)} plans)" for i in c.ins]) + f", for {c.N} plans in all. "
-                    + ("Blue Cross sells each of its designs in " + join([x for x in c.nets if NET_INS[x] == 'BCBS']) + ", and " if len([x for x in c.nets if NET_INS[x] == 'BCBS']) > 1 else "")
-                    + ((lambda who: (who if len([x for x in c.nets if NET_INS[x] == 'BCBS']) > 1 else who[0].upper() + who[1:]) + (" sells" if " and " not in who else " sell") + f" some designs both with and without adult dental and vision, so the {c.N} plans come down to {c.D} distinct designs.")(join([INS_SHORT[i] for i in c.ins if any(p["adent"] for p in P.values() if p["ins"] == i)]))
-                       if any(p["adent"] for p in P.values()) else f"The {c.N} plans come down to {c.D} distinct designs.")))
+                    + (", and ".join(bits) + f", so the {c.N} plans come down to {c.D} distinct designs." if bits else f"The {c.N} plans come down to {c.D} distinct designs.")))
     else:
         FAQ.append((f"Why is Blue Cross the only insurer in {FULL}?",
                     f"For 2027, Blue Cross and Blue Shield of North Carolina is the only carrier offering individual Marketplace plans in {FULL}. The other insurers that sell Marketplace plans elsewhere in North Carolina (Ambetter, AmeriHealth Caritas Next, Oscar and UnitedHealthcare) do not include {NAME} in their 2027 service areas. "
@@ -549,7 +671,7 @@ def build(g):
 
     def hcell(k, n):
         s = c.hstat(k, n)
-        return {"in": "In network", "out": "<strong>Not in network</strong>", "unlisted": "Not listed", "some": "Some plans"}[s]
+        return {"in": "In network", "out": "<strong>Not in network</strong>", "unlisted": "Not listed", "some": "Some plans", "unclear": "Unclear"}[s]
 
     hosp_table = ""
     if hosp_keys:
@@ -558,6 +680,8 @@ def build(g):
             for k in hosp_keys)
         unl = (f" &ldquo;Not listed&rdquo;: HealthCare.gov's lookup showed none of the hospitals we checked as in network for {join(unlisted)}, which usually means the insurer's hospital data is missing from the lookup rather than that it has no hospitals; ask the insurer which hospitals its network uses." if unlisted else "")
         note = (" " + c.cfg["hosp_note"]) if c.cfg.get("hosp_note") else ""
+        if any(c.hstat(k, n) == "unclear" for k in hosp_keys for n in c.nets):
+            note += " &ldquo;Unclear&rdquo;: the lookup listed only the hospital's behavioral health unit as in network for that network, not the hospital itself; ask the insurer."
         hosp_table = f"""
 <div class="table-wrap">
 <table class="data">
@@ -656,7 +780,8 @@ def build(g):
         plans = sorted([p for p in P.values() if p["key"] == key], key=lambda p: (NET_ORDER.index(p["net"]), p["adent"]))
         metal = dz["metal"]
         if dz["ins"] == "BCBS":
-            price = " / ".join(c.full45(p["id"]) for p in plans)
+            byn = {p["net"]: p for p in plans}
+            price = " / ".join(c.full45(byn[x]["id"]) if x in byn else "&ndash;" for x in c.bc_nets())
         else:
             base = [p for p in plans if not p["adent"]]
             ext = [p for p in plans if p["adent"]]
@@ -710,22 +835,27 @@ def build(g):
         if i == "BCBS":
             head = f"Blue Cross NC ({n} plans" + (": " + join([f"{c.net_label(x)} {c.ptype(x)}" for x in nets_i]) if len(nets_i) > 1 else f", {c.ptype(nets_i[0])}") + ")"
             parts = []
-            if len(nets_i) > 1:
+            if len(nets_i) > 1 and c.bc_lineup():
+                parts.append(f"The same benefits in {NUMW[len(nets_i)]} networks: Blue Cross sells {c.bc_lineup()}. Prices are " + " / ".join(nets_i) + ", with a dash where a network does not offer the design.")
+            elif len(nets_i) > 1:
                 parts.append(f"The same 10 designs and benefits in {NUMW[len(nets_i)]} networks; prices are " + " / ".join(nets_i) + ".")
             else:
                 parts.append(f"All 10 designs are sold in one network here, {c.net_label(nets_i[0])}.")
         else:
-            head = f"{INS_SHORT[i]} ({n} plans, {c.ptype(nets_i[0])})"
+            head = f"{c.net_label(nets_i[0]) if c.net_label(nets_i[0]) != nets_i[0] else INS_SHORT[i]} ({n} plans, {c.ptype(nets_i[0])})"
             parts = []
         def facts(x):
             ins_h = [c.hname(k) for k in key_hosp if c.hstat(k, x) == "in"]
             out_h = [c.hname(k) for k in key_hosp if c.hstat(k, x) == "out"]
+            unc_h = [c.hname(k) for k in key_hosp if c.hstat(k, x) == "unclear"]
             hp = []
             if ins_h:
                 hp.append(join(ins_h) + " in network")
             if out_h:
                 hp.append("<strong>" + join(out_h) + " not in network</strong>")
-            if key_hosp and not ins_h and not out_h:
+            if unc_h:
+                hp.append(join(unc_h) + " unclear (only the behavioral health unit listed)")
+            if key_hosp and not ins_h and not out_h and not unc_h:
                 hp.append("hospital network not listed in HealthCare.gov's lookup")
             return hp + ["children's dental included" if c.cdent(x) else "children's dental not included"]
         grouped = {}
@@ -753,19 +883,24 @@ def build(g):
     plans_html = "".join(insurer_section(i) for i in c.ins)
 
     # ---------- decision 1: networks ----------
-    NET_DESC = {
+    NET_DESC = {  # by full network name
         "Ambetter": "Ambetter of North Carolina's network. As an HMO it covers out-of-network care only in emergencies, but no referrals are needed for specialists. Children's dental is not included.",
+        "Ambetter with Atrium Health": "Ambetter of North Carolina's network built with Atrium Health, whose hospitals and doctors anchor it. As an HMO it covers out-of-network care only in emergencies, but no referrals are needed for specialists. Children's dental is not included.",
         "AmeriHealth Caritas Next": "AmeriHealth Caritas Next's network, with free 24/7 virtual primary and urgent care through its telehealth provider and no referrals. Out-of-network care is covered only in emergencies, and children's dental is not included.",
         "Blue Care": "Blue Cross NC's statewide network. No referrals; out-of-network care is covered only in emergencies. Children's dental is included.",
         "Blue Advantage": "Blue Cross's nationwide option: it adds the national BlueCard network, so you are in network at Blue Cross doctors in every state. Its out-of-network benefit is thin, so treat it as a nationwide in-network plan. Children's dental is included.",
         "Blue Value": "a narrower statewide Blue Cross network. Its out-of-network benefit is thin, so treat it as an in-network plan. Children's dental is included.",
-        "Blue Home": "built around UNC Health's hospitals and doctors (the UNC Health Alliance). It covers out-of-network care only in emergencies. Children's dental is included.",
+        "Blue Home with UNC Health Alliance": "built around UNC Health's hospitals and doctors (the UNC Health Alliance). It covers out-of-network care only in emergencies. Children's dental is included.",
+        "Blue Home with Novant Health": "built around Novant Health's hospitals and doctors. It covers out-of-network care only in emergencies. Children's dental is included.",
+        "Blue Home with Cone Health": "built around Cone Health's hospitals and doctors. It covers out-of-network care only in emergencies. Children's dental is included.",
+        "Blue Local with Atrium Health": "built around Atrium Health's hospitals and doctors. It covers out-of-network care only in emergencies. Children's dental is included.",
         "UnitedHealthcare": "UnitedHealthcare's network, with $0 insulin on every plan and children's dental included. Out-of-network care is covered only in emergencies.",
         "Oscar": "Oscar's network. Out-of-network care is covered only in emergencies, and children's dental is not included.",
+        "Oscar with Atrium Health": "Oscar's network built around Atrium Health's hospitals and doctors. Out-of-network care is covered only in emergencies, and children's dental is not included.",
     }
 
     def net_bullet(n):
-        s = f"<li><strong>{c.net_label(n)}</strong> ({len(c.by_net(n))} plans, {c.ptype(n)}) is {NET_DESC[n]}"
+        s = f"<li><strong>{c.net_label(n)}</strong> ({len(c.by_net(n))} plans, {c.ptype(n)}) is {NET_DESC[c.net_label(n)]}"
         if STD[(n, "silver")] and len(std_nets) > 1:
             rank = std_sorted.index(n)
             if rank == 0:
@@ -775,14 +910,17 @@ def build(g):
         if key_hosp:
             ins_h = [c.hname(k) for k in key_hosp if c.hstat(k, n) == "in"]
             out_h = [c.hname(k) for k in key_hosp if c.hstat(k, n) == "out"]
+            unc_h = [c.hname(k) for k in key_hosp if c.hstat(k, n) == "unclear"]
             if ins_h and out_h:
                 s += f" {join(ins_h)} {'was' if len(ins_h) == 1 else 'were'} in network when we checked; <strong>{join(out_h)} {'was' if len(out_h) == 1 else 'were'} not</strong>."
             elif ins_h:
                 s += f" {join(ins_h)} {'was' if len(ins_h) == 1 else 'were'} in network when we checked."
             elif out_h:
                 s += f" <strong>{join(out_h)} {'was' if len(out_h) == 1 else 'were'} not in network</strong> when we checked."
-            else:
+            elif not unc_h:
                 s += " None of the hospitals we checked was listed as in network in HealthCare.gov's lookup; ask the insurer which hospitals it uses."
+            if unc_h:
+                s += f" For {join(unc_h)}, HealthCare.gov's lookup listed only the behavioral health unit, so ask {INS_SHORT[NET_INS[n]]} whether the hospital itself is in network."
         return s + "</li>"
 
     choose = []
@@ -853,9 +991,13 @@ def build(g):
     special = []
     if has_uhc:
         special.append("UnitedHealthcare includes $0 insulin on every plan")
-    if has_amb:
+    if has_clear:
         special.append("Ambetter's Clear Silver has $0 insulin options, and its Enhanced CHF Heart Care and Asthma/COPD Silver plans have $0 options for related prescriptions")
-    if has_osc:
+    if has_osc and (has_ckm or has_breathe or has_meno):
+        special.append("Oscar's Simple Diabetes" + (" and Chronic Care CKM" if has_ckm else "") + " plans, at the Bronze and Silver levels, cap insulin at $100 for a 30-day supply"
+                       + (", its Breathe Easy plans make pulmonologist visits and common generic inhalers free" if has_breathe else "")
+                       + (", and its Women's Health Silver covers gynecologist visits and common generic hormone therapy in full" if has_meno else ""))
+    elif has_osc:
         special.append("Oscar has Simple Diabetes plans at the Bronze and Silver levels, with insulin capped at $100 for a 30-day supply")
     diab = ""
     std_b = [(n, STD[(n, "bronze")]) for n in std_nets]
@@ -927,16 +1069,16 @@ def build(g):
     ins_rows = []
     if has_uhc:
         ins_rows.append("UnitedHealthcare plans")
-    if has_amb:
+    if has_clear:
         ins_rows.append("Ambetter Clear Silver")
     if has_osc:
-        ins_rows.append("Oscar's Simple Diabetes plans")
+        ins_rows.append("Oscar's Simple Diabetes" + (" and Chronic Care CKM" if has_ckm else "") + " plans")
     if ins_rows:
         rows.append(("Uses insulin", join(ins_rows, "or"), "Compare the whole year's cost, not just the insulin."))
     rows.append(("Takes a specialty drug (Dupixent, Skyrizi, Enbrel, Rinvoq)", c.label(sg),
                  "$250 specialty copay with no deductible and an $8,600 maximum. Confirm the drug is on the list."))
     big = f"{c.label(sg)} ($8,600 max)"
-    if has_amb:
+    if has_clear:
         cl = [p for p in P.values() if p["design"] == "Clear Silver with $0 Insulin Options" and not p["adent"]][0]["id"]
         big += f" or Ambetter Clear Silver ($7,900 max; {c.csr(cl, 'csr87')[0]} with cost-sharing reductions at $30,000, single)"
     rows.append(("Planning surgery or a pregnancy next year", big, "You will reach the deductible anyway; buy the plan with the lowest ceiling."))

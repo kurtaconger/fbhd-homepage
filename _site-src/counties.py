@@ -153,6 +153,52 @@ def _m(slug, name, fips, ra, short):
 
 # Counties built by county_multi.py from zones_2027.json (several insurers or several Blue Cross networks)
 MULTI_GUIDES = [
+    _m("avery", "Avery", "37011", "ra1", "Newland, Banner Elk, Linville"),
+    _m("buncombe", "Buncombe", "37021", "ra1", "Asheville, Black Mountain, Weaverville"),
+    _m("cherokee", "Cherokee", "37039", "ra1", "Murphy, Andrews"),
+    _m("clay", "Clay", "37043", "ra1", "Hayesville, Warne"),
+    _m("graham", "Graham", "37075", "ra1", "Robbinsville, Fontana Lake"),
+    _m("haywood", "Haywood", "37087", "ra1", "Waynesville, Canton, Maggie Valley"),
+    _m("henderson", "Henderson", "37089", "ra1", "Hendersonville, Fletcher, Mills River"),
+    _m("jackson", "Jackson", "37099", "ra1", "Sylva, Cullowhee, Cashiers"),
+    _m("macon", "Macon", "37113", "ra1", "Franklin, Highlands"),
+    _m("madison", "Madison", "37115", "ra1", "Marshall, Mars Hill, Hot Springs"),
+    _m("mcdowell", "McDowell", "37111", "ra1", "Marion, Old Fort"),
+    _m("mitchell", "Mitchell", "37121", "ra1", "Bakersville, Spruce Pine"),
+    _m("polk", "Polk", "37149", "ra1", "Columbus, Tryon, Saluda"),
+    _m("rutherford", "Rutherford", "37161", "ra1", "Rutherfordton, Forest City, Spindale"),
+    _m("swain", "Swain", "37173", "ra1", "Bryson City, Whittier"),
+    _m("transylvania", "Transylvania", "37175", "ra1", "Brevard, Rosman, Lake Toxaway"),
+    _m("yancey", "Yancey", "37199", "ra1", "Burnsville, Micaville"),
+    _m("alexander", "Alexander", "37003", "ra2", "Taylorsville, Hiddenite"),
+    _m("burke", "Burke", "37023", "ra2", "Morganton, Valdese, Hildebran"),
+    _m("caldwell", "Caldwell", "37027", "ra2", "Lenoir, Granite Falls, Hudson"),
+    _m("catawba", "Catawba", "37035", "ra2", "Hickory, Newton, Conover"),
+    _m("iredell", "Iredell", "37097", "ra2", "Statesville, Mooresville, Troutman"),
+    _m("alleghany", "Alleghany", "37005", "ra3", "Sparta, Glade Valley"),
+    _m("ashe", "Ashe", "37009", "ra3", "Jefferson, West Jefferson, Lansing"),
+    _m("watauga", "Watauga", "37189", "ra3", "Boone, Blowing Rock, Beech Mountain"),
+    _m("wilkes", "Wilkes", "37193", "ra3", "Wilkesboro, North Wilkesboro"),
+    _m("anson", "Anson", "37007", "ra4", "Wadesboro, Polkton, Ansonville"),
+    _m("cabarrus", "Cabarrus", "37025", "ra4", "Concord, Kannapolis, Harrisburg"),
+    _m("mecklenburg", "Mecklenburg", "37119", "ra4", "Charlotte, Huntersville, Matthews, Cornelius"),
+    _m("rowan", "Rowan", "37159", "ra4", "Salisbury, China Grove, Spencer"),
+    _m("stanly", "Stanly", "37167", "ra4", "Albemarle, Locust, Norwood"),
+    _m("union", "Union", "37179", "ra4", "Monroe, Indian Trail, Waxhaw"),
+    _m("cleveland", "Cleveland", "37045", "ra5", "Shelby, Kings Mountain, Boiling Springs"),
+    _m("gaston", "Gaston", "37071", "ra5", "Gastonia, Belmont, Mount Holly"),
+    _m("lincoln", "Lincoln", "37109", "ra5", "Lincolnton, Denver"),
+    _m("davidson", "Davidson", "37057", "ra6", "Lexington, Thomasville"),
+    _m("davie", "Davie", "37059", "ra6", "Mocksville, Bermuda Run, Advance"),
+    _m("forsyth", "Forsyth", "37067", "ra6", "Winston-Salem, Kernersville, Clemmons"),
+    _m("stokes", "Stokes", "37169", "ra6", "King, Walnut Cove, Danbury"),
+    _m("surry", "Surry", "37171", "ra6", "Mount Airy, Elkin, Dobson, Pilot Mountain"),
+    _m("yadkin", "Yadkin", "37197", "ra6", "Yadkinville, Jonesville, East Bend"),
+    _m("guilford", "Guilford", "37081", "ra7", "Greensboro, High Point, Jamestown"),
+    _m("randolph", "Randolph", "37151", "ra7", "Asheboro, Archdale, Randleman"),
+    _m("rockingham", "Rockingham", "37157", "ra7", "Reidsville, Eden, Madison"),
+    _m("montgomery", "Montgomery", "37123", "ra8", "Troy, Biscoe, Candor, Mount Gilead"),
+    _m("moore", "Moore", "37125", "ra8", "Southern Pines, Pinehurst, Aberdeen, Carthage"),
     _m("bladen", "Bladen", "37017", "ra9", "Elizabethtown, Bladenboro, White Lake"),
     _m("cumberland", "Cumberland", "37051", "ra9", "Fayetteville, Hope Mills, Spring Lake"),
     _m("harnett", "Harnett", "37085", "ra9", "Lillington, Dunn, Angier, Erwin"),
@@ -464,9 +510,9 @@ if __name__ == "__main__":
         county_page(c)
 
 
-# ---------- "coming soon" pages for the other 14 rating areas ----------
+# ---------- "coming soon" pages for rating areas without guides (none since every county has one) ----------
 ZONES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "zones.json")))
-LIVE_ZONES = {"9", "10", "11", "12", "13", "14", "15", "16"}
+LIVE_ZONES = {str(z) for z in range(1, 17)}  # every NC rating area has guides
 SHORT_ISSUER = {"Ambetter of North Carolina": "Ambetter", "AmeriHealth Caritas Next": "AmeriHealth Caritas", "Blue Cross and Blue Shield of NC": "Blue Cross NC",
                 "Oscar Health Plan of North Carolina, Inc": "Oscar", "UnitedHealthcare": "UnitedHealthcare"}
 

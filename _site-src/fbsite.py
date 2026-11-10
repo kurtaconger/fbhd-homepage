@@ -227,5 +227,5 @@ MAP_SVG = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "nc_map.
 
 
 def nc_map(intro=True):
-    legend = """<div class="map-legend"><span class="sw live"></span> Guides available <span class="sw soon"></span> Coming soon</div>"""
+    legend = """<div class="map-legend">Every county has a guide. The shades and numbers mark the 16 rating areas; insurers set prices by rating area.</div>"""
     return f'<div class="map-wrap">{MAP_SVG}{legend}</div>'

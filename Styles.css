@@ -1084,16 +1084,24 @@ details.plan > p:last-child {
     fill: #5fb98a;
 }
 
-/* adjacent rating areas get different shades of green */
+/* adjacent rating areas get different shades of green (base shade: areas 3, 5, 7, 9, 10 and 16) */
+.nc-map a.live[data-zone="1"] path,
+.nc-map a.live[data-zone="6"] path,
 .nc-map a.live[data-zone="11"] path,
 .nc-map a.live[data-zone="14"] path {
     fill: #7cc9a1;
 }
 
+.nc-map a.live[data-zone="2"] path,
+.nc-map a.live[data-zone="8"] path,
 .nc-map a.live[data-zone="12"] path,
 .nc-map a.live[data-zone="13"] path,
 .nc-map a.live[data-zone="15"] path {
     fill: #9ad6b4;
+}
+
+.nc-map a.live[data-zone="4"] path {
+    fill: #3f9e70;
 }
 
 .nc-map a.live:hover path,
