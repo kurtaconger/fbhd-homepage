@@ -1,6 +1,5 @@
 /* Shows elements with class "geo-gate" (County Guides menu item and homepage section) only when the
-   visitor is very likely inside the covered area: the 22 counties with guides (NC rating areas 12 and 16,
-   plus New Hanover County).
+   visitor is very likely inside the covered area: the counties with guides (NC rating areas 9 to 16).
    Location comes from Netlify's edge geolocation (/geo), then a point-in-polygon test (with a 30 km
    buffer) against the county boundaries in /geo-zone.json. Override for testing: ?geo=in or ?geo=out (remembered for the tab). */
 (function () {

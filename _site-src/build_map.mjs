@@ -5,9 +5,9 @@ const us = JSON.parse(fs.readFileSync("node_modules/us-atlas/counties-10m.json")
 const counties = topojson.feature(us, us.objects.counties).features.filter(f => f.id.startsWith("37"));
 const names = JSON.parse(fs.readFileSync("/mnt/user-data/uploads/covanu-insure/Research/carteret-2027/nc_county_plans.json"));
 const RA = JSON.parse(fs.readFileSync("ra.json"));
-const LIVE = new Set([12, 16]);
-// counties with a guide outside the all-live rating areas (New Hanover, rating area 15)
-const LIVE_FIPS = new Set(["37129"]);
+const LIVE = new Set([9, 10, 11, 12, 13, 14, 15, 16]);
+// counties with a guide outside the all-live rating areas (none at the moment)
+const LIVE_FIPS = new Set([]);
 const proj = geoConicConformal().parallels([34.33, 36.17]).rotate([79, 0]).fitSize([900, 360], { type: "FeatureCollection", features: counties });
 const path = geoPath(proj);
 let paths = [], labels = {}, geo = { type: "FeatureCollection", features: [] };

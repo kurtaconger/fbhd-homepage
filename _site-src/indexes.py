@@ -24,8 +24,7 @@ def cards(items):
 
 
 def county_cards():
-    links = ", ".join(f'<a href="/counties/{c["slug"]}/">{c["name"]}</a>' for c in sorted(ALL_GUIDES, key=lambda c: c["name"]))
-    return nc_map() + f'<p class="county-links"><strong>Guides available:</strong> {links}.</p>'
+    return nc_map()
 
 
 def simple_page(path, title, desc, current, crumbs, body, ld_extra=None, og="website"):
@@ -56,7 +55,7 @@ simple_page("/questions/", "Common Questions: NC Health Insurance Answered (2027
 body = f"""
 <h1>North Carolina county health insurance guides (2027)</h1>
 {byline()}
-<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Each guide lists every plan sold there, with that county's prices by age and income, the network choices, and which plan fits which situation. From the Crystal Coast to the Albemarle Sound and the Virginia line (rating areas 12 and 16), Blue Cross NC is the only carrier and every county has the same 20 plans; in <a href="/counties/new-hanover/">New Hanover County</a> (Wilmington), four insurers sell 75.</p>
+<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Each guide lists every plan sold there, with that county's prices by age and income, the network choices, and which plan fits which situation. In much of eastern North Carolina Blue Cross NC is the only Marketplace insurer; around the Triangle, the Sandhills and Wilmington, up to four insurers compete, and each guide shows which of the area's hospitals every network includes.</p>
 {county_cards()}
 <p>More county guides are on the way. Until yours is ready, our Covanu tool already covers every North Carolina county with the same data, and we are glad to walk through your county's plans on a call.</p>
 {cta("See every plan in your county")}
@@ -201,7 +200,7 @@ write("/404.html", doc)
 # ---------- sitemap, robots, llms.txt ----------
 urls = ["/", "/questions/", "/counties/", "/about/"] + [h for h, _, _ in GUIDES] + [f"/counties/{c['slug']}/" for c in ALL_GUIDES] + [f"/counties/zone-{z}/" for z in sorted(ZONES, key=int) if z not in LIVE_ZONES] + ["/agents"]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-lastmod = {f"/counties/{g['slug']}/": g["updated"] for g in OTHER_GUIDES}
+lastmod = {f"/counties/{g['slug']}/": g["updated"] for g in ALL_GUIDES if "updated" in g}
 for u in urls:
     pri = "1.0" if u == "/" else ("0.9" if u.count("/") >= 3 else "0.7")
     sm.append(f"  <url><loc>{BASE}{u}</loc><lastmod>{lastmod.get(u, UPDATED)}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>")
@@ -219,7 +218,7 @@ Sitemap: {BASE}/sitemap.xml
 """)
 
 county_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in sorted(COUNTIES, key=lambda c: c["name"]))
-other_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in OTHER_GUIDES)
+other_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in sorted(OTHER_GUIDES, key=lambda c: c["name"]) if c["slug"] != "new-hanover")
 write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 > Independent, licensed ACA (Affordable Care Act) health insurance guidance for North Carolina individuals, families, self-employed people and early retirees, written by Kurt Conger (NC Health Producer, NPN 21720013). Guides are built from the official HealthCare.gov Marketplace API data for the current plan year (2027) and state the date they were last checked. Help is free to consumers; insurers pay agent commissions.
@@ -233,9 +232,13 @@ write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 ## County guides
 
-The counties from the Crystal Coast to the Albemarle Sound and the Virginia line (CMS rating areas 12 and 16) share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
+The counties from the Crystal Coast to the Albemarle Sound and the Virginia line (CMS rating areas 12 and 16) share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier; Edgecombe, Greene, Pitt, Wayne and Wilson counties (rating area 14) have the same 10 designs and two networks under their own plan numbers and prices. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
 
 {county_lines}
+
+The counties in rating areas 9, 10, 11, 13 and 15 and Nash County have more than one insurer or more than one Blue Cross network (from 10 plans in Chatham County to 75 in Brunswick and Pender). Each guide is built from the HealthCare.gov Marketplace API (retrieved November 10, 2026) and compares the networks, the standardized "Easy Pricing" plans across insurers, the subsidy benchmark, every plan design, and the network status of the area's main hospitals in HealthCare.gov's doctor and hospital lookup.
+
+{other_lines}
 
 New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carriers for 2027 (Ambetter, Blue Cross NC, UnitedHealthcare, Oscar) and 75 plans (38 designs). Its guide compares the six networks, the standardized "Easy Pricing" plans across carriers, subsidies pegged to an Ambetter benchmark, and which networks include Novant Health New Hanover Regional Medical Center.
 
@@ -247,11 +250,12 @@ New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carrier
 - Enhanced premium tax credits expired after 2025; the 400% FPL cliff applies for 2027. Repayment caps on excess credits are eliminated from the 2026 tax year.
 - All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
 - In the rating area 12 and 16 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- Around the Triangle (rating areas 11 and 13: Alamance, Caswell, Chatham, Durham, Franklin, Johnston, Lee, Orange, Person and Wake counties) Blue Cross sells only Blue Home with UNC Health Alliance, an EPO, and no Blue Advantage PPO, so no Marketplace plan there has a nationwide network. In HealthCare.gov's lookup on November 10, 2026, in Wake County, WakeMed, Duke Raleigh Hospital and Duke University Hospital were in network on Ambetter plans and not on Blue Home or UnitedHealthcare plans, while UNC Health Rex and UNC Medical Center were in network on Blue Home and UnitedHealthcare plans and not on Ambetter plans. Chatham County's 10 plans are all Blue Home.
 - In New Hanover County the 2027 benchmark (second-lowest-cost Silver) is Ambetter Clear Silver with $0 Insulin Options ($732 a month at age 45). Ambetter's standardized Silver costs $740 at 45; the identical standardized design costs $978 to $1,184 from Blue Cross, Oscar and UnitedHealthcare. Novant Health New Hanover Regional Medical Center was in network on every Ambetter, Blue Cross and UnitedHealthcare plan and on no Oscar plan (HealthCare.gov lookup, November 10, 2026). No catastrophic plan is offered.
 
 ## Coming soon
 
-Guides for more counties are in preparation; placeholder pages at {BASE}/counties/zone-N/ list the counties and carriers in each rating area not yet covered.
+Guides for more counties are in preparation; placeholder pages at {BASE}/counties/zone-N/ list the counties and carriers in each rating area not yet covered (rating areas 1 to 8).
 
 ## About
 

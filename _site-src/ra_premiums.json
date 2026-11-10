@@ -2594,5 +2594,1303 @@
     "moop": 12000
    }
   }
+ },
+ "ra14": {
+  "s30_100k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 647.98,
+    "net": 647.98,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 665.61,
+    "net": 665.61,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 670.31,
+    "net": 670.31,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 674.67,
+    "net": 674.67,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 686.96,
+    "net": 686.96,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 697.58,
+    "net": 697.58,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 697.8,
+    "net": 697.8,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 721.01,
+    "net": 721.01,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 876.88,
+    "net": 876.88,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 883.8,
+    "net": 883.8,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 895.92,
+    "net": 895.92,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 902.43,
+    "net": 902.43,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 906.99,
+    "net": 906.99,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 911.09,
+    "net": 911.09,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 912.2,
+    "net": 912.2,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 923.3,
+    "net": 923.3,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 926.47,
+    "net": 926.47,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 933.13,
+    "net": 933.13,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 940.52,
+    "net": 940.52,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 955,
+    "net": 955,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "s45_100k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 824.39,
+    "net": 824.39,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 846.82,
+    "net": 846.82,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 852.8,
+    "net": 852.8,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 858.34,
+    "net": 858.34,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 873.98,
+    "net": 873.98,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 887.5,
+    "net": 887.5,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 887.77,
+    "net": 887.77,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 917.3,
+    "net": 917.3,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 1115.61,
+    "net": 1115.61,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 1124.41,
+    "net": 1124.41,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 1139.84,
+    "net": 1139.84,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 1148.11,
+    "net": 1148.11,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 1153.91,
+    "net": 1153.91,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 1159.13,
+    "net": 1159.13,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 1160.54,
+    "net": 1160.54,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 1174.67,
+    "net": 1174.67,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 1178.69,
+    "net": 1178.69,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 1187.17,
+    "net": 1187.17,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 1196.57,
+    "net": 1196.57,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 1215,
+    "net": 1215,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "s60_100k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 1549.45,
+    "net": 1549.45,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 1591.6,
+    "net": 1591.6,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 1602.83,
+    "net": 1602.83,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 1613.26,
+    "net": 1613.26,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 1642.65,
+    "net": 1642.65,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 1668.05,
+    "net": 1668.05,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 1668.57,
+    "net": 1668.57,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 1724.07,
+    "net": 1724.07,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 2096.78,
+    "net": 2096.78,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 2113.34,
+    "net": 2113.34,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 2142.32,
+    "net": 2142.32,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 2157.87,
+    "net": 2157.87,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 2168.78,
+    "net": 2168.78,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 2178.58,
+    "net": 2178.58,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 2181.24,
+    "net": 2181.24,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 2207.78,
+    "net": 2207.78,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 2215.36,
+    "net": 2215.36,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 2231.29,
+    "net": 2231.29,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 2248.96,
+    "net": 2248.96,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 2283.59,
+    "net": 2283.59,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "s45_45k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 824.39,
+    "net": 61.39,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 846.82,
+    "net": 83.82,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 852.8,
+    "net": 89.8,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 858.34,
+    "net": 95.34,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 873.98,
+    "net": 110.98,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 887.5,
+    "net": 124.5,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 887.77,
+    "net": 124.77,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 917.3,
+    "net": 154.3,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 1115.61,
+    "net": 352.61,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 1124.41,
+    "net": 361.41,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 1139.84,
+    "net": 376.84,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 1148.11,
+    "net": 385.11,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 1153.91,
+    "net": 390.91,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 1159.13,
+    "net": 396.13,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 1160.54,
+    "net": 397.54,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 1174.67,
+    "net": 411.67,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 1178.69,
+    "net": 415.69,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 1187.17,
+    "net": 424.17,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 1196.57,
+    "net": 433.57,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 1215,
+    "net": 452,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "s45_30k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 824.39,
+    "net": 0,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 846.82,
+    "net": 0,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 852.8,
+    "net": 0,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 858.34,
+    "net": 0,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 873.98,
+    "net": 0,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 887.5,
+    "net": 0,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 887.77,
+    "net": 0,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 917.3,
+    "net": 0,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 1115.61,
+    "net": 145.61,
+    "ded": 325,
+    "moop": 4000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 1124.41,
+    "net": 154.41,
+    "ded": 800,
+    "moop": 3600
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 1139.84,
+    "net": 169.84,
+    "ded": 550,
+    "moop": 4000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 1148.11,
+    "net": 178.11,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 1153.91,
+    "net": 183.91,
+    "ded": 325,
+    "moop": 4000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 1159.13,
+    "net": 189.13,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 1160.54,
+    "net": 190.54,
+    "ded": 800,
+    "moop": 3600
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 1174.67,
+    "net": 204.67,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 1178.69,
+    "net": 208.69,
+    "ded": 550,
+    "moop": 4000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 1187.17,
+    "net": 217.17,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 1196.57,
+    "net": 226.57,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 1215,
+    "net": 245,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "a27_35k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 598.31,
+    "net": 0.31,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 614.59,
+    "net": 16.59,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 618.93,
+    "net": 20.93,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 622.95,
+    "net": 24.95,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 634.3,
+    "net": 36.3,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 644.11,
+    "net": 46.11,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 644.31,
+    "net": 46.31,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 665.74,
+    "net": 67.74,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 809.66,
+    "net": 211.66,
+    "ded": 2000,
+    "moop": 9600
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 816.06,
+    "net": 218.06,
+    "ded": 2900,
+    "moop": 9000
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 827.25,
+    "net": 229.25,
+    "ded": 2700,
+    "moop": 9600
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 833.25,
+    "net": 235.25,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 837.47,
+    "net": 239.47,
+    "ded": 2000,
+    "moop": 9600
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 841.25,
+    "net": 243.25,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 842.28,
+    "net": 244.28,
+    "ded": 2900,
+    "moop": 9000
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 852.53,
+    "net": 254.53,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 855.45,
+    "net": 257.45,
+    "ded": 2700,
+    "moop": 9600
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 861.6,
+    "net": 263.6,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 868.43,
+    "net": 270.43,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 881.8,
+    "net": 283.8,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "c62_60_58k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 3189.67,
+    "net": 0,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 3276.44,
+    "net": 0,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 3299.57,
+    "net": 0,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 3321.03,
+    "net": 0,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 3381.53,
+    "net": 0,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 3433.82,
+    "net": 0,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 3434.89,
+    "net": 0,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 3549.14,
+    "net": 0,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 4316.4,
+    "net": 411.4,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 4350.49,
+    "net": 445.49,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 4410.15,
+    "net": 505.15,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 4442.16,
+    "net": 537.16,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 4464.62,
+    "net": 559.62,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 4484.79,
+    "net": 579.79,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 4490.27,
+    "net": 585.27,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 4544.91,
+    "net": 639.91,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 4560.5,
+    "net": 655.5,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 4593.3,
+    "net": 688.3,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 4629.67,
+    "net": 724.67,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 4700.96,
+    "net": 795.96,
+    "ded": 0,
+    "moop": 12000
+   }
+  },
+  "fam90k": {
+   "11512NC0430074": {
+    "name": "Blue Care Bronze Basic",
+    "type": "HMO",
+    "premium": 2472.61,
+    "net": 0,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430082": {
+    "name": "Blue Care Bronze Standard",
+    "type": "HMO",
+    "premium": 2539.88,
+    "net": 0,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0060004": {
+    "name": "Blue Advantage Bronze Basic",
+    "type": "PPO",
+    "premium": 2557.8,
+    "net": 0,
+    "ded": 7000,
+    "moop": 12000
+   },
+   "11512NC0430066": {
+    "name": "Blue Care Bronze Complete",
+    "type": "HMO",
+    "premium": 2574.43,
+    "net": 0,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060052": {
+    "name": "Blue Advantage Bronze Standard",
+    "type": "PPO",
+    "premium": 2621.34,
+    "net": 0,
+    "ded": 7500,
+    "moop": 12000
+   },
+   "11512NC0430090": {
+    "name": "Blue Care Bronze HSA Eligible Plus",
+    "type": "HMO",
+    "premium": 2661.89,
+    "net": 0,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0060031": {
+    "name": "Blue Advantage Bronze Complete",
+    "type": "PPO",
+    "premium": 2662.69,
+    "net": 0,
+    "ded": 4000,
+    "moop": 12000
+   },
+   "11512NC0060059": {
+    "name": "Blue Advantage Bronze HSA Eligible Plus",
+    "type": "PPO",
+    "premium": 2751.27,
+    "net": 81.27,
+    "ded": 8700,
+    "moop": 8700
+   },
+   "11512NC0430037": {
+    "name": "Blue Care Silver Preferred",
+    "type": "HMO",
+    "premium": 3346.04,
+    "net": 676.04,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430053": {
+    "name": "Blue Care Silver Standard",
+    "type": "HMO",
+    "premium": 3372.46,
+    "net": 702.46,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430049": {
+    "name": "Blue Care Silver Choice A",
+    "type": "HMO",
+    "premium": 3418.72,
+    "net": 748.72,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0430019": {
+    "name": "Blue Care Gold Premier A",
+    "type": "HMO",
+    "premium": 3443.53,
+    "net": 773.53,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060002": {
+    "name": "Blue Advantage Silver Preferred",
+    "type": "PPO",
+    "premium": 3460.94,
+    "net": 790.94,
+    "ded": 2700,
+    "moop": 12000
+   },
+   "11512NC0430023": {
+    "name": "Blue Care Gold Standard A",
+    "type": "HMO",
+    "premium": 3476.58,
+    "net": 806.58,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060051": {
+    "name": "Blue Advantage Silver Standard",
+    "type": "PPO",
+    "premium": 3480.82,
+    "net": 810.82,
+    "ded": 6400,
+    "moop": 10300
+   },
+   "11512NC0430028": {
+    "name": "Blue Care Gold All Copay A",
+    "type": "HMO",
+    "premium": 3523.18,
+    "net": 853.18,
+    "ded": 0,
+    "moop": 12000
+   },
+   "11512NC0060028": {
+    "name": "Blue Advantage Silver Choice A",
+    "type": "PPO",
+    "premium": 3535.27,
+    "net": 865.27,
+    "ded": 3500,
+    "moop": 12000
+   },
+   "11512NC0060018": {
+    "name": "Blue Advantage Gold Premier A",
+    "type": "PPO",
+    "premium": 3560.69,
+    "net": 890.69,
+    "ded": 1800,
+    "moop": 12000
+   },
+   "11512NC0060050": {
+    "name": "Blue Advantage Gold Standard A",
+    "type": "PPO",
+    "premium": 3588.89,
+    "net": 918.89,
+    "ded": 2500,
+    "moop": 8600
+   },
+   "11512NC0060067": {
+    "name": "Blue Advantage Gold All Copay A",
+    "type": "PPO",
+    "premium": 3644.15,
+    "net": 974.15,
+    "ded": 0,
+    "moop": 12000
+   }
+  }
  }
 }

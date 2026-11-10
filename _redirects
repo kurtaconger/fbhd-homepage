@@ -1,2 +1,14 @@
 /agents        /agents.html   200
 /guides/*      /questions/:splat   301!
+/counties/zone-9/  /counties/   301
+/counties/zone-9   /counties/   301
+/counties/zone-10/  /counties/   301
+/counties/zone-10   /counties/   301
+/counties/zone-11/  /counties/   301
+/counties/zone-11   /counties/   301
+/counties/zone-13/  /counties/   301
+/counties/zone-13   /counties/   301
+/counties/zone-14/  /counties/   301
+/counties/zone-14   /counties/   301
+/counties/zone-15/  /counties/   301
+/counties/zone-15   /counties/   301

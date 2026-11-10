@@ -476,7 +476,8 @@ def build():
                           f"<strong>New Hanover Regional Medical Center showed as out of network on every Oscar plan</strong> when we checked. Children's dental not included; quality rating {quality('Oscar')}. Where two prices are shown, the second is the version with adult dental and vision.")
     )
 
-    zone_links = ", ".join(ZONE15_OTHERS[:-1]) + " and " + ZONE15_OTHERS[-1]
+    zl = [f'<a href="/counties/{z.lower()}/">{z}</a>' for z in ZONE15_OTHERS]
+    zone_links = ", ".join(zl[:-1]) + " and " + zl[-1]
 
     body = f"""
 <h1>Health Insurance in {FULL}, NC for 2027: All 75 Plans Explained</h1>
@@ -602,7 +603,7 @@ def build():
 <p><strong>About the prices on this page.</strong> Premiums and benefits come from HealthCare.gov's plan preview for {FULL} (ZIP 28401, FIPS 37129), plan year 2027, non-tobacco users, checked {CHECKED_H}. Prices at age 45, the after-credit prices for the single households and the family, and the cost-sharing reductions are HealthCare.gov's own figures; prices at ages 27, 30 and 60 and some couple prices are calculated from them with the federal age-rating curve North Carolina uses, which matched HealthCare.gov to within a few cents wherever we compared. Your own price depends on each household member's age, your income estimate and whether anyone uses tobacco. Confirm benefits in the plan's Summary of Benefits and Coverage before you enroll.</p>
 </div>
 
-<p class="related"><strong>Same rating area:</strong> {zone_links} counties share {NAME}'s rating area (15), but not every insurer sells in every county; see <a href="/counties/zone-15/">rating area 15</a>. <strong>Other county guides:</strong> <a href="/counties/craven/">Craven</a> and <a href="/counties/carteret/">Carteret</a>, where Blue Cross is the only insurer, and <a href="/counties/">all county guides</a>.</p>
+<p class="related"><strong>Same rating area:</strong> {zone_links} counties share {NAME}'s rating area (15), so a plan sold in both costs the same, but not every insurer sells in every county. <strong>Other county guides:</strong> <a href="/counties/craven/">Craven</a> and <a href="/counties/carteret/">Carteret</a>, where Blue Cross is the only insurer, and <a href="/counties/">all county guides</a>.</p>
 
 {cta(f"See every {FULL} plan with your subsidy applied")}
 

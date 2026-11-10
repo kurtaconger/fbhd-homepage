@@ -127,18 +127,90 @@ COUNTIES = [
     dict(slug="perquimans", name="Perquimans", fips="37143", ra="ra12",
          towns="Hertford and Winfall", short="Hertford, Winfall",
          hospitals="Sentara Albemarle in Elizabeth City and ECU Health Chowan in Edenton are the nearest hospitals"),
+    # rating area 14: the same 20 Blue Care and Blue Advantage designs under rating-area-14 plan numbers and prices (Nash County, which also has Blue Home, is in county_multi.py)
+    dict(slug="edgecombe", name="Edgecombe", fips="37065", ra="ra14", updated="2026-11-10",
+         towns="Tarboro, Pinetops, Princeville, Macclesfield and the Edgecombe side of Rocky Mount", short="Tarboro, Pinetops, Princeville",
+         hospitals="ECU Health Edgecombe Hospital in Tarboro is the local hospital, with ECU Health Medical Center in Greenville for tertiary care"),
+    dict(slug="greene", name="Greene", fips="37079", ra="ra14", updated="2026-11-10",
+         towns="Snow Hill, Hookerton, Walstonburg and Maury", short="Snow Hill, Hookerton",
+         hospitals="the nearest hospitals are ECU Health Medical Center in Greenville and UNC Health Lenoir in Kinston"),
+    dict(slug="pitt", name="Pitt", fips="37147", ra="ra14", updated="2026-11-10",
+         towns="Greenville, Winterville, Ayden, Farmville, Grifton and Bethel", short="Greenville, Winterville, Ayden, Farmville",
+         hospitals="ECU Health Medical Center in Greenville, the region's academic medical center, is the hospital most residents use"),
+    dict(slug="wayne", name="Wayne", fips="37191", ra="ra14", updated="2026-11-10",
+         towns="Goldsboro, Mount Olive, Fremont, Pikeville and Seven Springs", short="Goldsboro, Mount Olive, Fremont",
+         hospitals="UNC Health Wayne in Goldsboro is the local hospital, with ECU Health Medical Center in Greenville and the Raleigh hospitals for specialty care"),
+    dict(slug="wilson", name="Wilson", fips="37195", ra="ra14", updated="2026-11-10",
+         towns="Wilson, Elm City, Stantonsburg, Black Creek, Lucama and Sharpsburg", short="Wilson, Elm City, Stantonsburg",
+         hospitals="Wilson Medical Center is the local hospital, with ECU Health Medical Center in Greenville and UNC Health Nash in Rocky Mount nearby"),
 ]
 CARTERET_LIKE = [c for c in COUNTIES]
+
+# Guides built by their own module (multi-carrier counties); listed with the others on the index pages
+def _m(slug, name, fips, ra, short):
+    return dict(slug=slug, name=name, fips=fips, ra=ra, module="county_multi", updated="2026-11-10", short=short)
+
+
+# Counties built by county_multi.py from zones_2027.json (several insurers or several Blue Cross networks)
+MULTI_GUIDES = [
+    _m("bladen", "Bladen", "37017", "ra9", "Elizabethtown, Bladenboro, White Lake"),
+    _m("cumberland", "Cumberland", "37051", "ra9", "Fayetteville, Hope Mills, Spring Lake"),
+    _m("harnett", "Harnett", "37085", "ra9", "Lillington, Dunn, Angier, Erwin"),
+    _m("hoke", "Hoke", "37093", "ra9", "Raeford"),
+    _m("richmond", "Richmond", "37153", "ra9", "Rockingham, Hamlet, Ellerbe"),
+    _m("robeson", "Robeson", "37155", "ra9", "Lumberton, Pembroke, Red Springs"),
+    _m("sampson", "Sampson", "37163", "ra9", "Clinton, Roseboro, Newton Grove"),
+    _m("scotland", "Scotland", "37165", "ra9", "Laurinburg, Wagram"),
+    _m("granville", "Granville", "37077", "ra10", "Oxford, Creedmoor, Butner"),
+    _m("vance", "Vance", "37181", "ra10", "Henderson, Kittrell"),
+    _m("warren", "Warren", "37185", "ra10", "Warrenton, Norlina, Lake Gaston"),
+    _m("alamance", "Alamance", "37001", "ra11", "Burlington, Graham, Mebane, Elon"),
+    _m("caswell", "Caswell", "37033", "ra11", "Yanceyville, Milton"),
+    _m("chatham", "Chatham", "37037", "ra11", "Pittsboro, Siler City, Fearrington"),
+    _m("durham", "Durham", "37063", "ra11", "Durham, Research Triangle Park"),
+    _m("lee", "Lee", "37105", "ra11", "Sanford, Broadway"),
+    _m("orange", "Orange", "37135", "ra11", "Chapel Hill, Carrboro, Hillsborough"),
+    _m("person", "Person", "37145", "ra11", "Roxboro, Timberlake"),
+    _m("franklin", "Franklin", "37069", "ra13", "Louisburg, Youngsville, Franklinton"),
+    _m("johnston", "Johnston", "37101", "ra13", "Smithfield, Clayton, Selma, Benson"),
+    _m("wake", "Wake", "37183", "ra13", "Raleigh, Cary, Apex, Wake Forest"),
+    _m("nash", "Nash", "37127", "ra14", "Rocky Mount, Nashville, Spring Hope"),
+    _m("brunswick", "Brunswick", "37019", "ra15", "Leland, Southport, Oak Island, Shallotte"),
+    _m("columbus", "Columbus", "37047", "ra15", "Whiteville, Tabor City, Chadbourn"),
+    _m("duplin", "Duplin", "37061", "ra15", "Wallace, Warsaw, Kenansville, Beulaville"),
+    _m("onslow", "Onslow", "37133", "ra15", "Jacksonville, Swansboro, Richlands"),
+    _m("pender", "Pender", "37141", "ra15", "Hampstead, Burgaw, Surf City"),
+]
 
 # Guides built by their own module (multi-carrier counties); listed with the others on the index pages
 OTHER_GUIDES = [
     dict(slug="new-hanover", name="New Hanover", fips="37129", ra="ra15", module="county_nh", updated="2026-11-10",
          short="Wilmington, Carolina Beach, Wrightsville Beach"),
-]
+] + MULTI_GUIDES
 
 
 def money(x):
     return "${:,.0f}".format(round(x))
+
+
+def designs_for(ra):
+    """(design, Blue Care plan id, Blue Advantage plan id, metal) in a rating area. Blue Care plan numbers differ by rating area
+    (rating areas 12 and 16 share the ids in DESIGNS); Blue Advantage's are statewide."""
+    names = {v["name"]: pid for pid, v in RA[ra]["s45_100k"].items()}
+    out = [(d, names["Blue Care " + d], names["Blue Advantage " + d], metal) for d, hmo, ppo, metal in DESIGNS]
+    if ra in ("ra12", "ra16"):
+        assert out == DESIGNS, ra
+    return out
+
+
+# Blue Advantage's premium over the same Blue Care design (rating areas 12 and 16 keep the published "about 5.5%")
+def ppo_pct(ra):
+    ds = designs_for(ra)
+    r = sum(RA[ra]["s45_100k"][ppo]["premium"] for d, hmo, ppo, m in ds) / sum(RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, ppo, m in ds)
+    if ra in ("ra12", "ra16"):
+        assert 1.05 < r < 1.06, (ra, r)
+        return "5.5%"
+    return f"{100 * (r - 1):.1f}%"
 
 
 def prem(ra, scenario, pid, net=False):
@@ -146,22 +218,39 @@ def prem(ra, scenario, pid, net=False):
     return money(p["net"] if net else p["premium"])
 
 
-def county_page(c):
+def _county_page(c):
     ra = c["ra"]
     name = c["name"]
     path = f"/counties/{c['slug']}/"
     full_name = f"{name} County"
+    import fbsite
+    DATE_H = fbsite.UPDATED_H
+    DS = designs_for(ra)
+    ID = {d: (hmo, ppo) for d, hmo, ppo, m in DS}
+    PCT = ppo_pct(ra)
     h = lambda pid: RA[ra]["s45_100k"][pid]
     # price ranges at 45 (HMO)
     def rng(metal):
-        vals = [h(hmo)["premium"] for d, hmo, ppo, m in DESIGNS if m == metal]
+        vals = [h(hmo)["premium"] for d, hmo, ppo, m in DS if m == metal]
         return f"{money(min(vals))} to {money(max(vals))}"
-    bb_hmo, bb_ppo = DESIGNS[0][1], DESIGNS[0][2]
-    ppo_delta_45 = [RA[ra]["s45_100k"][ppo]["premium"] - RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, ppo, m in DESIGNS]
-    ppo_delta_60 = [RA[ra]["s60_100k"][ppo]["premium"] - RA[ra]["s60_100k"][hmo]["premium"] for d, hmo, ppo, m in DESIGNS]
-    sp, ss, gs = "11512NC0430036", "11512NC0430052", "11512NC0430022"
-    gold_vs_bronze = [RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, p, m in DESIGNS if m == "gold"]
-    bronze_45 = [RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, p, m in DESIGNS if m == "bronze"]
+    bb_hmo, bb_ppo = DS[0][1], DS[0][2]
+    ppo_delta_45 = [RA[ra]["s45_100k"][ppo]["premium"] - RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, ppo, m in DS]
+    ppo_delta_60 = [RA[ra]["s60_100k"][ppo]["premium"] - RA[ra]["s60_100k"][hmo]["premium"] for d, hmo, ppo, m in DS]
+    sp, ss, gs = ID["Silver Preferred"][0], ID["Silver Standard"][0], ID["Gold Standard A"][0]
+    gold_vs_bronze = [RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, p, m in DS if m == "gold"]
+    bronze_45 = [RA[ra]["s45_100k"][hmo]["premium"] for d, hmo, p, m in DS if m == "bronze"]
+    # what the template says about every rating area it serves
+    ids = [x for d, hmo, ppo, m in DS for x in (hmo, ppo)]
+    assert set(ids) == set(RA[ra]["s45_100k"]), ra
+    prem45 = {x: RA[ra]["s45_100k"][x]["premium"] for x in ids}
+    silv = sorted((prem45[x], x) for d, hmo, ppo, m in DS if m == "silver" for x in (hmo, ppo))
+    assert silv[1][1] == ss and silv[0][1] == sp, "benchmark / cheapest Silver changed"
+    assert min(prem45, key=prem45.get) == bb_hmo, "Bronze Basic is no longer the cheapest plan"
+    assert min((prem45[hmo], hmo) for d, hmo, ppo, m in DS if m == "gold")[1] == ID["Gold Premier A"][0]
+    assert all(RA[ra]["s45_30k"][x]["net"] == 0 for d, hmo, ppo, m in DS if m == "bronze" for x in (hmo, ppo)), "Bronze no longer free at $30,000"
+    assert RA[ra]["fam90k"][bb_hmo]["net"] == 0, "family Bronze no longer free"
+    assert 10.5 < prem45[gs] - prem45[ID["Gold Premier A"][0]] < 11.5 and 15 < prem45[ID["Gold All Copay A"][0]] - prem45[gs] < 16
+    assert prem45[ID["Silver Choice A"][0]] > prem45[ss]
     g_minus_b_lo = min(gold_vs_bronze) - max(bronze_45)
     g_minus_b_hi = max(gold_vs_bronze) - min(bronze_45)
 
@@ -169,15 +258,19 @@ def county_page(c):
     DESC = f"Every 2027 ACA Marketplace plan in {full_name}, NC ({c['short']}): prices by age and income, Blue Care HMO vs. Blue Advantage PPO, which plan fits which situation, and the drug-list question answered."
     CRUMBS = [("/", "Home"), ("/counties/", "County Guides"), (None, full_name)]
 
+    if ra in ("ra12", "ra16"):
+        MOVE = "The same 20 plans are sold in every county from the Crystal Coast to the Albemarle Sound and the Virginia line (see the list at the end of this guide), so a move within that group usually lets you keep your plan; the premium changes if the new county is in a different rating area."
+    else:
+        MOVE = "The same 20 plans are sold in Edgecombe, Greene, Pitt, Wayne and Wilson counties (see the list at the end of this guide), so a move within that group usually lets you keep your plan. Blue Cross sells the same 10 designs, under different plan numbers and prices, from the Crystal Coast to the Albemarle Sound and in Nash County."
     FAQ = [
         (f"Why is Blue Cross the only insurer in {full_name}?",
-         f"For 2027, Blue Cross and Blue Shield of North Carolina is the only carrier offering individual Marketplace plans in {full_name}. The other carriers that sell in North Carolina (Aetna CVS Health, Ambetter, AmeriHealth Caritas, Cigna, Oscar, UnitedHealthcare and WellCare) do not include {name} in their 2027 service areas. That still leaves 20 plans: 10 designs, each sold with a statewide HMO network (Blue Care) and a nationwide PPO network (Blue Advantage)."),
+         f"For 2027, Blue Cross and Blue Shield of North Carolina is the only carrier offering individual Marketplace plans in {full_name}. The other insurers that sell Marketplace plans elsewhere in North Carolina for 2027 (Ambetter, AmeriHealth Caritas Next, Oscar and UnitedHealthcare) do not include {name} in their service areas. That still leaves 20 plans: 10 designs, each sold with a statewide HMO network (Blue Care) and a nationwide PPO network (Blue Advantage)."),
         ("Is my local hospital in network?",
          f"Blue Care is Blue Cross NC's statewide network and Blue Advantage adds the national BlueCard network. In {full_name}, {c['hospitals']}. Networks change, so confirm your doctors and hospital in the official directory (links in the network section above) before you enroll, and tell us if a specific doctor matters to you."),
         ("Do I need a referral to see a specialist?",
          "No. Neither Blue Care nor Blue Advantage requires a referral from a primary care doctor to see a specialist."),
         ("Should I buy the PPO if I travel or spend winters out of state?",
-         "That is the main reason to. Blue Advantage costs about 5.5% more than the same Blue Care design and gives you in-network access to Blue Cross doctors nationwide. Its out-of-network benefit is weak (50 to 80% coinsurance after the deductible, with no out-of-pocket cap), so the value is the larger in-network footprint, not out-of-network coverage. If you live in North Carolina year-round and your doctors are here, the HMO delivers the same benefits for less."),
+         f"That is the main reason to. Blue Advantage costs about {PCT} more than the same Blue Care design and gives you in-network access to Blue Cross doctors nationwide. Its out-of-network benefit is weak (50 to 80% coinsurance after the deductible, with no out-of-pocket cap), so the value is the larger in-network footprint, not out-of-network coverage. If you live in North Carolina year-round and your doctors are here, the HMO delivers the same benefits for less."),
         (f"Is there a catastrophic plan in {full_name}?",
          f"No. For 2027 no catastrophic plan is offered in {full_name}, even for people under 30. The Bronze plans are the lowest-premium options."),
         ("What happens if my income is under about $22,000?",
@@ -185,7 +278,7 @@ def county_page(c):
         ("Do the two drug lists cover different drugs?",
          "No. We tested 48 common brand and generic drugs against both lists and found no differences in coverage. The three Standard plans use Blue Cross NC's 4-tier list with flat copays; the other seven designs use the 5-tier list, where the lowest copay applies only to Tier 1 preferred generics. What changes your drug costs is the plan design (copay vs. coinsurance, and whether the deductible applies), not which list it uses."),
         ("Can I keep my plan if I move to another county?",
-         f"Moving to a new county is a qualifying life event. The same 20 plans are sold in every county from the Crystal Coast to the Albemarle Sound and the Virginia line (see the list at the end of this guide), so a move within that group usually lets you keep your plan; the premium changes if the new county is in a different rating area. A move elsewhere gives you a 60-day special enrollment period to pick a new plan."),
+         f"Moving to a new county is a qualifying life event. {MOVE} A move elsewhere gives you a 60-day special enrollment period to pick a new plan."),
         ("When can I enroll?",
          "Open Enrollment for 2027 coverage runs November 1, 2026 through January 15, 2027 on HealthCare.gov. Enroll by December 15 for coverage starting January 1. Outside Open Enrollment you need a qualifying event, such as losing other coverage, moving, marriage or a new baby."),
     ]
@@ -193,7 +286,7 @@ def county_page(c):
     # tables
     age_rows = "".join(
         f'<tr><td>{d}</td><td class="num">{prem(ra,"s30_100k",hmo)}</td><td class="num">{prem(ra,"s45_100k",hmo)}</td><td class="num">{prem(ra,"s60_100k",hmo)}</td><td class="num">{DED[d]}</td><td class="num">{MOOP[d]}</td></tr>'
-        for d, hmo, ppo, m in DESIGNS)
+        for d, hmo, ppo, m in DS)
     sub_rows = "".join([
         f'<tr><td>Single, 45, $30,000</td><td class="num">{prem(ra,"s45_30k",bb_hmo,True)}</td><td class="num">{prem(ra,"s45_30k",sp,True)} (CSR: $325 ded., $4,000 max)</td><td class="num">{prem(ra,"s45_30k",ss,True)} (CSR: $800 ded., $3,600 max)</td><td class="num">{prem(ra,"s45_30k",gs,True)}</td></tr>',
         f'<tr><td>Single, 45, $45,000</td><td class="num">{prem(ra,"s45_45k",bb_hmo,True)}</td><td class="num">{prem(ra,"s45_45k",sp,True)}</td><td class="num">{prem(ra,"s45_45k",ss,True)}</td><td class="num">{prem(ra,"s45_45k",gs,True)}</td></tr>',
@@ -213,9 +306,18 @@ def county_page(c):
 
     plans_html = ""
     for metal, label in [("bronze", "Bronze"), ("silver", "Silver"), ("gold", "Gold")]:
-        plans_html += f"<h3>{label}</h3>\n" + "\n".join(plan_card(d, hmo, ppo, m) for d, hmo, ppo, m in DESIGNS if m == metal) + "\n"
+        plans_html += f"<h3>{label}</h3>\n" + "\n".join(plan_card(d, hmo, ppo, m) for d, hmo, ppo, m in DS if m == metal) + "\n"
 
-    others = ", ".join(f'<a href="/counties/{o["slug"]}/">{o["name"]}</a>' for o in COUNTIES if o["slug"] != c["slug"])
+    grp = ("ra12", "ra16") if ra in ("ra12", "ra16") else ("ra14",)
+    link = lambda o: f'<a href="/counties/{o["slug"]}/">{o["name"]}</a>'
+    others = ", ".join(link(o) for o in COUNTIES if o["slug"] != c["slug"] and o["ra"] in grp)
+    rest = ", ".join(link(o) for o in COUNTIES if o["ra"] not in grp)
+    if ra in ("ra12", "ra16"):
+        related = (f"<strong>Same 20 plans, other counties:</strong> {others}. Premiums differ slightly between the Albemarle-area counties and the Pamlico Sound and coastal counties, which are in different rating areas. "
+                   f"The same 10 designs are also sold, under different plan numbers and prices, in {rest}.")
+    else:
+        related = (f"<strong>Same 20 plans, other counties:</strong> {others}. The same 10 designs are sold under different plan numbers and prices from the Crystal Coast to the Albemarle Sound ({rest}), "
+                   f'and with a third Blue Cross network in <a href="/counties/nash/">Nash County</a>.')
 
     body = f"""
 <h1>Health Insurance in {full_name}, NC for 2027: All 20 Blue Cross Plans Explained</h1>
@@ -239,7 +341,7 @@ def county_page(c):
 <div class="takeaways">
 <h2>Key takeaways</h2>
 <ul>
-<li><strong>20 plans, but only 10 designs.</strong> Each design is sold twice: as a <strong>Blue Care</strong> HMO (statewide network) and a <strong>Blue Advantage</strong> PPO (nationwide network). Deductibles, copays and out-of-pocket maximums are identical within each pair; the PPO costs about 5.5% more.</li>
+<li><strong>20 plans, but only 10 designs.</strong> Each design is sold twice: as a <strong>Blue Care</strong> HMO (statewide network) and a <strong>Blue Advantage</strong> PPO (nationwide network). Deductibles, copays and out-of-pocket maximums are identical within each pair; the PPO costs about {PCT} more.</li>
 <li><strong>Full-price premiums for a 45-year-old</strong> run {rng("bronze")} for Bronze, {rng("silver")} for Silver and {rng("gold")} for Gold. A 60-year-old pays about 1.9 times that; a 21-year-old about 0.7 times.</li>
 <li><strong>Subsidies change everything below about 400% of the poverty level</strong> ($63,840 for one person, $86,560 for a couple, $132,000 for a family of four). A 45-year-old earning $30,000 gets every Bronze plan for $0 and a cost-sharing-reduced Silver plan for about {prem(ra,"s45_30k",sp,True)} a month. Above the line you pay full price.</li>
 <li><strong>Nobody needs a referral</strong> to see a specialist on either network, and emergency care is covered anywhere.</li>
@@ -253,7 +355,7 @@ def county_page(c):
 
 <div class="table-wrap">
 <table class="data">
-<caption>Monthly premiums in {full_name}, Blue Care (HMO) network, full price with no subsidy, 2027. Blue Advantage (PPO) is about 5.5% higher. Source: HealthCare.gov Marketplace API.</caption>
+<caption>Monthly premiums in {full_name}, Blue Care (HMO) network, full price with no subsidy, 2027. Blue Advantage (PPO) is about {PCT} higher. Source: HealthCare.gov Marketplace API.</caption>
 <thead><tr><th>Plan design</th><th class="num">Age 30</th><th class="num">Age 45</th><th class="num">Age 60</th><th class="num">Deductible</th><th class="num">Out-of-pocket max</th></tr></thead>
 <tbody>{age_rows}</tbody>
 </table>
@@ -277,7 +379,7 @@ def county_page(c):
 <ul>
 <li><strong>Blue Care</strong> is Blue Cross NC's statewide network. It covers doctors and hospitals across North Carolina, with no referrals required. Out-of-network care is not covered except in an emergency (emergency room visits are covered anywhere in the country at the in-network rate).</li>
 <li><strong>Blue Advantage</strong> uses Blue Cross NC's largest network and adds the national BlueCard network, so you are in-network at Blue Cross doctors in every state. It also has an out-of-network benefit, but a thin one: 50% to 80% coinsurance after the deductible, with no out-of-network out-of-pocket maximum. Treat it as a nationwide in-network plan, not as a plan that pays well for out-of-network care.</li>
-<li><strong>The price difference is about 5.5%</strong> across the board: {money(min(ppo_delta_45))} to {money(max(ppo_delta_45))} a month at age 45, {money(min(ppo_delta_60))} to {money(max(ppo_delta_60))} at age 60. If your subsidy already covers a Bronze plan with money left over, the PPO upgrade can cost you only a few dollars.</li>
+<li><strong>The price difference is about {PCT}</strong> across the board: {money(min(ppo_delta_45))} to {money(max(ppo_delta_45))} a month at age 45, {money(min(ppo_delta_60))} to {money(max(ppo_delta_60))} at age 60. If your subsidy already covers a Bronze plan with money left over, the PPO upgrade can cost you only a few dollars.</li>
 </ul>
 <p><strong>Choose Blue Advantage if</strong> you spend months outside North Carolina (snowbirds, a second home), have a dependent at an out-of-state college, run a business that keeps you on the road, regularly use a hospital across the Virginia line, or want a specific out-of-state hospital such as Sentara Norfolk, MUSC, Mayo or Johns Hopkins in network. <strong>Choose Blue Care if</strong> you live here year-round and your doctors are in North Carolina; you get the same benefits for less.</p>
 <p>Before enrolling, confirm your doctors in the official directories: <a href="{NET_HMO}" target="_blank" rel="noopener">Blue Care provider search</a> and <a href="{NET_PPO}" target="_blank" rel="noopener">Blue Advantage provider search</a>. In {full_name}, {c['hospitals']}; check the one you would go to.</p>
@@ -310,11 +412,11 @@ def county_page(c):
 <caption>Starting points, not recommendations. Prices are monthly in {full_name}, Blue Care network, after any subsidy. Run your own numbers before deciding.</caption>
 <thead><tr><th>Situation</th><th>Start with</th><th>Why</th></tr></thead>
 <tbody>
-<tr><td>Healthy 30-year-old, no prescriptions, $100,000 income</td><td>Bronze Basic ({prem(ra,"s30_100k",bb_hmo)}) or Bronze HSA Eligible Plus ({prem(ra,"s30_100k","11512NC0430089")})</td><td>No subsidy; you want the lowest premium and a hard cap on a bad year. Fund an HSA.</td></tr>
-<tr><td>Self-employed contractor, family of four, $90,000</td><td>Bronze Basic ({prem(ra,"fam90k",bb_hmo,True)}) if everyone is healthy; Silver Standard ({prem(ra,"fam90k",ss,True)}) if anyone takes a brand drug</td><td>Subsidy covers Bronze fully. Bronze Complete ({prem(ra,"fam90k","11512NC0430065",True)}), with its separate $1,000 Rx deductible, is another option for one brand drug.</td></tr>
+<tr><td>Healthy 30-year-old, no prescriptions, $100,000 income</td><td>Bronze Basic ({prem(ra,"s30_100k",bb_hmo)}) or Bronze HSA Eligible Plus ({prem(ra,"s30_100k",ID["Bronze HSA Eligible Plus"][0])})</td><td>No subsidy; you want the lowest premium and a hard cap on a bad year. Fund an HSA.</td></tr>
+<tr><td>Self-employed contractor, family of four, $90,000</td><td>Bronze Basic ({prem(ra,"fam90k",bb_hmo,True)}) if everyone is healthy; Silver Standard ({prem(ra,"fam90k",ss,True)}) if anyone takes a brand drug</td><td>Subsidy covers Bronze fully. Bronze Complete ({prem(ra,"fam90k",ID["Bronze Complete"][0],True)}), with its separate $1,000 Rx deductible, is another option for one brand drug.</td></tr>
 <tr><td>Single, 45, $30,000, sees a doctor a few times a year</td><td>Silver Preferred ({prem(ra,"s45_30k",sp,True)}) or Silver Standard ({prem(ra,"s45_30k",ss,True)})</td><td>Cost-sharing reductions cut the deductible to $325 or $800. That beats a free Bronze with a $7,000 deductible if you use care at all.</td></tr>
 <tr><td>Early retirees, 62 and 60, $58,000 investment and part-time income</td><td>Silver Preferred ({prem(ra,"c62_60_58k",sp,True)}); Bronze Basic ({prem(ra,"c62_60_58k",bb_hmo,True)}) if you can self-insure the deductible</td><td>Keep income under $86,560 or the subsidy disappears. See <a href="/questions/retiring-before-65-north-carolina/">Retiring before 65 in NC</a>.</td></tr>
-<tr><td>Spends January through March in Florida</td><td>Blue Advantage version of whichever design fits</td><td>Nationwide in-network access for about 5.5% more. Blue Care covers only emergencies out of state.</td></tr>
+<tr><td>Spends January through March in Florida</td><td>Blue Advantage version of whichever design fits</td><td>Nationwide in-network access for about {PCT} more. Blue Care covers only emergencies out of state.</td></tr>
 <tr><td>Parent with a child at an out-of-state college</td><td>Blue Advantage, or the college's student health plan plus Blue Care for the rest of the family</td><td>The student's routine care near campus is in network on the PPO; a student plan can be cheaper than upgrading the whole family. See <a href="/questions/blue-care-vs-blue-advantage-eastern-nc/">Blue Care vs. Blue Advantage</a>.</td></tr>
 <tr><td>Takes Eliquis, Jardiance or another preferred brand drug</td><td>Silver Standard or Gold Standard A</td><td>$40 / $30 brand copays with no deductible. See the <a href="/questions/bronze-vs-silver-medications/">medication guide</a>.</td></tr>
 <tr><td>Takes a specialty drug (Dupixent, Skyrizi, Enbrel, Rinvoq)</td><td>Gold Standard A or Gold All Copay A</td><td>$250 / $220 specialty copays versus 50% coinsurance on most other plans.</td></tr>
@@ -325,17 +427,17 @@ def county_page(c):
 </div>
 
 <div class="callout caution">
-<p><strong>About the prices on this page.</strong> Premiums come from the HealthCare.gov Marketplace API for {full_name} (FIPS {c['fips']}), plan year 2027, non-tobacco users, pulled {UPDATED_H}. Your own price depends on each household member's age, your income estimate and whether anyone uses tobacco. Benefit details are from the plans' official data; confirm them in the Summary of Benefits and Coverage before you enroll.</p>
+<p><strong>About the prices on this page.</strong> Premiums come from the HealthCare.gov Marketplace API for {full_name} (FIPS {c['fips']}), plan year 2027, non-tobacco users, pulled {DATE_H}. Your own price depends on each household member's age, your income estimate and whether anyone uses tobacco. Benefit details are from the plans' official data; confirm them in the Summary of Benefits and Coverage before you enroll.</p>
 </div>
 
-<p class="related"><strong>Same 20 plans, other counties:</strong> {others}. Premiums differ slightly between the Albemarle-area counties and the Pamlico Sound and coastal counties, which are in different rating areas.</p>
+<p class="related">{related}</p>
 
 {cta(f"See every {name} County plan with your subsidy applied")}
 
 {author_box()}
 
 {sources([
-    '<a href="https://www.healthcare.gov/developers/" target="_blank" rel="noopener">HealthCare.gov Marketplace API</a>, plan year 2027, county FIPS ' + c['fips'] + ', retrieved ' + UPDATED_H + '.',
+    '<a href="https://www.healthcare.gov/developers/" target="_blank" rel="noopener">HealthCare.gov Marketplace API</a>, plan year 2027, county FIPS ' + c['fips'] + ', retrieved ' + DATE_H + '.',
     '<a href="https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines" target="_blank" rel="noopener">HHS 2026 Poverty Guidelines</a> (used for 2027 Marketplace eligibility).',
     '<a href="https://kff.org/affordable-care-act/9-things-to-watch-for-the-2027-aca-open-enrollment-period/" target="_blank" rel="noopener">KFF, 9 Things to Watch for the 2027 ACA Open Enrollment Period</a> (expiration of enhanced credits, repayment caps, catastrophic plan eligibility).',
     'IRS Rev. Proc. 2026-24 (2027 HSA limits) and IRS Notice 2026-5 (Bronze and catastrophic Marketplace plans treated as HSA-eligible high-deductible plans).',
@@ -345,6 +447,18 @@ def county_page(c):
     page(path, TITLE, DESC, "/counties/", CRUMBS, body, faq=FAQ, reading="12 minute read")
 
 
+def county_page(c):
+    """Counties whose prices were pulled on a later date than the rest carry that date in the byline and structured data."""
+    import fbsite
+    saved = fbsite.UPDATED, fbsite.UPDATED_H
+    if "updated" in c:
+        fbsite.UPDATED, fbsite.UPDATED_H = c["updated"], "November 10, 2026"
+    try:
+        _county_page(c)
+    finally:
+        fbsite.UPDATED, fbsite.UPDATED_H = saved
+
+
 if __name__ == "__main__":
     for c in COUNTIES:
         county_page(c)
@@ -352,7 +466,7 @@ if __name__ == "__main__":
 
 # ---------- "coming soon" pages for the other 14 rating areas ----------
 ZONES = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "zones.json")))
-LIVE_ZONES = {"12", "16"}
+LIVE_ZONES = {"9", "10", "11", "12", "13", "14", "15", "16"}
 SHORT_ISSUER = {"Ambetter of North Carolina": "Ambetter", "AmeriHealth Caritas Next": "AmeriHealth Caritas", "Blue Cross and Blue Shield of NC": "Blue Cross NC",
                 "Oscar Health Plan of North Carolina, Inc": "Oscar", "UnitedHealthcare": "UnitedHealthcare"}
 

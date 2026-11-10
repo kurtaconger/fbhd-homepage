@@ -1084,8 +1084,16 @@ details.plan > p:last-child {
     fill: #5fb98a;
 }
 
-.nc-map a.live[data-zone="12"] path {
+/* adjacent rating areas get different shades of green */
+.nc-map a.live[data-zone="11"] path,
+.nc-map a.live[data-zone="14"] path {
     fill: #7cc9a1;
+}
+
+.nc-map a.live[data-zone="12"] path,
+.nc-map a.live[data-zone="13"] path,
+.nc-map a.live[data-zone="15"] path {
+    fill: #9ad6b4;
 }
 
 .nc-map a.live:hover path,

@@ -11,7 +11,7 @@
 
 ## County guides
 
-The counties from the Crystal Coast to the Albemarle Sound and the Virginia line (CMS rating areas 12 and 16) share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
+The counties from the Crystal Coast to the Albemarle Sound and the Virginia line (CMS rating areas 12 and 16) share the same 20 Blue Cross NC Marketplace plans for 2027 (10 designs x Blue Care HMO / Blue Advantage PPO) and have no other carrier; Edgecombe, Greene, Pitt, Wayne and Wilson counties (rating area 14) have the same 10 designs and two networks under their own plan numbers and prices. Each guide gives that county's premiums by age and income, HMO vs. PPO analysis, drug-list analysis, plan-by-plan descriptions and a situations table.
 
 - [Beaufort County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/beaufort/): Washington, Belhaven, Chocowinity.
 - [Bertie County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/bertie/): Windsor, Aulander, Colerain.
@@ -21,7 +21,9 @@ The counties from the Crystal Coast to the Albemarle Sound and the Virginia line
 - [Craven County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/craven/): New Bern, Havelock, Trent Woods.
 - [Currituck County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/currituck/): Moyock, Corolla, Grandy.
 - [Dare County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/dare/): Nags Head, Kill Devil Hills, Kitty Hawk, Manteo.
+- [Edgecombe County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/edgecombe/): Tarboro, Pinetops, Princeville.
 - [Gates County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/gates/): Gatesville, Sunbury.
+- [Greene County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/greene/): Snow Hill, Hookerton.
 - [Halifax County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/halifax/): Roanoke Rapids, Weldon, Scotland Neck.
 - [Hertford County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/hertford/): Ahoskie, Murfreesboro, Winton.
 - [Hyde County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/hyde/): Swan Quarter, Engelhard, Ocracoke.
@@ -32,12 +34,71 @@ The counties from the Crystal Coast to the Albemarle Sound and the Virginia line
 - [Pamlico County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pamlico/): Bayboro, Oriental, Grantsboro.
 - [Pasquotank County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pasquotank/): Elizabeth City.
 - [Perquimans County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/perquimans/): Hertford, Winfall.
+- [Pitt County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pitt/): Greenville, Winterville, Ayden, Farmville.
 - [Tyrrell County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/tyrrell/): Columbia.
 - [Washington County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/washington/): Plymouth, Roper, Creswell.
+- [Wayne County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/wayne/): Goldsboro, Mount Olive, Fremont.
+- [Wilson County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/wilson/): Wilson, Elm City, Stantonsburg.
+
+The counties in rating areas 9, 10, 11, 13 and 15 and Nash County have more than one insurer or more than one Blue Cross network (from 10 plans in Chatham County to 75 in Brunswick and Pender). Each guide is built from the HealthCare.gov Marketplace API (retrieved November 10, 2026) and compares the networks, the standardized "Easy Pricing" plans across insurers, the subsidy benchmark, every plan design, and the network status of the area's main hospitals in HealthCare.gov's doctor and hospital lookup.
+
+- [Alamance County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/alamance/): Burlington, Graham, Mebane, Elon.
+- [Bladen County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/bladen/): Elizabethtown, Bladenboro, White Lake.
+- [Brunswick County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/brunswick/): Leland, Southport, Oak Island, Shallotte.
+- [Caswell County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/caswell/): Yanceyville, Milton.
+- [Chatham County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/chatham/): Pittsboro, Siler City, Fearrington.
+- [Columbus County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/columbus/): Whiteville, Tabor City, Chadbourn.
+- [Cumberland County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/cumberland/): Fayetteville, Hope Mills, Spring Lake.
+- [Duplin County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/duplin/): Wallace, Warsaw, Kenansville, Beulaville.
+- [Durham County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/durham/): Durham, Research Triangle Park.
+- [Franklin County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/franklin/): Louisburg, Youngsville, Franklinton.
+- [Granville County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/granville/): Oxford, Creedmoor, Butner.
+- [Harnett County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/harnett/): Lillington, Dunn, Angier, Erwin.
+- [Hoke County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/hoke/): Raeford.
+- [Johnston County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/johnston/): Smithfield, Clayton, Selma, Benson.
+- [Lee County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/lee/): Sanford, Broadway.
+- [Nash County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/nash/): Rocky Mount, Nashville, Spring Hope.
+- [Onslow County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/onslow/): Jacksonville, Swansboro, Richlands.
+- [Orange County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/orange/): Chapel Hill, Carrboro, Hillsborough.
+- [Pender County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pender/): Hampstead, Burgaw, Surf City.
+- [Person County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/person/): Roxboro, Timberlake.
+- [Richmond County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/richmond/): Rockingham, Hamlet, Ellerbe.
+- [Robeson County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/robeson/): Lumberton, Pembroke, Red Springs.
+- [Sampson County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/sampson/): Clinton, Roseboro, Newton Grove.
+- [Scotland County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/scotland/): Laurinburg, Wagram.
+- [Vance County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/vance/): Henderson, Kittrell.
+- [Wake County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/wake/): Raleigh, Cary, Apex, Wake Forest.
+- [Warren County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/warren/): Warrenton, Norlina, Lake Gaston.
 
 New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carriers for 2027 (Ambetter, Blue Cross NC, UnitedHealthcare, Oscar) and 75 plans (38 designs). Its guide compares the six networks, the standardized "Easy Pricing" plans across carriers, subsidies pegged to an Ambetter benchmark, and which networks include Novant Health New Hanover Regional Medical Center.
 
-- [New Hanover County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/new-hanover/): Wilmington, Carolina Beach, Wrightsville Beach.
+- [Alamance County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/alamance/): Burlington, Graham, Mebane, Elon.
+- [Bladen County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/bladen/): Elizabethtown, Bladenboro, White Lake.
+- [Brunswick County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/brunswick/): Leland, Southport, Oak Island, Shallotte.
+- [Caswell County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/caswell/): Yanceyville, Milton.
+- [Chatham County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/chatham/): Pittsboro, Siler City, Fearrington.
+- [Columbus County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/columbus/): Whiteville, Tabor City, Chadbourn.
+- [Cumberland County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/cumberland/): Fayetteville, Hope Mills, Spring Lake.
+- [Duplin County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/duplin/): Wallace, Warsaw, Kenansville, Beulaville.
+- [Durham County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/durham/): Durham, Research Triangle Park.
+- [Franklin County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/franklin/): Louisburg, Youngsville, Franklinton.
+- [Granville County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/granville/): Oxford, Creedmoor, Butner.
+- [Harnett County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/harnett/): Lillington, Dunn, Angier, Erwin.
+- [Hoke County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/hoke/): Raeford.
+- [Johnston County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/johnston/): Smithfield, Clayton, Selma, Benson.
+- [Lee County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/lee/): Sanford, Broadway.
+- [Nash County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/nash/): Rocky Mount, Nashville, Spring Hope.
+- [Onslow County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/onslow/): Jacksonville, Swansboro, Richlands.
+- [Orange County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/orange/): Chapel Hill, Carrboro, Hillsborough.
+- [Pender County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/pender/): Hampstead, Burgaw, Surf City.
+- [Person County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/person/): Roxboro, Timberlake.
+- [Richmond County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/richmond/): Rockingham, Hamlet, Ellerbe.
+- [Robeson County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/robeson/): Lumberton, Pembroke, Red Springs.
+- [Sampson County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/sampson/): Clinton, Roseboro, Newton Grove.
+- [Scotland County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/scotland/): Laurinburg, Wagram.
+- [Vance County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/vance/): Henderson, Kittrell.
+- [Wake County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/wake/): Raleigh, Cary, Apex, Wake Forest.
+- [Warren County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/warren/): Warrenton, Norlina, Lake Gaston.
 
 ## Key facts stated on this site (2027)
 
@@ -45,11 +106,12 @@ New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carrier
 - Enhanced premium tax credits expired after 2025; the 400% FPL cliff applies for 2027. Repayment caps on excess credits are eliminated from the 2026 tax year.
 - All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
 - In the rating area 12 and 16 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- Around the Triangle (rating areas 11 and 13: Alamance, Caswell, Chatham, Durham, Franklin, Johnston, Lee, Orange, Person and Wake counties) Blue Cross sells only Blue Home with UNC Health Alliance, an EPO, and no Blue Advantage PPO, so no Marketplace plan there has a nationwide network. In HealthCare.gov's lookup on November 10, 2026, in Wake County, WakeMed, Duke Raleigh Hospital and Duke University Hospital were in network on Ambetter plans and not on Blue Home or UnitedHealthcare plans, while UNC Health Rex and UNC Medical Center were in network on Blue Home and UnitedHealthcare plans and not on Ambetter plans. Chatham County's 10 plans are all Blue Home.
 - In New Hanover County the 2027 benchmark (second-lowest-cost Silver) is Ambetter Clear Silver with $0 Insulin Options ($732 a month at age 45). Ambetter's standardized Silver costs $740 at 45; the identical standardized design costs $978 to $1,184 from Blue Cross, Oscar and UnitedHealthcare. Novant Health New Hanover Regional Medical Center was in network on every Ambetter, Blue Cross and UnitedHealthcare plan and on no Oscar plan (HealthCare.gov lookup, November 10, 2026). No catastrophic plan is offered.
 
 ## Coming soon
 
-Guides for more counties are in preparation; placeholder pages at https://factbasedhealthcaredecisions.com/counties/zone-N/ list the counties and carriers in each rating area not yet covered.
+Guides for more counties are in preparation; placeholder pages at https://factbasedhealthcaredecisions.com/counties/zone-N/ list the counties and carriers in each rating area not yet covered (rating areas 1 to 8).
 
 ## About
 
