@@ -1,5 +1,7 @@
 from fbsite import *
-from counties import COUNTIES, ZONES, LIVE_ZONES
+from counties import COUNTIES, OTHER_GUIDES, ZONES, LIVE_ZONES
+
+ALL_GUIDES = COUNTIES + OTHER_GUIDES
 
 GUIDES = [
     ("/questions/bronze-vs-silver-medications/", "Bronze vs. Silver when you take medications",
@@ -22,7 +24,7 @@ def cards(items):
 
 
 def county_cards():
-    links = ", ".join(f'<a href="/counties/{c["slug"]}/">{c["name"]}</a>' for c in sorted(COUNTIES, key=lambda c: c["name"]))
+    links = ", ".join(f'<a href="/counties/{c["slug"]}/">{c["name"]}</a>' for c in sorted(ALL_GUIDES, key=lambda c: c["name"]))
     return nc_map() + f'<p class="county-links"><strong>Guides available:</strong> {links}.</p>'
 
 
@@ -54,16 +56,16 @@ simple_page("/questions/", "Common Questions: NC Health Insurance Answered (2027
 body = f"""
 <h1>North Carolina county health insurance guides (2027)</h1>
 {byline()}
-<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Guides are live for the 21 counties in rating areas 12 and 16, from the Crystal Coast to the Albemarle Sound and the Virginia line, which all have the same 20 Blue Cross NC plans for 2027 and no other carrier. Each guide lists every plan with that county's prices by age and income, the Blue Care vs. Blue Advantage network choice, and which plan fits which situation.</p>
+<p class="lede">Marketplace plans are sold county by county, and insurers price them by CMS rating area, 16 of them in North Carolina. Click your county. Guides are live for the 21 counties in rating areas 12 and 16, from the Crystal Coast to the Albemarle Sound and the Virginia line, which all have the same 20 Blue Cross NC plans for 2027 and no other carrier, and for <a href="/counties/new-hanover/">New Hanover County</a> (Wilmington), where four insurers sell 75 plans. Each guide lists every plan with that county's prices by age and income, the network choices, and which plan fits which situation.</p>
 {county_cards()}
-<p>The other 14 rating areas (Pitt and Greenville, Wilmington, the Triangle, the Triad, Charlotte, the mountains) are coming. Our Covanu tool already covers every North Carolina county with the same data, and we are glad to walk through your county's plans on a call.</p>
+<p>Guides for the other 14 rating areas (Pitt and Greenville, the rest of the Cape Fear region, the Triangle, the Triad, Charlotte, the mountains) are coming. Our Covanu tool already covers every North Carolina county with the same data, and we are glad to walk through your county's plans on a call.</p>
 {cta("See every plan in your county")}
 """
 simple_page("/counties/", "North Carolina County Health Insurance Guides (2027) | Fact-Based Healthcare Decisions",
-            "County-by-county reviews of every ACA Marketplace plan sold in 21 eastern North Carolina counties for 2027, with prices by age and income, networks and plan-by-plan explanations.",
+            "County-by-county reviews of every ACA Marketplace plan sold in 22 eastern North Carolina counties for 2027, with prices by age and income, networks and plan-by-plan explanations.",
             "/counties/", [("/", "Home"), (None, "County Guides")], body,
             [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "North Carolina county health insurance guides", "url": BASE + "/counties/",
-              "hasPart": [{"@type": "Article", "headline": c["name"] + " County, NC health insurance 2027", "url": BASE + "/counties/" + c["slug"] + "/"} for c in COUNTIES]}])
+              "hasPart": [{"@type": "Article", "headline": c["name"] + " County, NC health insurance 2027", "url": BASE + "/counties/" + c["slug"] + "/"} for c in ALL_GUIDES]}])
 
 # ---------- /about/ ----------
 body = f"""
@@ -197,11 +199,12 @@ doc += f"""    <div class="container"><article class="article">
 write("/404.html", doc)
 
 # ---------- sitemap, robots, llms.txt ----------
-urls = ["/", "/questions/", "/counties/", "/about/"] + [h for h, _, _ in GUIDES] + [f"/counties/{c['slug']}/" for c in COUNTIES] + [f"/counties/zone-{z}/" for z in sorted(ZONES, key=int) if z not in LIVE_ZONES] + ["/agents"]
+urls = ["/", "/questions/", "/counties/", "/about/"] + [h for h, _, _ in GUIDES] + [f"/counties/{c['slug']}/" for c in ALL_GUIDES] + [f"/counties/zone-{z}/" for z in sorted(ZONES, key=int) if z not in LIVE_ZONES] + ["/agents"]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+lastmod = {f"/counties/{g['slug']}/": g["updated"] for g in OTHER_GUIDES}
 for u in urls:
     pri = "1.0" if u == "/" else ("0.9" if u.count("/") >= 3 else "0.7")
-    sm.append(f"  <url><loc>{BASE}{u}</loc><lastmod>{UPDATED}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>")
+    sm.append(f"  <url><loc>{BASE}{u}</loc><lastmod>{lastmod.get(u, UPDATED)}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>")
 sm.append("</urlset>\n")
 write("/sitemap.xml", "\n".join(sm))
 
@@ -216,6 +219,7 @@ Sitemap: {BASE}/sitemap.xml
 """)
 
 county_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in sorted(COUNTIES, key=lambda c: c["name"]))
+other_lines = "\n".join(f"- [{c['name']} County, NC health insurance 2027]({BASE}/counties/{c['slug']}/): {c['short']}." for c in OTHER_GUIDES)
 write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 > Independent, licensed ACA (Affordable Care Act) health insurance guidance for North Carolina individuals, families, self-employed people and early retirees, written by Kurt Conger (NC Health Producer, NPN 21720013). Guides are built from the official HealthCare.gov Marketplace API data for the current plan year (2027) and state the date they were last checked. Help is free to consumers; insurers pay agent commissions.
@@ -233,12 +237,17 @@ write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 {county_lines}
 
+New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carriers for 2027 (Ambetter, Blue Cross NC, UnitedHealthcare, Oscar) and 75 plans (38 designs). Its guide compares the six networks, the standardized "Easy Pricing" plans across carriers, subsidies pegged to an Ambetter benchmark, and which networks include Novant Health New Hanover Regional Medical Center.
+
+{other_lines}
+
 ## Key facts stated on this site (2027)
 
 - 2027 Marketplace income thresholds use 2026 federal poverty guidelines: $15,960 (1 person), $21,640 (2), $33,000 (4). 400% = $63,840 / $86,560 / $132,000. NC Medicaid expansion line (138%) = $22,025 / $29,863 / $45,540.
 - Enhanced premium tax credits expired after 2025; the 400% FPL cliff applies for 2027. Repayment caps on excess credits are eliminated from the 2026 tax year.
 - All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
-- In the 21 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- In the 21 Blue Cross-only counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- In New Hanover County the 2027 benchmark (second-lowest-cost Silver) is Ambetter Clear Silver with $0 Insulin Options ($732 a month at age 45). Ambetter's standardized Silver costs $740 at 45; the identical standardized design costs $978 to $1,184 from Blue Cross, Oscar and UnitedHealthcare. Novant Health New Hanover Regional Medical Center was in network on every Ambetter, Blue Cross and UnitedHealthcare plan and on no Oscar plan (HealthCare.gov lookup, November 10, 2026). No catastrophic plan is offered.
 
 ## Coming soon
 

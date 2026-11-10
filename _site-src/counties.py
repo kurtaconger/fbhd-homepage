@@ -130,6 +130,12 @@ COUNTIES = [
 ]
 CARTERET_LIKE = [c for c in COUNTIES]
 
+# Guides built by their own module (multi-carrier counties); listed with the others on the index pages
+OTHER_GUIDES = [
+    dict(slug="new-hanover", name="New Hanover", fips="37129", ra="ra15", module="county_nh", updated="2026-11-10",
+         short="Wilmington, Carolina Beach, Wrightsville Beach"),
+]
+
 
 def money(x):
     return "${:,.0f}".format(round(x))
@@ -359,6 +365,12 @@ def zone_pages():
         issuers = [SHORT_ISSUER.get(i, i) for i in v["issuers"]]
         path = f"/counties/zone-{z}/"
         clist = ", ".join(counties)
+        live = {g["name"]: g for g in OTHER_GUIDES if g["name"] in counties}
+        def county_li(c):
+            if c in live:
+                return f'<li><a href="/counties/{live[c]["slug"]}/">{c} County</a> (guide available)</li>'
+            return f'<li>{c} County</li>'
+        ready = "".join(f' The <a href="/counties/{g["slug"]}/">{g["name"]} County guide</a> is ready.' for g in live.values())
         plans = f"{v['plans_min']} plans" if v["plans_min"] == v["plans_max"] else f"{v['plans_min']} to {v['plans_max']} plans, depending on the county"
         title = f"Health Insurance Guides for {clist} (NC Rating Area {z}): Coming Soon"
         desc = f"County-by-county 2027 Marketplace plan guides for {clist} are in preparation. {len(issuers)} carrier{'s' if len(issuers) > 1 else ''} ({', '.join(issuers)}) sell {plans} here. Compare them now with Covanu."
@@ -366,10 +378,10 @@ def zone_pages():
         body = f"""
 <h1>{clist}: county guides coming soon</h1>
 {byline()}
-<p class="lede">These {len(counties)} counties make up North Carolina's CMS rating area {z}, which means insurers price their plans the same way across the group. For 2027, {len(issuers)} carrier{'s' if len(issuers) > 1 else ''} sell{'' if len(issuers) > 1 else 's'} Marketplace plans here ({', '.join(issuers)}), {plans}. We are writing the plan-by-plan guides for this area the same way we did for the <a href="/counties/carteret/">Crystal Coast and Albemarle counties</a>: every plan, local prices by age and income, and which plan fits which situation.</p>
+<p class="lede">These {len(counties)} counties make up North Carolina's CMS rating area {z}, which means insurers price their plans the same way across the group. For 2027, {len(issuers)} carrier{'s' if len(issuers) > 1 else ''} sell{'' if len(issuers) > 1 else 's'} Marketplace plans here ({', '.join(issuers)}), {plans}. We are writing the plan-by-plan guides for this area the same way we did for the <a href="/counties/carteret/">Crystal Coast and Albemarle counties</a>: every plan, local prices by age and income, and which plan fits which situation.{ready}</p>
 <h2>Counties in this area</h2>
 <ul>
-{''.join(f'<li>{c} County</li>' for c in counties)}
+{''.join(county_li(c) for c in counties)}
 </ul>
 <h2>Until the guide is ready</h2>
 <p>Our Covanu tool already has every 2027 plan for these counties, with your subsidy applied and your medications priced on each plan's drug list. And the three <a href="/questions/">common questions</a> apply statewide: the subsidy math, the 400% cliff and the Bronze-vs-Silver arithmetic are the same in {counties[0]} County as on the coast; only the premiums and the carriers differ.</p>

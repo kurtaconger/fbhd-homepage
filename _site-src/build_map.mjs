@@ -6,17 +6,20 @@ const counties = topojson.feature(us, us.objects.counties).features.filter(f => 
 const names = JSON.parse(fs.readFileSync("/mnt/user-data/uploads/covanu-insure/Research/carteret-2027/nc_county_plans.json"));
 const RA = JSON.parse(fs.readFileSync("ra.json"));
 const LIVE = new Set([12, 16]);
+// counties with a guide outside the all-live rating areas (New Hanover, rating area 15)
+const LIVE_FIPS = new Set(["37129"]);
 const proj = geoConicConformal().parallels([34.33, 36.17]).rotate([79, 0]).fitSize([900, 360], { type: "FeatureCollection", features: counties });
 const path = geoPath(proj);
 let paths = [], labels = {}, geo = { type: "FeatureCollection", features: [] };
 const slug = (n) => n.toLowerCase().replace(/[^a-z]+/g, "-");
 for (const f of counties) {
   const d = path(f); const ra = RA[f.id]; const nm = (names[f.id]?.name || f.properties.name).replace(" County", "");
-  const href = LIVE.has(ra) ? `/counties/${slug(nm)}/` : `/counties/zone-${ra}/`;
-  const cls = LIVE.has(ra) ? "live" : "soon";
-  paths.push(`<a href="${href}" class="${cls}" data-zone="${ra}"><path d="${d}"><title>${nm} County · rating area ${ra}${LIVE.has(ra) ? " · guide available" : " · coming soon"}</title></path></a>`);
+  const live = LIVE.has(ra) || LIVE_FIPS.has(f.id);
+  const href = live ? `/counties/${slug(nm)}/` : `/counties/zone-${ra}/`;
+  const cls = live ? "live" : "soon";
+  paths.push(`<a href="${href}" class="${cls}" data-zone="${ra}"><path d="${d}"><title>${nm} County · rating area ${ra}${live ? " · guide available" : " · coming soon"}</title></path></a>`);
   const c = proj(geoCentroid(f)); (labels[ra] ||= []).push(c);
-  if (LIVE.has(ra)) geo.features.push({ type: "Feature", properties: { fips: f.id, name: nm }, geometry: f.geometry });
+  if (live) geo.features.push({ type: "Feature", properties: { fips: f.id, name: nm }, geometry: f.geometry });
 }
 const zoneLabels = Object.entries(labels).map(([z, pts]) => { const x = pts.reduce((a, p) => a + p[0], 0) / pts.length, y = pts.reduce((a, p) => a + p[1], 0) / pts.length; return `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}">${z}</text>`; }).join("\n");
 const svg = `<svg class="nc-map" viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="nc-map-title">

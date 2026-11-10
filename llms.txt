@@ -35,12 +35,17 @@
 - [Tyrrell County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/tyrrell/): Columbia.
 - [Washington County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/washington/): Plymouth, Roper, Creswell.
 
+New Hanover County (Wilmington, CMS rating area 15) has four Marketplace carriers for 2027 (Ambetter, Blue Cross NC, UnitedHealthcare, Oscar) and 75 plans (38 designs). Its guide compares the six networks, the standardized "Easy Pricing" plans across carriers, subsidies pegged to an Ambetter benchmark, and which networks include Novant Health New Hanover Regional Medical Center.
+
+- [New Hanover County, NC health insurance 2027](https://factbasedhealthcaredecisions.com/counties/new-hanover/): Wilmington, Carolina Beach, Wrightsville Beach.
+
 ## Key facts stated on this site (2027)
 
 - 2027 Marketplace income thresholds use 2026 federal poverty guidelines: $15,960 (1 person), $21,640 (2), $33,000 (4). 400% = $63,840 / $86,560 / $132,000. NC Medicaid expansion line (138%) = $22,025 / $29,863 / $45,540.
 - Enhanced premium tax credits expired after 2025; the 400% FPL cliff applies for 2027. Repayment caps on excess credits are eliminated from the 2026 tax year.
 - All Bronze Marketplace plans are HSA-eligible from 2026 under the 2025 federal tax law; 2027 HSA limits are $4,500 self-only / $9,000 family plus $1,000 catch-up at 55+.
-- In the 21 counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- In the 21 Blue Cross-only counties above there is one Marketplace carrier (Blue Cross and Blue Shield of NC) and no catastrophic plan in 2027. Blue Advantage (PPO) costs about 5.5% more than the identical Blue Care (HMO) design; neither requires specialist referrals.
+- In New Hanover County the 2027 benchmark (second-lowest-cost Silver) is Ambetter Clear Silver with $0 Insulin Options ($732 a month at age 45). Ambetter's standardized Silver costs $740 at 45; the identical standardized design costs $978 to $1,184 from Blue Cross, Oscar and UnitedHealthcare. Novant Health New Hanover Regional Medical Center was in network on every Ambetter, Blue Cross and UnitedHealthcare plan and on no Oscar plan (HealthCare.gov lookup, November 10, 2026). No catastrophic plan is offered.
 
 ## Coming soon
 
