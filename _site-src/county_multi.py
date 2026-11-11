@@ -1052,7 +1052,7 @@ def build(g):
                  'Keep income under $86,560 or the subsidy disappears. See <a href="/questions/retiring-before-65-north-carolina/">Retiring before 65 in NC</a>.'))
     if has_ba:
         rows.append(("Spends January through March in Florida, or has a student at an out-of-state college", "Blue Advantage version of whichever Blue Cross design fits",
-                     'The only nationwide network in the county. See <a href="/questions/blue-care-vs-blue-advantage-eastern-nc/">Blue Care vs. Blue Advantage</a>.'))
+                     'The only nationwide network in the county. See <a href="/questions/blue-care-vs-blue-advantage/">Blue Care vs. Blue Advantage</a>.'))
     else:
         rows.append(("Spends months out of state, or has a student at an out-of-state college", "Any plan here covers only emergencies out of state",
                      "No nationwide network is sold in the county. A college's student health plan can cover the student; long stays elsewhere need planning."))

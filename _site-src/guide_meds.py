@@ -7,7 +7,7 @@ CRUMBS = [("/", "Home"), ("/questions/", "Common Questions"), (None, "Bronze vs.
 
 FAQ = [
     ("Is a $0 Bronze plan ever a bad deal?",
-     "Yes, whenever you expect to use care. The subsidy that makes Bronze free is the same dollar amount you could put toward Silver, and below 250% of the poverty level Silver plans also come with cost-sharing reductions that cut the deductible to a few hundred dollars. If you take any brand-name drug or see a doctor more than a couple of times a year, a $150-a-month Silver plan with an $800 deductible usually costs less over the year than a free Bronze with a $7,000 deductible."),
+     "Yes, whenever you expect to use care. The subsidy that makes Bronze free is the same dollar amount you could put toward Silver, and below 250% of the poverty level Silver plans also come with cost-sharing reductions that cut the deductible to a few hundred dollars. If you take any brand-name drug or see a doctor more than a couple of times a year, a $150-a-month Silver plan whose deductible has been cut to $800 (Blue Cross Silver Standard; other insurers' reductions differ) usually costs less over the year than a free Bronze with a $7,000 deductible."),
     ("How do I find out what tier my drug is on?",
      "Every Marketplace plan publishes its drug list (formulary). HealthCare.gov lets you enter your prescriptions when you compare plans and flags whether each is covered. Our Covanu tool goes a step further and estimates what each drug will cost you on each plan, including whether the deductible applies."),
     ("What is the difference between a copay and coinsurance for drugs?",
@@ -24,7 +24,7 @@ body = f"""
 <h1>Bronze vs. Silver When You Take Medications: Estimated Total Cost, Not Just Premium</h1>
 {byline("9 minute read")}
 
-<p class="lede">The cheapest premium is rarely the cheapest plan once you fill a prescription. This guide adds up what a year actually costs (premiums plus deductibles, copays and coinsurance) for three kinds of medication users, using the real 2027 Blue Cross NC plans sold in <a href="/counties/carteret/">Carteret County</a>. The same plan designs are sold across North Carolina, so the pattern applies wherever you live; only the premiums change.</p>
+<p class="lede">The cheapest premium is rarely the cheapest plan once you fill a prescription. This guide adds up what a year actually costs (premiums plus deductibles, copays and coinsurance) for three kinds of medication users, using the real 2027 Blue Cross NC plans sold in <a href="/counties/carteret/">Carteret County</a>. Blue Cross sells these same ten designs in every North Carolina county, so the drug-cost math below is the same wherever you buy Blue Cross and only the premiums change. In the 71 counties where other insurers also sell plans, their designs differ, but the method works on any plan.</p>
 
 <div class="takeaways">
 <h2>Key takeaways</h2>
@@ -32,7 +32,7 @@ body = f"""
 <li><strong>Generics only:</strong> Bronze wins. A $7,000 deductible never comes into play when your drugs are $15&ndash;$25 copays.</li>
 <li><strong>One brand-name drug:</strong> the picture flips. A single preferred brand prescription (Eliquis, Jardiance, Xarelto) costs about $7,400 a year on Bronze Basic but $480 on Silver Standard, enough to make Silver Standard about $3,400 cheaper over the year despite a $300 higher monthly premium.</li>
 <li><strong>A specialty drug:</strong> Gold is cheapest. On Gold All Copay A or Gold Standard A a $3,900-a-month biologic is a $220&ndash;$250 copay; on most other plans you hit the out-of-pocket maximum by spring.</li>
-<li><strong>If you qualify for a subsidy,</strong> compare the free Bronze plan to the $150 Silver plan with cost-sharing reductions. The Silver plan's deductible drops to $325&ndash;$800 and its worst case to $3,600&ndash;$4,000, which usually beats "free" with a $7,000 deductible.</li>
+<li><strong>If you qualify for a subsidy,</strong> compare the cheapest Bronze plan (for a 45-year-old at $30,000: free in 37 counties, $20&ndash;$74 a month in the other 63) to the $154 benchmark Silver plan with cost-sharing reductions. On Blue Cross Silver the deductible drops to $325&ndash;$800 and the worst case to $3,600&ndash;$4,000, which usually beats a $7,000 deductible.</li>
 <li><strong>The plan design matters more than the drug list.</strong> Blue Cross NC's two drug lists cover the same drugs; what differs is whether your brand drug is a flat copay or coinsurance after the deductible.</li>
 </ul>
 </div>
@@ -134,6 +134,9 @@ body = f"""
 </div>
 <p>For anyone on a brand or specialty drug, the "free" plan is the expensive one. Only a generics-only household should take the free Bronze, and even then a Silver plan with an $800 deductible is cheap insurance against a surprise. One more subtlety: cost-sharing reductions only apply to Silver plans, so a subsidized Gold plan (Gold Standard A at $189 a month for this person) keeps its full $2,500 deductible and is rarely the best buy below 250% of the poverty level.</p>
 
+<h3>How this plays out in your county</h3>
+<p>The $154 is not a Carteret number. At $30,000 this person pays about $154 a month for the benchmark Silver plan in every North Carolina county, because the credit is set so the benchmark costs the same share of income everywhere. What changes is which plan is the benchmark and whether Bronze is truly free. In Carteret and 36 other counties, mostly in the east, the credit is larger than the cheapest Bronze premium, so Bronze is $0. In the other 63, including Mecklenburg, Wake, Guilford, Forsyth, Buncombe and New Hanover, an Ambetter Silver plan sets the benchmark, the cheapest Bronze costs $20 to $74 a month, and Blue Cross Silver Standard costs $228 to $598. Cost-sharing reductions apply to every Silver plan but cut deductibles by different amounts: Ambetter's Clear Silver with $0 Insulin Options, the benchmark in Wake, Buncombe and New Hanover counties, drops to a $2,450 deductible, against $800 on Blue Cross Silver Standard. The comparison is the same everywhere, the cheapest Bronze against the benchmark Silver with cost-sharing reductions, and your <a href="/counties/">county guide</a> lists each plan's price and reduced deductible at this income.</p>
+
 <h2>A quick method for your own situation</h2>
 <ol>
 <li>List your prescriptions and look up each one's tier on the plan's drug list (or let our tool do it).</li>
@@ -148,7 +151,7 @@ body = f"""
 {author_box()}
 
 {sources([
-    '<a href="https://www.healthcare.gov/developers/" target="_blank" rel="noopener">HealthCare.gov Marketplace API</a>: 2027 plan benefits, premiums and drug coverage for Carteret County, retrieved ' + UPDATED_H + '.',
+    '<a href="https://www.healthcare.gov/developers/" target="_blank" rel="noopener">HealthCare.gov Marketplace API</a>: 2027 plan benefits, premiums and drug coverage for Carteret County, retrieved ' + UPDATED_H + '; statewide benchmark and Bronze prices for all 100 counties, retrieved November 10, 2026.',
     'Drug list prices are approximate 2026 wholesale list prices and are used only to illustrate deductible mechanics; negotiated prices vary by pharmacy and plan.',
     '<a href="https://www.healthcare.gov/lower-costs/save-on-out-of-pocket-costs/" target="_blank" rel="noopener">HealthCare.gov: cost-sharing reductions</a>.',
 ])}
