@@ -106,7 +106,6 @@ def footer():
                     <li><a href="{APP}" target="_blank" rel="noopener">Compare plans (Covanu)</a></li>
                     <li><a href="{CAL}" target="_blank" rel="noopener">Schedule a meeting</a></li>
                     <li><a href="/about/">How we work</a></li>
-                    <li><a href="https://www.healthcare.gov/" target="_blank" rel="noopener">HealthCare.gov</a></li>
                 </ul>
             </div>
         </div>
@@ -118,6 +117,22 @@ def footer():
 </body>
 </html>
 """
+
+
+# Shared county-guide text, 2027 plan year. Insulin prices: Lilly, Novo Nordisk and Sanofi list prices and $35 programs;
+# children's dental: Marketplace stand-alone dental plans for an 8-year-old in six NC counties (API pull, Nov 11, 2026);
+# Ambetter and Oscar extras: the insurers' North Carolina member pages and 2027 announcements.
+INSULIN_COST = ("It is priced like any brand-name drug: a preferred brand is a $40 copay with no deductible on the standardized Silver and $30 on the standardized Gold, "
+                "while on most Bronze plans you pay the pharmacy price, about $66 to $72 for a vial of Humalog or NovoLog since the 2023&ndash;2024 list-price cuts, until you meet the deductible. "
+                "Lilly, Novo Nordisk and Sanofi each cap their insulins at $35 a month for people with commercial coverage, which includes Marketplace plans, "
+                "so a two-insulin routine usually costs $35 to $80 a month without a $0 benefit, about $400 to $1,000 a year. That is roughly what $0 insulin is worth to someone who uses those programs.")
+DENT_VALUE = ("Included children's dental is worth about $250 to $700 a year per child, what a stand-alone children's dental plan costs in North Carolina for 2027 ($21 to $58 a month). "
+              "It pays for checkups in full; on most plans, fillings and other treatment count toward the medical deductible, while a stand-alone plan has a $25 to $155 deductible and caps a child's costs at $350 to $450 a year, so a child who needs fillings can come out ahead with one.")
+DENT_COST = "about $21 to $58 a month per child"
+AMB_EXTRAS = ("a free YMCA membership at participating North Carolina Ys, including YMCA360 online classes; the Ambetter Perks discount program (groceries, gym memberships, travel); "
+              "up to $500 in My Health Pays rewards for healthy activities, which can go toward premiums and household bills; free Virtual 24/7 Care visits on every plan except the standardized Signature plans; "
+              "and, in some counties, DispatchHealth urgent care at home")
+OSC_EXTRAS = "$0 virtual urgent care on every plan, $4 generic drugs on most plans, and a Care Team and an AI guide (Oswell) in the Oscar app that help you find doctors, estimate costs and understand bills"
 
 
 def byline(reading=None):

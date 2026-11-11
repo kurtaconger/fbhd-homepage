@@ -252,7 +252,7 @@ TEXT = {
     # UnitedHealthcare
     "UHC|UHC Bronze Essential": ("HSA savers who want UnitedHealthcare's network and rarely use care",
         "A pure high-deductible plan: apart from preventive care (and the $0 virtual urgent care and $0 insulin in the plan's name), you pay the full negotiated price of care and drugs until you reach $11,750, and then nothing."),
-    "UHC|UHC Bronze Standard": ("people with diabetes who use insulin; families who want children's dental included",
+    "UHC|UHC Bronze Standard": ("insulin users who want UnitedHealthcare's network; families who want children's dental included",
         "The standardized Bronze benefits ($50 primary care, $100 specialists, $25 generics, and $50/$100/$500 brand and specialty copays after the deductible) plus UnitedHealthcare's $0 insulin and children's dental."),
     "UHC|UHC Bronze Copay Focus $0 Indiv Med Ded": ("people who want to know what each visit costs in advance and take only generics",
         "No medical deductible: every medical service is a copay from day one, including $55 primary care, $115 specialists, $80 urgent care, $300 imaging, $2,000 for an emergency room visit and $3,000 a day in the hospital, all capped by the $12,000 out-of-pocket maximum. Generics are $20; brand and specialty drugs are 40% to 50% coinsurance after the separate $4,000 drug deductible."),
@@ -274,7 +274,7 @@ TEXT = {
     "OSC|Bronze Classic 4700": ("Bronze buyers who want a lower deductible and take generics",
         "A lower deductible than most Bronze plans, $4 generics and $40 urgent care, but $70 primary care and $125 specialist visits, and 50% coinsurance for brand drugs, imaging and hospital care."),
     "OSC|Bronze Simple Diabetes": ("people with diabetes whose doctors are in Oscar's network",
-        "Designed for people with diabetes: $50 primary care (the first three visits free), $150 specialists, $40 urgent care and $4 generics from day one, preferred brands at $75 after the deductible, insulin capped at $100 for a 30-day supply, and 50% coinsurance for imaging, hospital care and other brand drugs."),
+        "Designed for people with diabetes: free endocrinologist visits and diabetic eye and foot exams, $50 primary care (the first three visits free), $150 other specialists, $40 urgent care and $4 generics from day one, preferred brands at $75 after the deductible, insulin capped at $100 for a 30-day supply, and 50% coinsurance for imaging, hospital care and other brand drugs."),
     "OSC|Bronze Elite + PCP Saver Plus": ("generic-only Bronze buyers who want no medical deductible",
         "Copays for medical care from day one: $50 primary care, $125 specialists, $40 urgent care, $750 imaging, $2,500 for the emergency room and $3,000 a day in the hospital. Generics are $4; preferred brands are $125 after the $7,500 drug deductible, and other brand and specialty drugs are 50% after it."),
     "OSC|Silver Classic Standard": ("people whose doctors are in Oscar's network and who take a preferred brand drug",
@@ -284,7 +284,7 @@ TEXT = {
     "OSC|Silver Core Plan": ("subsidized households under about $31,900 (one person) who use Oscar's network",
         "A $9,000 deductible at full price, with $50 primary care, $90 specialists, $4 generics and $150 preferred brands; imaging and hospital care are 50% after the deductible. Cost-sharing reductions change it more than most Silver plans."),
     "OSC|Silver Simple Diabetes": ("people with diabetes whose doctors are in Oscar's network",
-        "Designed for people with diabetes: primary care visits and the lowest-tier generics are free, specialists are $40 and urgent care $35, preferred brands are $75 after the deductible, insulin is capped at $100 for a 30-day supply, and imaging and hospital care are 45% after it."),
+        "Designed for people with diabetes: primary care and endocrinologist visits, diabetic eye and foot exams and the lowest-tier generics are free, other specialists are $40 and urgent care $35, preferred brands are $75 after the deductible, insulin is capped at $100 for a 30-day supply, and imaging and hospital care are 45% after it."),
     "OSC|Bronze Simple Breathe Easy with Enhanced COPD Benefits": ("people with asthma or COPD whose doctors are in Oscar's network",
         "Designed for asthma and COPD: pulmonologist visits and common generic inhalers are free, and the first three primary care visits are free (then $50). Other specialists are $150, urgent care $40 and other generics $4; preferred brand drugs are $75 after the $5,500 deductible, and imaging, hospital care and other brand and specialty drugs are 50% after it."),
     "OSC|Bronze Simple Chronic Care CKM": ("people managing heart, kidney or metabolic conditions (diabetes, high cholesterol) on Oscar's network",
@@ -640,7 +640,9 @@ def build(g):
                     out.append(round(p["p45"]) - round(base[0]["p45"]))
         return out
     dent = (("Children's dental is included in every " + join(with_cdent) + " plan" + (", but not in " + join(no_cdent) + " plans; families choosing those should add a stand-alone dental plan for the children." if no_cdent else ".")) if with_cdent
-            else "None of the plans here includes children's dental, so families should add a stand-alone dental plan for the children.")
+            else f"None of the plans here includes children's dental, so families should add a stand-alone dental plan for the children ({DENT_COST}).")
+    if with_cdent:
+        dent += " " + DENT_VALUE
     if adent_ins:
         parts = []
         for i in adent_ins:
@@ -654,7 +656,7 @@ def build(g):
     FAQ.append(("What happens if my income is under about $22,000?",
                 "North Carolina expanded Medicaid in December 2023. A single adult with income under roughly 138% of the federal poverty level (about $22,000 for one person, $29,900 for a couple, $45,500 for a family of four in 2027) is directed to NC Medicaid rather than receiving a Marketplace subsidy. The Marketplace application checks this automatically."))
     FAQ.append(("When can I enroll?",
-                "Open Enrollment for 2027 coverage runs November 1, 2026 through January 15, 2027 on HealthCare.gov. Enroll by December 15 for coverage starting January 1. Outside Open Enrollment you need a qualifying event, such as losing other coverage, moving, marriage or a new baby."))
+                "Open Enrollment for 2027 coverage runs November 1, 2026 through January 15, 2027. Enroll by December 15 for coverage starting January 1. Outside Open Enrollment you need a qualifying event, such as losing other coverage, moving, marriage or a new baby."))
 
     # ---------- tables ----------
     net_sorted = sorted(c.nets, key=lambda n: (P[STD[(n, "silver")]]["p45"] if STD[(n, "silver")] else 1e9, n))
@@ -762,9 +764,9 @@ def build(g):
         gap = round(bp["p45"]) - round(P[cb["bronze"]]["p45"])
         notice.append(f"no plan here is free at $30,000. At age 45 the cheapest Bronze costs only {m(gap)} a month less than the benchmark, so the credit does not cover it and a 45-year-old earning $30,000 still pays {c.net_(cb['bronze'], 's45_30k')}")
     if no_cdent and with_cdent:
-        notice.append(f"families should mind children's dental: {join(no_cdent)} plans leave it out, while {join(with_cdent)} plans include it")
+        notice.append(f"families should mind children's dental: {join(no_cdent)} plans leave it out, while {join(with_cdent)} plans include it, a difference worth about $250 to $700 a year per child, the cost of a stand-alone children's dental plan")
     elif no_cdent:
-        notice.append("families should add a stand-alone dental plan for the children, because no plan here includes children's dental")
+        notice.append(f"families should add a stand-alone dental plan for the children ({DENT_COST}), because no plan here includes children's dental")
     ordinals = ["First", "Second", "Third", "Fourth"]
     if len(notice) == 1:
         notice_txt = notice[0][0].upper() + notice[0][1:] + "."
@@ -875,8 +877,12 @@ def build(g):
             parts.append("Where two prices are shown, the second is the same plan with adult dental and vision added.")
         if i == "UHC":
             parts.insert(0, "$0 insulin on every plan, and $0 virtual urgent care on most.")
+        if i == "AMB":
+            parts.insert(0, "Extras: " + AMB_EXTRAS + ".")
+        if i == "OSC":
+            parts.insert(0, "Extras: " + OSC_EXTRAS + ".")
         if i == "AMH":
-            parts.insert(0, "Free 24/7 virtual primary and urgent care through AmeriHealth's telehealth provider on every plan.")
+            parts.insert(0, "Free 24/7 virtual primary and urgent care, and free virtual dermatology visits, through AmeriHealth's telehealth provider on every plan.")
         cards = "\n".join(card(k) for k in keys)
         return f'<h3 id="plans-{i.lower()}">{head}</h3>\n<p>{" ".join(parts)}</p>\n{cards}\n'
 
@@ -884,9 +890,9 @@ def build(g):
 
     # ---------- decision 1: networks ----------
     NET_DESC = {  # by full network name
-        "Ambetter": "Ambetter of North Carolina's network. As an HMO it covers out-of-network care only in emergencies, but no referrals are needed for specialists. Children's dental is not included.",
-        "Ambetter with Atrium Health": "Ambetter of North Carolina's network built with Atrium Health, whose hospitals and doctors anchor it. As an HMO it covers out-of-network care only in emergencies, but no referrals are needed for specialists. Children's dental is not included.",
-        "AmeriHealth Caritas Next": "AmeriHealth Caritas Next's network, with free 24/7 virtual primary and urgent care through its telehealth provider and no referrals. Out-of-network care is covered only in emergencies, and children's dental is not included.",
+        "Ambetter": "Ambetter of North Carolina's network. As an HMO it covers out-of-network care only in emergencies, but no referrals are needed for specialists. Children's dental is not included. Members get a free YMCA membership at participating North Carolina Ys, the Ambetter Perks discount program and up to $500 in My Health Pays rewards for healthy activities.",
+        "Ambetter with Atrium Health": "Ambetter of North Carolina's network built with Atrium Health, whose hospitals and doctors anchor it. As an HMO it covers out-of-network care only in emergencies, but no referrals are needed for specialists. Children's dental is not included. Members get a free YMCA membership at participating North Carolina Ys, the Ambetter Perks discount program and up to $500 in My Health Pays rewards for healthy activities.",
+        "AmeriHealth Caritas Next": "AmeriHealth Caritas Next's network, with free 24/7 virtual primary and urgent care (and virtual dermatology visits) through its telehealth provider and no referrals. Out-of-network care is covered only in emergencies, and children's dental is not included.",
         "Blue Care": "Blue Cross NC's statewide network. No referrals; out-of-network care is covered only in emergencies. Children's dental is included.",
         "Blue Advantage": "Blue Cross's nationwide option: it adds the national BlueCard network, so you are in network at Blue Cross doctors in every state. Its out-of-network benefit is thin, so treat it as a nationwide in-network plan. Children's dental is included.",
         "Blue Value": "a narrower statewide Blue Cross network. Its out-of-network benefit is thin, so treat it as an in-network plan. Children's dental is included.",
@@ -894,9 +900,9 @@ def build(g):
         "Blue Home with Novant Health": "built around Novant Health's hospitals and doctors. It covers out-of-network care only in emergencies. Children's dental is included.",
         "Blue Home with Cone Health": "built around Cone Health's hospitals and doctors. It covers out-of-network care only in emergencies. Children's dental is included.",
         "Blue Local with Atrium Health": "built around Atrium Health's hospitals and doctors. It covers out-of-network care only in emergencies. Children's dental is included.",
-        "UnitedHealthcare": "UnitedHealthcare's network, with $0 insulin on every plan and children's dental included. Out-of-network care is covered only in emergencies.",
-        "Oscar": "Oscar's network. Out-of-network care is covered only in emergencies, and children's dental is not included.",
-        "Oscar with Atrium Health": "Oscar's network built around Atrium Health's hospitals and doctors. Out-of-network care is covered only in emergencies, and children's dental is not included.",
+        "UnitedHealthcare": "UnitedHealthcare's network, with $0 insulin on every plan, $0 virtual urgent care on most, and children's dental included. Out-of-network care is covered only in emergencies.",
+        "Oscar": "Oscar's network, with $0 virtual urgent care on every plan and a Care Team in the Oscar app. Out-of-network care is covered only in emergencies, and children's dental is not included.",
+        "Oscar with Atrium Health": "Oscar's network built around Atrium Health's hospitals and doctors, with $0 virtual urgent care on every plan and a Care Team in the Oscar app. Out-of-network care is covered only in emergencies, and children's dental is not included.",
     }
 
     def net_bullet(n):
@@ -935,7 +941,7 @@ def build(g):
     elif multi_net or c.nets:
         choose.append(f"<strong>No plan sold in {NAME} has a nationwide network</strong>, so if you spend months out of state, routine care there will not be covered; every plan still covers emergencies anywhere.")
     if has_uhc:
-        choose.append("<strong>Look at UnitedHealthcare if</strong> you use insulin.")
+        choose.append("<strong>If you use insulin</strong>, weigh UnitedHealthcare's $0 insulin against its higher premiums before choosing it; Decision 3 has the numbers.")
 
     dirs = ", ".join(f'<a href="{c.d["net_url"][n]}" target="_blank" rel="noopener">{c.net_label(n)}</a>' for n in c.nets if c.d["net_url"].get(n))
     if multi_net:
@@ -957,7 +963,7 @@ def build(g):
 </ul>
 <p>{' '.join(choose)}</p>"""
     dec1 += f"""
-<p>Before enrolling, check each doctor and your hospital in the plan's own directory ({dirs}), or add them in <a href="{PREVIEW}" target="_blank" rel="noopener">HealthCare.gov's plan preview</a>, which marks every plan as in or out of network for them. In {FULL}, {c.cfg['hospitals']}.</p>"""
+<p>Before enrolling, check each doctor and your hospital in the plan's own directory ({dirs}), or add them in <a href="{APP}" target="_blank" rel="noopener">our Covanu tool</a>, which checks them against every plan's network. In {FULL}, {c.cfg['hospitals']}.</p>"""
 
     # ---------- decision 2: metal ----------
     bronze = [p for p in P.values() if p["metal"] == "bronze"]
@@ -992,13 +998,15 @@ def build(g):
     if has_uhc:
         special.append("UnitedHealthcare includes $0 insulin on every plan")
     if has_clear:
-        special.append("Ambetter's Clear Silver has $0 insulin options, and its Enhanced CHF Heart Care and Asthma/COPD Silver plans have $0 options for related prescriptions")
+        special.append("Ambetter's Clear Silver has $0 insulin options, its Enhanced CHF Heart Care Silver has $0 options for certain heart-failure drugs, and its Enhanced Asthma/COPD Care Silver makes listed asthma and COPD drugs and pulmonologist visits free")
+    osc_diab = "cover endocrinologist visits and diabetic eye and foot exams in full and cap insulin at $100 for a 30-day supply"
     if has_osc and (has_ckm or has_breathe or has_meno):
-        special.append("Oscar's Simple Diabetes" + (" and Chronic Care CKM" if has_ckm else "") + " plans, at the Bronze and Silver levels, cap insulin at $100 for a 30-day supply"
+        special.append("Oscar's Simple Diabetes" + (" and Chronic Care CKM" if has_ckm else "") + f" plans, at the Bronze and Silver levels, {osc_diab}"
+                       + (" (the CKM plans also make cardiology and pulmonology visits and common generic statins and inhalers free)" if has_ckm else "")
                        + (", its Breathe Easy plans make pulmonologist visits and common generic inhalers free" if has_breathe else "")
                        + (", and its Women's Health Silver covers gynecologist visits and common generic hormone therapy in full" if has_meno else ""))
     elif has_osc:
-        special.append("Oscar has Simple Diabetes plans at the Bronze and Silver levels, with insulin capped at $100 for a 30-day supply")
+        special.append(f"Oscar's Simple Diabetes plans, at the Bronze and Silver levels, {osc_diab}")
     diab = ""
     std_b = [(n, STD[(n, "bronze")]) for n in std_nets]
     if len({P[pid]["ins"] for n, pid in std_b}) > 1:
@@ -1012,12 +1020,27 @@ def build(g):
         if len(vals) > 1:
             diab = (" In the official coverage example for a year of managing type 2 diabetes, the estimated cost to you on the standardized Bronze is "
                     + join([f"{v} with {who}" for who, v in ex]) + ": same deductible and copays, different drug lists and insulin terms.")
+    ins_cost = ""
+    if special:
+        ins_cost = "<li><strong>What insulin costs without a $0 benefit.</strong> " + INSULIN_COST
+        if has_uhc and s_lo and s_lo != "UnitedHealthcare" and STD.get(("UnitedHealthcare", "silver")):
+            ug = round(P[STD[("UnitedHealthcare", "silver")]]["p45"]) - round(P[STD[(s_lo, "silver")]]["p45"])
+            ins_cost += f" Here UnitedHealthcare's standardized Silver costs {m(ug)} a month more than {s_lo}'s identical plan at age 45, {m(12 * ug)} a year"
+            ins_cost += (", so for most insulin users a cheaper plan plus a maker's $35 program costs less over the year." if 12 * ug > 1000 else
+                         ", about what $0 insulin saves, so price the whole year both ways.")
+        if has_clear:
+            cl_id = [p for p in P.values() if p["design"] == "Clear Silver with $0 Insulin Options" and not p["adent"]][0]["id"]
+            ins_cost += (" Ambetter's Clear Silver " + ("is the benchmark Silver your credit is based on, so its $0 insulin options carry no extra premium" if P[bench]["key"] == P[cl_id]["key"]
+                         else f"costs {c.full45(cl_id)} a month at age 45")
+                         + f"; check that your insulin is on its $0 list, and weigh its $7,900 deductible ({c.csr(cl_id, 'csr87')[0]} with cost-sharing reductions at $30,000, single).")
+        ins_cost += "</li>"
     dec3 = f"""<h2 id="drugs">Decision 3: How are your prescriptions priced?</h2>
 <p>{'Each insurer has its own drug list, so check every prescription against the plans you are considering; our Covanu tool checks a list of medications against every plan in the county at once. (For Blue Cross, the finding from our other county guides holds here: its two drug lists covered the same 48 common drugs.)' if multi_ins else 'Blue Cross uses two drug lists, a 4-tier list on its Standard plans and a 5-tier list on the rest, and the finding from our other county guides holds here: they covered the same 48 common drugs. Our Covanu tool checks a list of medications against every plan at once.'} Beyond coverage, the plan design decides what you pay:</p>
 <ul>
 <li>On the <strong>standardized plans</strong>, preferred brand drugs are flat copays with no deductible on Silver ($40) and Gold ($30), and specialty drugs are $350 after the deductible on Silver or $250 with no deductible on Gold.</li>
 <li>Most <strong>other designs</strong> charge 25% to 50% coinsurance for non-preferred and specialty drugs, usually after a deductible, and several put brand drugs behind the deductible or a separate drug deductible. Someone on an expensive brand drug can pay thousands before the plan contributes.</li>
-{('<li><strong>Insulin and condition-specific plans.</strong> ' + '; '.join(special) + '.' + diab + '</li>') if special else ''}
+{('<li><strong>Insulin and condition-specific plans.</strong> ' + '; '.join(special) + '.' + diab + (" The example prices insulin at the plan's own rate, before any manufacturer program." if diab else '') + '</li>') if special else ''}
+{ins_cost}
 </ul>
 <p>The arithmetic for brand and specialty drugs is in <a href="/questions/bronze-vs-silver-medications/">Bronze vs. Silver when you take medications</a>. The short version: one brand-name prescription is often enough to make a standardized Silver cheaper than Bronze over a year, and a specialty drug makes a standardized Gold the cheapest plan on the shelf.</p>"""
 
@@ -1037,7 +1060,7 @@ def build(g):
                  "No subsidy at this income; the lowest premium in the county, HSA-eligible." + (f" {c.label(low_moop_b['id'])} caps a bad year at {m(Z['designs'][low_moop_b['key']]['moop'])}." if low_moop_b["id"] != lb else "")))
     fam_why = ""
     if not P[fam_b]["cdent"]:
-        fam_why = "Add a stand-alone dental plan for the children." + (f" {c.label(fam_cd)} ({c.net_(fam_cd, 'fam90k')}) includes children's dental." if fam_cd else "")
+        fam_why = f"Add a stand-alone dental plan for the children ({DENT_COST})." + (f" {c.label(fam_cd)} ({c.net_(fam_cd, 'fam90k')}) includes children's dental." if fam_cd else "")
     else:
         fam_why = "Children's dental is included."
     rows.append(("Self-employed, family of four, $90,000",
@@ -1067,14 +1090,15 @@ def build(g):
     rows.append(("Takes Eliquis, Jardiance or another preferred brand drug", f"{c.label(ss)} or {c.label(sg)}",
                  f"$40 / $30 brand copays with no deductible{(', for less than the same designs cost ' + ('elsewhere in the county' if multi_ins else 'in the other networks')) if len(std_nets) > 1 and P[ss]['net'] == s_lo else ''}. Confirm the drug is on the insurer's list."))
     ins_rows = []
-    if has_uhc:
-        ins_rows.append("UnitedHealthcare plans")
     if has_clear:
         ins_rows.append("Ambetter Clear Silver")
     if has_osc:
         ins_rows.append("Oscar's Simple Diabetes" + (" and Chronic Care CKM" if has_ckm else "") + " plans")
-    if ins_rows:
-        rows.append(("Uses insulin", join(ins_rows, "or"), "Compare the whole year's cost, not just the insulin."))
+    if ins_rows or has_uhc:
+        start = join(ins_rows, "or") + ((", or " if ins_rows else "") + "UnitedHealthcare plans if you want its network" if has_uhc else "")
+        rows.append(("Uses insulin", start[0].upper() + start[1:],
+                     ("Clear Silver's $0 insulin options come without a premium penalty. " if has_clear else "")
+                     + "Without a $0 benefit, the makers' $35-a-month programs cap most insulins, so compare the whole year's cost, not just the insulin."))
     rows.append(("Takes a specialty drug (Dupixent, Skyrizi, Enbrel, Rinvoq)", c.label(sg),
                  "$250 specialty copay with no deductible and an $8,600 maximum. Confirm the drug is on the list."))
     big = f"{c.label(sg)} ($8,600 max)"
@@ -1082,7 +1106,7 @@ def build(g):
         cl = [p for p in P.values() if p["design"] == "Clear Silver with $0 Insulin Options" and not p["adent"]][0]["id"]
         big += f" or Ambetter Clear Silver ($7,900 max; {c.csr(cl, 'csr87')[0]} with cost-sharing reductions at $30,000, single)"
     rows.append(("Planning surgery or a pregnancy next year", big, "You will reach the deductible anyway; buy the plan with the lowest ceiling."))
-    rows.append(("Income near $22,000 (single) or $45,500 (family of four)", "Apply through HealthCare.gov and let it check Medicaid",
+    rows.append(("Income near $22,000 (single) or $45,500 (family of four)", "Apply for Marketplace coverage and let the application check Medicaid",
                  "NC Medicaid may cover you at no premium; the Marketplace cannot subsidize you below the line."))
     sit_rows = "".join(f"<tr><td>{a}</td><td>{b}</td><td>{w}</td></tr>" for a, b, w in rows)
 

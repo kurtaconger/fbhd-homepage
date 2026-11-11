@@ -326,7 +326,7 @@ def _county_page(c):
         ("Can I keep my plan if I move to another county?",
          f"Moving to a new county is a qualifying life event. {MOVE} A move elsewhere gives you a 60-day special enrollment period to pick a new plan."),
         ("When can I enroll?",
-         "Open Enrollment for 2027 coverage runs November 1, 2026 through January 15, 2027 on HealthCare.gov. Enroll by December 15 for coverage starting January 1. Outside Open Enrollment you need a qualifying event, such as losing other coverage, moving, marriage or a new baby."),
+         "Open Enrollment for 2027 coverage runs November 1, 2026 through January 15, 2027. Enroll by December 15 for coverage starting January 1. Outside Open Enrollment you need a qualifying event, such as losing other coverage, moving, marriage or a new baby."),
     ]
 
     # tables
@@ -467,7 +467,7 @@ def _county_page(c):
 <tr><td>Takes Eliquis, Jardiance or another preferred brand drug</td><td>Silver Standard or Gold Standard A</td><td>$40 / $30 brand copays with no deductible. See the <a href="/questions/bronze-vs-silver-medications/">medication guide</a>.</td></tr>
 <tr><td>Takes a specialty drug (Dupixent, Skyrizi, Enbrel, Rinvoq)</td><td>Gold Standard A or Gold All Copay A</td><td>$250 / $220 specialty copays versus 50% coinsurance on most other plans.</td></tr>
 <tr><td>Planning surgery or a pregnancy next year</td><td>Gold Standard A ($8,600 max) or Gold All Copay A ($2,500 per stay)</td><td>You will reach the deductible anyway; buy the plan with the lowest ceiling.</td></tr>
-<tr><td>Income near $22,000 (single) or $45,500 (family of four)</td><td>Apply through HealthCare.gov and let it check Medicaid</td><td>NC Medicaid may cover you at no premium; the Marketplace cannot subsidize you below the line.</td></tr>
+<tr><td>Income near $22,000 (single) or $45,500 (family of four)</td><td>Apply for Marketplace coverage and let the application check Medicaid</td><td>NC Medicaid may cover you at no premium; the Marketplace cannot subsidize you below the line.</td></tr>
 </tbody>
 </table>
 </div>

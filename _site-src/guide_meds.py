@@ -9,7 +9,7 @@ FAQ = [
     ("Is a $0 Bronze plan ever a bad deal?",
      "Yes, whenever you expect to use care. The subsidy that makes Bronze free is the same dollar amount you could put toward Silver, and below 250% of the poverty level Silver plans also come with cost-sharing reductions that cut the deductible to a few hundred dollars. If you take any brand-name drug or see a doctor more than a couple of times a year, a $150-a-month Silver plan whose deductible has been cut to $800 (Blue Cross Silver Standard; other insurers' reductions differ) usually costs less over the year than a free Bronze with a $7,000 deductible."),
     ("How do I find out what tier my drug is on?",
-     "Every Marketplace plan publishes its drug list (formulary). HealthCare.gov lets you enter your prescriptions when you compare plans and flags whether each is covered. Our Covanu tool goes a step further and estimates what each drug will cost you on each plan, including whether the deductible applies."),
+     "Every Marketplace plan publishes its drug list (formulary). Our Covanu tool checks your prescriptions against every plan's drug list and estimates what each drug will cost you on each plan, including whether the deductible applies."),
     ("What is the difference between a copay and coinsurance for drugs?",
      "A copay is a fixed amount ($40 for a preferred brand drug, say) regardless of the drug's price. Coinsurance is a percentage of the price (50% of a $650 drug is $325). On most Bronze plans and some Silver and Gold plans, brand-name drugs are coinsurance after the deductible, which means you pay the full price until the deductible is met. Plans labeled Standard, and the Gold All Copay plan, use copays instead."),
     ("Does the deductible apply to generic drugs?",
@@ -121,7 +121,7 @@ body = f"""
 <p><strong>Verdict:</strong> Gold, and specifically the two Gold plans with specialty copays. Gold Premier A, the cheapest Gold, is the most expensive plan of all for this person because its specialty benefit is 50% coinsurance. The cheapest-premium plan (Bronze Basic) costs $4,700 more than the best Gold. If you cannot afford Gold, Bronze HSA Eligible Plus is the fallback: its $8,700 ceiling is the lowest among the Bronze plans, and HSA contributions can fund part of it pre-tax.</p>
 
 <h2>If you get a subsidy: free Bronze vs. $150 Silver</h2>
-<p>Most people who buy on HealthCare.gov qualify for a premium tax credit, and for them the comparison is different and usually easier. Take the same 45-year-old in Carteret with $30,000 of income. Bronze Basic costs $0 a month. Silver Standard costs $154 a month, and because this income is under 250% of the poverty level the plan comes with <strong>cost-sharing reductions</strong>: the deductible falls from $6,400 to $800 and the out-of-pocket maximum from $10,300 to $3,600.</p>
+<p>Most people who buy a Marketplace plan qualify for a premium tax credit, and for them the comparison is different and usually easier. Take the same 45-year-old in Carteret with $30,000 of income. Bronze Basic costs $0 a month. Silver Standard costs $154 a month, and because this income is under 250% of the poverty level the plan comes with <strong>cost-sharing reductions</strong>: the deductible falls from $6,400 to $800 and the out-of-pocket maximum from $10,300 to $3,600.</p>
 <div class="table-wrap">
 <table class="data">
 <thead><tr><th>Person</th><th class="num">Bronze Basic ($0/mo)</th><th class="num">Silver Standard with CSR ($154/mo)</th></tr></thead>

@@ -15,7 +15,7 @@ FAQ = [
     ("What happens to my Marketplace plan when I turn 65?",
      "You enroll in Medicare during your 7-month initial enrollment period (the three months before your birthday month, the month itself, and three months after). Once you are eligible for premium-free Part A you can no longer receive a premium tax credit, so you cancel the Marketplace plan effective the day Medicare starts. A Marketplace plan is not employer coverage, so it does not let you delay Part B without a lifetime penalty."),
     ("My spouse is younger. What happens to her coverage when I go on Medicare?",
-     "She stays on the Marketplace plan as a household of two with one person enrolled. The credit is recalculated on your joint income for her premium alone. Report the change on HealthCare.gov the month you enroll in Medicare."),
+     "She stays on the Marketplace plan as a household of two with one person enrolled. The credit is recalculated on your joint income for her premium alone. Report the change to the Marketplace the month you enroll in Medicare."),
     ("Can I keep contributing to an HSA?",
      "Until the month your Medicare coverage begins. If you delay Medicare past 65 and later enroll while claiming Social Security, Part A is backdated up to six months, and HSA contributions during those months become excess contributions. Stop contributing six months before you plan to enroll in that case."),
     ("What if my income is very low in early retirement?",
@@ -40,7 +40,7 @@ body = f"""
 </div>
 
 <h2>Your three options when the employer plan ends</h2>
-<p>Losing employer coverage, including by retiring, opens a 60-day special enrollment period on HealthCare.gov. In that window you can choose among:</p>
+<p>Losing employer coverage, including by retiring, opens a 60-day special enrollment period for Marketplace coverage. In that window you can choose among:</p>
 <ul>
 <li><strong>COBRA</strong>: keep the employer plan for up to 18 months. The shock is the price: while you were working, your employer paid most of the premium (on average 83% for single coverage and 72% for family coverage, per KFF's 2025 employer survey); on COBRA you pay the entire premium plus a 2% administrative fee. For a couple that is typically $1,800 to $2,800 a month in 2027. No income test, same doctors, same deductible progress for the rest of the year.</li>
 <li><strong>A Marketplace plan</strong>: priced by age and county, reduced by a premium tax credit based on your retirement income. Deductibles reset on January 1 and whenever you switch plans.</li>
@@ -116,7 +116,7 @@ body = f"""
 </ol>
 
 <div class="callout caution">
-<p><strong>The repayment cap is gone.</strong> Through 2025, a retiree who underestimated income repaid at most $1,500 to $3,500 of excess credit at tax time. Starting with the 2026 tax year, the full excess is repaid. A year-end capital gains distribution from a mutual fund, a required minimum distribution from an inherited IRA, or a Roth conversion done without checking the line can trigger repayment of the entire year's credit. Review MAGI in October, before the fund distributions, and report changes on HealthCare.gov.</p>
+<p><strong>The repayment cap is gone.</strong> Through 2025, a retiree who underestimated income repaid at most $1,500 to $3,500 of excess credit at tax time. Starting with the 2026 tax year, the full excess is repaid. A year-end capital gains distribution from a mutual fund, a required minimum distribution from an inherited IRA, or a Roth conversion done without checking the line can trigger repayment of the entire year's credit. Review MAGI in October, before the fund distributions, and report changes to the Marketplace.</p>
 </div>
 
 <h2>Which plan for the bridge years</h2>
@@ -132,8 +132,8 @@ body = f"""
 <ol>
 <li><strong>Three months before your 65th birthday month,</strong> apply for Medicare Parts A and B at ssa.gov (or by phone). Your initial enrollment period runs seven months: three before, the birthday month, three after. Enrolling in the first three months starts coverage on the first day of your birthday month; enrolling later starts it the first of the following month, so apply early.</li>
 <li><strong>Choose how to fill the gaps</strong>: Original Medicare with a Medigap policy and a Part D drug plan, or a Medicare Advantage plan. Medigap has a guaranteed-issue window of six months from your Part B start date; after that, insurers in North Carolina can underwrite you.</li>
-<li><strong>Cancel the Marketplace plan</strong> effective the last day of the month before Medicare starts, and no later. Medicare always begins on the first of a month, whatever your birthday: enroll during the three months before your birthday month and Part A and B start on the first day of that month (if your birthday is the 1st, they start on the first day of the month before). So a July 18 birthday means Medicare on July 1 and a Marketplace end date of June 30. Set that end date on HealthCare.gov at least two weeks ahead; there is no gap and no overlap. Once you are eligible for premium-free Part A, the premium tax credit stops; a Marketplace plan kept alongside Medicare is full price and pays second.</li>
-<li><strong>If your spouse is younger,</strong> update the HealthCare.gov application to remove you. Her credit is recalculated for a household of two with one enrolled.</li>
+<li><strong>Cancel the Marketplace plan</strong> effective the last day of the month before Medicare starts, and no later. Medicare always begins on the first of a month, whatever your birthday: enroll during the three months before your birthday month and Part A and B start on the first day of that month (if your birthday is the 1st, they start on the first day of the month before). So a July 18 birthday means Medicare on July 1 and a Marketplace end date of June 30. Set that end date with the Marketplace at least two weeks ahead; there is no gap and no overlap. Once you are eligible for premium-free Part A, the premium tax credit stops; a Marketplace plan kept alongside Medicare is full price and pays second.</li>
+<li><strong>If your spouse is younger,</strong> update the Marketplace application to remove you. Her credit is recalculated for a household of two with one enrolled.</li>
 <li><strong>Stop HSA contributions</strong> the month Medicare begins. If you delay Part A past 65 and later claim Social Security, Part A is backdated up to six months, so stop six months ahead in that case.</li>
 <li><strong>Do not rely on the Marketplace plan to delay Part B.</strong> Only current employer coverage (yours or a spouse's, from an employer with 20 or more workers) lets you delay Part B without a 10%-per-year lifetime penalty.</li>
 </ol>

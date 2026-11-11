@@ -9,7 +9,7 @@ FAQ = [
     ("Does my business income count for the subsidy, or my personal income?",
      "Your household's modified adjusted gross income (MAGI) on your federal return. For a sole proprietor or single-member LLC that is net profit after business expenses (Schedule C), less half of self-employment tax, retirement contributions, HSA contributions and the self-employed health insurance deduction, plus your spouse's income and any investment income. Gross receipts do not count; a $150,000 business with $90,000 of expenses is $60,000 of income."),
     ("What happens if I earn more than I estimated?",
-     "You repay the excess credit when you file your taxes, and starting with the 2026 tax year there is no cap on the repayment. If a good year pushes you over 400% of the poverty level, the entire credit for the year is repaid. Report income changes on HealthCare.gov during the year so the credit adjusts, and keep a reserve if your income is unpredictable."),
+     "You repay the excess credit when you file your taxes, and starting with the 2026 tax year there is no cap on the repayment. If a good year pushes you over 400% of the poverty level, the entire credit for the year is repaid. Report income changes to the Marketplace during the year so the credit adjusts, and keep a reserve if your income is unpredictable."),
     ("Can I deduct my health insurance premiums if I get a subsidy?",
      "Yes, but only the part you actually paid. If the plan costs $1,125 a month and the credit pays $763, you deduct $362 a month. IRS Publication 974 has the worksheet, and tax software handles the circular calculation (the deduction lowers MAGI, which raises the credit, which lowers the deduction)."),
     ("I'm an S corporation owner. Does the deduction work the same way?",
@@ -123,7 +123,7 @@ body = f"""
 <p>The deduction is modest compared with the first two levers (12 months at $537 is $6,444 off MAGI), but it compounds: lower MAGI, bigger credit, and the bigger credit is tax-free.</p>
 
 <div class="callout caution">
-<p><strong>Repayment caps are gone.</strong> Through 2025, if you underestimated income the amount you had to repay at tax time was capped (at $1,500 to $3,500 for most households). Beginning with the 2026 tax year the cap is eliminated. Underestimate by enough to cross 400% and you repay the entire year's credit. Estimate conservatively, report changes on HealthCare.gov as they happen, and treat the four levers as the way to make your estimate come true, not as an afterthought in April.</p>
+<p><strong>Repayment caps are gone.</strong> Through 2025, if you underestimated income the amount you had to repay at tax time was capped (at $1,500 to $3,500 for most households). Beginning with the 2026 tax year the cap is eliminated. Underestimate by enough to cross 400% and you repay the entire year's credit. Estimate conservatively, report changes to the Marketplace as they happen, and treat the four levers as the way to make your estimate come true, not as an afterthought in April.</p>
 </div>
 
 <h2>Choosing the plan once the income question is settled</h2>
@@ -136,7 +136,7 @@ body = f"""
 
 <h2>A checklist for the self-employed before December 15</h2>
 <ol>
-<li>Estimate 2027 net profit honestly, then subtract planned SEP/401(k) and HSA contributions and half of self-employment tax. That is the income to enter on HealthCare.gov.</li>
+<li>Estimate 2027 net profit honestly, then subtract planned SEP/401(k) and HSA contributions and half of self-employment tax. That is the income to put on your Marketplace application.</li>
 <li>Find your household's 400% line in the table above. If your estimate is within $10,000 of it, decide now which lever will keep you under.</li>
 <li>Confirm you are not eligible for a spouse's employer plan; if you are, the credit and the deduction are both off the table.</li>
 <li>Pick the plan on total cost, not premium, using your actual medications.</li>
