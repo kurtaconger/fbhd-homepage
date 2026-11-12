@@ -26,12 +26,22 @@
 <body>
     <nav class="site-nav" aria-label="Main">
         <div class="nav-inner">
-            <a class="nav-brand" href="/"><img src="/MFHD_LOGO.png" alt=""> Fact-Based Healthcare Decisions</a>
-            <ul>
+            <a class="nav-brand" href="/"><img src="/MFHD_LOGO.png" alt=""> <span class="nav-brand-text">Fact-Based Healthcare Decisions</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul id="site-menu">
                 <li><a class="nav-link" href="/">Home</a></li><li><a class="nav-link" href="/counties/" aria-current="page">County Guides</a></li><li><a class="nav-link" href="/questions/">Common Questions</a></li><li><a class="nav-link" href="/about/">How We Work</a></li>
                 <li><a class="nav-cta" href="https://calendly.com/kurt-conger" target="_blank" rel="noopener">Schedule a call</a></li>
             </ul>
         </div>
+        <script>
+            (function () {
+                var nav = document.querySelector(".site-nav"), btn = nav.querySelector(".nav-toggle");
+                function setOpen(open) { nav.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", open ? "true" : "false"); }
+                btn.addEventListener("click", function () { setOpen(!nav.classList.contains("nav-open")); });
+                document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+                document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setOpen(false); });
+            })();
+        </script>
     </nav>
     <div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/counties/">County Guides</a> &rsaquo; Catawba County</nav><article class="article">
@@ -362,7 +372,7 @@
 <div class="author-box">
     <img src="/MFHD_LOGO.png" alt="">
     <div>
-        <p><strong>About the author.</strong> Kurt Conger is an independent, licensed North Carolina health insurance agent (NPN 21720013) and the founder of Fact-Based Healthcare Decisions and <a href="https://covanu.com" target="_blank" rel="noopener">Covanu</a>, a plan-selection tool built on HealthCare.gov data. He lives in Carteret County and helps North Carolinians who are starting a business, retiring early or losing coverage compare every ACA plan available to them on total yearly cost, then finish the choice and enroll.</p>
+        <p><strong>About this Content.</strong> The first draft of this content was created by a Gen AI tool. The content was reviewed and edited by Kurt Conger, an independent, licensed North Carolina health insurance agent (NPN 21720013) and a co-founder of Fact-Based Healthcare Decisions and <a href="https://covanu.com" target="_blank" rel="noopener">Covanu</a>, a plan-selection tool built on HealthCare.gov data. Kurt lives in Carteret County and helps North Carolinians who need health insurance.</p>
     </div>
 </div>
 

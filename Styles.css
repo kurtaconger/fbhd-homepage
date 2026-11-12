@@ -522,6 +522,11 @@ body {
     background: #146c43;
 }
 
+/* Menu button, shown only on phones (see the max-width: 700px block) */
+.site-nav .nav-toggle {
+    display: none;
+}
+
 .breadcrumb {
     font-size: 0.9rem;
     color: #666;
@@ -917,8 +922,95 @@ table.data caption {
         font-size: 1.55rem;
     }
 
+    /* Phones: logo, title and menu button on one line; the links drop down from the button */
+    .site-nav .nav-inner {
+        position: relative;
+        flex-wrap: nowrap;
+        gap: 10px;
+        padding: 8px 12px;
+    }
+
+    .site-nav .nav-brand {
+        min-width: 0;
+        gap: 7px;
+        font-size: clamp(0.75rem, 4vw, 1rem);
+    }
+
+    .site-nav .nav-brand img {
+        width: 30px;
+        flex-shrink: 0;
+    }
+
+    .site-nav .nav-brand-text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .site-nav .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        flex-shrink: 0;
+        width: 40px;
+        height: 38px;
+        padding: 0 9px;
+        background: #fff;
+        border: 1px solid #d7e3e5;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .site-nav .nav-toggle span {
+        display: block;
+        height: 2px;
+        background: #1e4f91;
+        border-radius: 1px;
+        transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .site-nav.nav-open .nav-toggle span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .site-nav.nav-open .nav-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .site-nav.nav-open .nav-toggle span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
     .site-nav ul {
-        gap: 12px;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        flex-direction: column;
+        gap: 0;
+        padding: 4px 12px 14px;
+        background: #fff;
+        border-bottom: 1px solid #d7e3e5;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .site-nav.nav-open ul {
+        display: flex;
+    }
+
+    .site-nav a.nav-link {
+        display: block;
+        padding: 11px 0;
+        border-bottom: 1px solid #eef3f4;
+    }
+
+    .site-nav a.nav-cta {
+        display: block;
+        margin-top: 12px;
+        text-align: center;
     }
 }
 

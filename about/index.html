@@ -26,12 +26,22 @@
 <body>
     <nav class="site-nav" aria-label="Main">
         <div class="nav-inner">
-            <a class="nav-brand" href="/"><img src="/MFHD_LOGO.png" alt=""> Fact-Based Healthcare Decisions</a>
-            <ul>
+            <a class="nav-brand" href="/"><img src="/MFHD_LOGO.png" alt=""> <span class="nav-brand-text">Fact-Based Healthcare Decisions</span></a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menu"><span></span><span></span><span></span></button>
+            <ul id="site-menu">
                 <li><a class="nav-link" href="/">Home</a></li><li><a class="nav-link" href="/counties/">County Guides</a></li><li><a class="nav-link" href="/questions/">Common Questions</a></li><li><a class="nav-link" href="/about/" aria-current="page">How We Work</a></li>
                 <li><a class="nav-cta" href="https://calendly.com/kurt-conger" target="_blank" rel="noopener">Schedule a call</a></li>
             </ul>
         </div>
+        <script>
+            (function () {
+                var nav = document.querySelector(".site-nav"), btn = nav.querySelector(".nav-toggle");
+                function setOpen(open) { nav.classList.toggle("nav-open", open); btn.setAttribute("aria-expanded", open ? "true" : "false"); }
+                btn.addEventListener("click", function () { setOpen(!nav.classList.contains("nav-open")); });
+                document.addEventListener("keydown", function (e) { if (e.key === "Escape") setOpen(false); });
+                document.addEventListener("click", function (e) { if (!nav.contains(e.target)) setOpen(false); });
+            })();
+        </script>
     </nav>
     <div class="container">
 <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a> &rsaquo; How We Work</nav><article class="article">
