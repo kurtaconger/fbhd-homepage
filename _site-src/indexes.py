@@ -142,7 +142,7 @@ home_body = f"""
             {cards(GUIDES)}
         </section>
 
-        <section class="guides-home geo-gate">
+        <section class="guides-home">
             <h2 class="section-heading">County guides</h2>
             <p class="section-sub">Every 2027 plan sold in your county, with local prices, explained plan by plan. Click your county.</p>
             {county_cards()}

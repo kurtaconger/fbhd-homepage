@@ -68,8 +68,7 @@ def nav(current):
     items = []
     for href, label in NAV:
         cur = ' aria-current="page"' if href == current else ""
-        gate = ' class="geo-gate"' if href == "/counties/" and current not in ("/counties/",) else ""
-        items.append(f'<li{gate}><a class="nav-link" href="{href}"{cur}>{label}</a></li>')
+        items.append(f'<li><a class="nav-link" href="{href}"{cur}>{label}</a></li>')
     return f"""    <nav class="site-nav" aria-label="Main">
         <div class="nav-inner">
             <a class="nav-brand" href="/"><img src="/MFHD_LOGO.png" alt=""> Fact-Based Healthcare Decisions</a>
@@ -113,7 +112,6 @@ def footer():
             <p>Plan details and premiums on this site come from the HealthCare.gov Marketplace API for the 2027 plan year and are shown for comparison; your price depends on your age, household, income and county. Verify benefits in the plan's Summary of Benefits and Coverage before enrolling. This site is not affiliated with HealthCare.gov or any insurer. Nothing here is tax or legal advice.</p>
         </div>
     </footer>
-    <script src="/geo.js" defer></script>
 </body>
 </html>
 """

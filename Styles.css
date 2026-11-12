@@ -1149,12 +1149,6 @@ details.plan > p:last-child {
     line-height: 1.7;
 }
 
-/* Geo-gated elements: hidden until geo.js confirms the visitor is in a covered area.
-   Add ?geo=in to any URL to force them on (or ?geo=out to force off). */
-html:not(.geo-in) .geo-gate {
-    display: none !important;
-}
-
 .back-home {
     margin-top: 28px;
     font-weight: 600;
