@@ -112,7 +112,7 @@ home_body = f"""
         </header>
 
         <section class="intro">
-            <p>Starting a business, retiring early, or losing coverage? We use data and software from <a href="{APP}" target="_blank" rel="noopener" class="brand-link">Covanu</a> to compare every ACA plan available to you on total yearly cost, then meet with you to finish the choice and enroll. Independent, licensed in North Carolina, and free to you.</p>
+            <p>Don&rsquo;t have health insurance through an employer or the government? We use data and software from <a href="{APP}" target="_blank" rel="noopener" class="brand-link">Covanu</a> to compare every ACA plan available to you. You can get started yourself, or we can set up a call to discuss your options.</p>
         </section>
 
         <section class="ways">
