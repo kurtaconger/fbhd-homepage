@@ -14,11 +14,9 @@ NAIC = "https://sbs.naic.org/solar-external-lookup/lookup?jurisdiction=NC&search
 TITLE = "Verify Kurt Conger's NC Insurance License (NPN 21720013) | Fact-Based Healthcare Decisions"
 DESC = ("Check Kurt Conger's North Carolina health insurance license in the NAIC's official lookup, "
         "and see what the license covers and the background check behind it.")
-UPDATED_LIC = "November 13, 2026"
 CRUMBS = [("/", "Home"), (None, "Verify Kurt's license")]
 
 body = f"""<h1>Verify Kurt Conger&rsquo;s North Carolina insurance license</h1>
-{byline(None, UPDATED_LIC, None)}
 <p class="lede">Before you share your income, health and family details with someone who helps with your health insurance, it is worth confirming that they are licensed. Kurt Conger holds a North Carolina insurance producer license for health insurance, number 21720013. You can confirm it yourself in about a minute in the license lookup that the National Association of Insurance Commissioners (NAIC) runs for the North Carolina Department of Insurance.</p>
 
 <section class="callout verify-box">
