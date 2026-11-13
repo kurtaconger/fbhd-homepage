@@ -7,6 +7,12 @@ UPDATED = "2026-11-05"
 UPDATED_H = "November 5, 2026"
 APP = "https://app.covanu.com/agent/21720013"
 CAL = "https://calendly.com/kurt-conger"
+EMAIL = "kurt.conger@gmail.com"
+PHONE = "252-570-7239"
+PHONE_TEL = "+12525707239"
+
+# "Contact Us" button: opens the contact popup (email, phone, calendar) that footer() adds to every page
+CONTACT_BTN = '<button class="contact-btn" type="button" data-contact aria-haspopup="dialog" aria-controls="contact-dialog">Contact Us</button>'
 
 NAV = [("/", "Home"), ("/counties/", "County Guides"), ("/questions/", "Common Questions"), ("/about/", "How We Work")]
 
@@ -75,7 +81,7 @@ def nav(current):
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Menu"><span></span><span></span><span></span></button>
             <ul id="site-menu">
                 {''.join(items)}
-                <li><a class="nav-cta" href="{CAL}" target="_blank" rel="noopener">Schedule a call</a></li>
+                <li><button class="nav-cta" type="button" data-contact aria-haspopup="dialog" aria-controls="contact-dialog">Contact Us</button></li>
             </ul>
         </div>
         <script>
@@ -97,7 +103,8 @@ def footer():
             <div>
                 <h4>Fact-Based Healthcare Decisions</h4>
                 <p>Independent, licensed ACA health insurance guidance for North Carolina individuals, families, the self-employed and early retirees. Our help is free; insurers pay our commissions.</p>
-                <p style="margin-top:8px">Kurt Conger &middot; NC Health Producer, NPN 21720013<br><a href="mailto:kurt.conger@gmail.com">kurt.conger@gmail.com</a></p>
+                <p style="margin-top:8px">Kurt Conger &middot; NC Health Producer, NPN 21720013</p>
+                <p class="footer-contact">{CONTACT_BTN}</p>
             </div>
             <div>
                 <h4>Common questions</h4>
@@ -122,9 +129,51 @@ def footer():
             <p>Plan details and premiums on this site come from the HealthCare.gov Marketplace API for the 2027 plan year and are shown for comparison; your price depends on your age, household, income and county. Verify benefits in the plan's Summary of Benefits and Coverage before enrolling. This site is not affiliated with HealthCare.gov or any insurer. Nothing here is tax or legal advice.</p>
         </div>
     </footer>
+{CONTACT_DIALOG}
 </body>
 </html>
 """
+
+
+# Contact popup shared by every page. Plain string (not an f-string) so the script's braces need no escaping.
+_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">%s</svg>'
+_ICON_MAIL = _ICON % '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'
+_ICON_PHONE = _ICON % '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'
+_ICON_CAL = _ICON % '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>'
+CONTACT_DIALOG = """    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
+        <div class="contact-dialog-body">
+            <button class="contact-dialog-close" type="button" aria-label="Close" data-contact-close>&times;</button>
+            <h2 id="contact-dialog-title">Contact Us</h2>
+            <p class="contact-dialog-sub">Kurt Conger, independent licensed NC health insurance agent</p>
+            <a class="contact-option" href="mailto:""" + EMAIL + """">""" + _ICON_MAIL + """<span><strong>Email</strong><span>""" + EMAIL + """</span></span></a>
+            <a class="contact-option" href="tel:""" + PHONE_TEL + """">""" + _ICON_PHONE + """<span><strong>Call</strong><span>""" + PHONE + """</span></span></a>
+            <a class="contact-option" href=\"""" + CAL + """\" target="_blank" rel="noopener">""" + _ICON_CAL + """<span><strong>Schedule a meeting</strong><span>Pick a time on my calendar</span></span></a>
+        </div>
+    </dialog>
+    <script>
+        (function () {
+            var dlg = document.getElementById("contact-dialog");
+            if (!dlg) return;
+            function openContact(e) {
+                if (e) e.preventDefault();
+                var nav = document.querySelector(".site-nav.nav-open");
+                if (nav) {
+                    nav.classList.remove("nav-open");
+                    var t = nav.querySelector(".nav-toggle");
+                    if (t) t.setAttribute("aria-expanded", "false");
+                }
+                if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+            }
+            function closeContact() {
+                if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open");
+            }
+            Array.prototype.forEach.call(document.querySelectorAll("[data-contact]"), function (b) {
+                b.addEventListener("click", openContact);
+            });
+            dlg.querySelector("[data-contact-close]").addEventListener("click", closeContact);
+            dlg.addEventListener("click", function (e) { if (e.target === dlg) closeContact(); });
+        })();
+    </script>"""
 
 
 # Shared county-guide text, 2027 plan year. Insulin prices: Lilly, Novo Nordisk and Sanofi list prices and $35 programs;

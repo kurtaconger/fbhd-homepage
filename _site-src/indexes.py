@@ -160,7 +160,7 @@ home_body = f"""
 
         <section class="contact" id="about">
             <p><strong>Kurt Conger</strong> &middot; Independent licensed NC health insurance agent, NPN 21720013</p>
-            <a href="mailto:kurt.conger@gmail.com">kurt.conger@gmail.com</a>
+            {CONTACT_BTN}
         </section>
 """
 
