@@ -611,9 +611,11 @@ body {
     text-decoration: none;
 }
 
-.contact-option:hover {
-    background: #f1f7f9;
-    border-color: #b9cfd3;
+@media (hover: hover) {
+    .contact-option:hover {
+        background: #f1f7f9;
+        border-color: #b9cfd3;
+    }
 }
 
 .contact-option svg {
@@ -632,6 +634,15 @@ body {
     display: block;
     color: #555;
     font-size: 0.9rem;
+}
+
+/* The "Text" option shows only on phones (the popup script adds "is-phone" to <html>) */
+.contact-dialog .contact-option.phone-only {
+    display: none;
+}
+
+.is-phone .contact-dialog .contact-option.phone-only {
+    display: flex;
 }
 
 /* Menu button, shown only on phones (see the max-width: 700px block) */

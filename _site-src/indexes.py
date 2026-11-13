@@ -130,7 +130,7 @@ home_body = f"""
                     <div class="way-actions">
                         <a class="btn" href="{CAL}" target="_blank" rel="noopener">Schedule a meeting</a>
                         <a class="btn btn-outline" href="mailto:kurt.conger@gmail.com?subject=Time%20to%20review%20health%20plans&amp;body=Here%20are%20some%20times%20that%20work%20for%20me%3A%20">Email me a time</a>
-                        <a class="btn btn-outline phone-only" href="sms:+19734418505">Text me a time</a>
+                        <a class="btn btn-outline phone-only" href="sms:{PHONE_TEL}">Text me a time</a>
                     </div>
                 </div>
             </div>

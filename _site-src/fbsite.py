@@ -139,6 +139,7 @@ def footer():
 _ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">%s</svg>'
 _ICON_MAIL = _ICON % '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'
 _ICON_PHONE = _ICON % '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>'
+_ICON_TEXT = _ICON % '<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>'
 _ICON_CAL = _ICON % '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>'
 CONTACT_DIALOG = """    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title">
         <div class="contact-dialog-body">
@@ -147,11 +148,14 @@ CONTACT_DIALOG = """    <dialog class="contact-dialog" id="contact-dialog" aria-
             <p class="contact-dialog-sub">Kurt Conger, independent licensed NC health insurance agent</p>
             <a class="contact-option" href="mailto:""" + EMAIL + """">""" + _ICON_MAIL + """<span><strong>Email</strong><span>""" + EMAIL + """</span></span></a>
             <a class="contact-option" href="tel:""" + PHONE_TEL + """">""" + _ICON_PHONE + """<span><strong>Call</strong><span>""" + PHONE + """</span></span></a>
+            <a class="contact-option phone-only" href="sms:""" + PHONE_TEL + """">""" + _ICON_TEXT + """<span><strong>Text</strong><span>""" + PHONE + """</span></span></a>
             <a class="contact-option" href=\"""" + CAL + """\" target="_blank" rel="noopener">""" + _ICON_CAL + """<span><strong>Schedule a meeting</strong><span>Pick a time on my calendar</span></span></a>
         </div>
     </dialog>
     <script>
         (function () {
+            var phone = /Android|iPhone|iPod|Mobi/i.test(navigator.userAgent || "") || (window.matchMedia && window.matchMedia("(pointer: coarse) and (max-width: 900px)").matches);
+            if (phone) document.documentElement.classList.add("is-phone");
             var dlg = document.getElementById("contact-dialog");
             if (!dlg) return;
             function openContact(e) {

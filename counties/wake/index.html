@@ -390,11 +390,14 @@
             <p class="contact-dialog-sub">Kurt Conger, independent licensed NC health insurance agent</p>
             <a class="contact-option" href="mailto:kurt.conger@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><strong>Email</strong><span>kurt.conger@gmail.com</span></span></a>
             <a class="contact-option" href="tel:+12525707239"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span><strong>Call</strong><span>252-570-7239</span></span></a>
+            <a class="contact-option phone-only" href="sms:+12525707239"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg><span><strong>Text</strong><span>252-570-7239</span></span></a>
             <a class="contact-option" href="https://calendly.com/kurt-conger" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span><strong>Schedule a meeting</strong><span>Pick a time on my calendar</span></span></a>
         </div>
     </dialog>
     <script>
         (function () {
+            var phone = /Android|iPhone|iPod|Mobi/i.test(navigator.userAgent || "") || (window.matchMedia && window.matchMedia("(pointer: coarse) and (max-width: 900px)").matches);
+            if (phone) document.documentElement.classList.add("is-phone");
             var dlg = document.getElementById("contact-dialog");
             if (!dlg) return;
             function openContact(e) {
