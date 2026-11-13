@@ -82,7 +82,7 @@ body = f"""
 <h3>Off-Exchange plans</h3>
 <p>Sold directly by insurers and available only through licensed health insurance agents. Some of the best options, such as select Blue Cross NC PPO plans, are only available this way.</p>
 <div class="callout caution">
-<p><strong>What we don't recommend.</strong> Some agents sell other kinds of coverage, such as fixed indemnity plans and health care sharing ministries ("health share" plans). These are not ACA-compliant. They often leave out essential health benefits like prescription drugs, maternity care and mental health care, and they have no out-of-pocket maximum. That maximum is what caps your total costs for the year if you face a serious illness or accident.</p>
+<p><strong>What we don't recommend.</strong> Some agents sell other kinds of coverage, such as fixed indemnity plans and health care sharing ministries ("health share" plans). These are not ACA-compliant. They often leave out essential health benefits like prescription drugs, maternity care and mental health care, and they have no out-of-pocket maximum. That maximum is what caps your total costs for the year if you face a serious illness or accident. See our <a href="/questions/cheaper-alternatives-to-aca-plans/">Q&amp;A document</a> on this topic.</p>
 </div>
 
 <h2>How we are different</h2>
