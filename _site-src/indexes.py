@@ -203,7 +203,7 @@ doc += f"""    <div class="container"><article class="article">
 write("/404.html", doc)
 
 # ---------- sitemap, robots, llms.txt ----------
-urls = ["/", "/questions/", "/counties/", "/about/"] + [h for h, _, _ in GUIDES] + [f"/counties/{c['slug']}/" for c in ALL_GUIDES] + [f"/counties/zone-{z}/" for z in sorted(ZONES, key=int) if z not in LIVE_ZONES] + ["/agents"]
+urls = ["/", "/questions/", "/counties/", "/about/", "/license/"] + [h for h, _, _ in GUIDES] + [f"/counties/{c['slug']}/" for c in ALL_GUIDES] + [f"/counties/zone-{z}/" for z in sorted(ZONES, key=int) if z not in LIVE_ZONES] + ["/agents"]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 lastmod = {f"/counties/{g['slug']}/": g["updated"] for g in ALL_GUIDES if "updated" in g}
 lastmod.update(GUIDE_DATES)

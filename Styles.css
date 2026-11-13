@@ -1433,3 +1433,41 @@ details.plan > p:last-child {
     letter-spacing: 1px;
     white-space: nowrap;
 }
+
+/* License verification page (/license/) */
+.verify-box h2 {
+    margin-top: 0;
+}
+
+.verify-box ol {
+    margin-bottom: 0;
+}
+
+.license-cert {
+    max-width: 440px;
+    margin: 26px auto 30px;
+    background: #fff;
+    border: 1px solid #d7e3e5;
+    border-top: 4px solid #1e4f91;
+    border-radius: 8px;
+    padding: 14px 14px 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.license-cert img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.license-cert figcaption {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.license-contact .contact-btn {
+    margin-left: 8px;
+}
