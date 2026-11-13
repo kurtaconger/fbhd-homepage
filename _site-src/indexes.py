@@ -234,7 +234,7 @@ _lo, _hi = min(_tot.values()), max(_tot.values())
 plan_range = f"from {_lo} plans in {' and '.join(sorted(k for k, v in _tot.items() if v == _lo))} County to {_hi} in {', '.join(sorted(k for k, v in _tot.items() if v == _hi))}"
 write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
-> Independent, licensed ACA (Affordable Care Act) health insurance guidance for North Carolina individuals, families, self-employed people and early retirees, written by Kurt Conger (NC Health Producer, NPN 21720013). Guides are built from the official HealthCare.gov Marketplace API data for the current plan year (2027) and state the date they were last checked. Help is free to consumers; insurers pay agent commissions.
+> Independent, licensed ACA (Affordable Care Act) health insurance guidance for North Carolina individuals, families, self-employed people and early retirees, drafted with Generative AI tools and reviewed and edited by Kurt Conger (NC Health Producer, NPN 21720013). Guides are built from the official HealthCare.gov Marketplace API data for the current plan year (2027) and state the date they were last checked. Help is free to consumers; insurers pay agent commissions.
 
 ## Common questions (2027 plan year)
 
