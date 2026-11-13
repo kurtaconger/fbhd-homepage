@@ -723,6 +723,15 @@ body {
     color: #1e4f91;
 }
 
+/* Buttons inside articles keep their own text colors (the rule above would turn them blue) */
+.article a.btn {
+    color: #fff;
+}
+
+.article a.btn-outline {
+    color: #198754;
+}
+
 .article strong {
     color: #1e4f91;
 }
@@ -1378,4 +1387,49 @@ details.plan > p:last-child {
 
 .back-home a:hover {
     text-decoration: underline;
+}
+
+/* Common Questions: real-world stories (alternatives page) and the ratings table (quality page) */
+.story {
+    border: 1px solid #d7e3e5;
+    border-left: 4px solid #b45309;
+    border-radius: 6px;
+    background: #fff;
+    padding: 14px 18px;
+    margin: 16px 0;
+}
+
+.story.story-good {
+    border-left-color: #198754;
+}
+
+.story h3 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+}
+
+.story p {
+    margin-bottom: 8px;
+}
+
+.story p:last-child {
+    margin-bottom: 0;
+}
+
+.story .story-source,
+.table-note,
+.reviewed-note {
+    font-size: 0.88rem;
+    color: #555;
+}
+
+.reviewed-note {
+    font-style: italic;
+    margin-top: 22px;
+}
+
+.stars {
+    color: #b8860b;
+    letter-spacing: 1px;
+    white-space: nowrap;
 }

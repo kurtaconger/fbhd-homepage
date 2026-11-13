@@ -16,6 +16,6 @@ Edgecombe, Greene, Pitt, Wayne and Wilson counties in ra_premiums.json come from
 import runpy, os, sys
 here = os.path.dirname(os.path.abspath(__file__))
 os.chdir(here); sys.path.insert(0, here)
-for m in ["counties", "county_nh", "county_multi", "guide_meds", "guide_selfemp", "guide_retire", "guide_ppo", "indexes"]:
+for m in ["counties", "county_nh", "county_multi", "guide_meds", "guide_selfemp", "guide_retire", "guide_ppo", "guide_alternatives", "guide_quality", "indexes"]:
     runpy.run_module(m, run_name="__main__")
 print("site rebuilt into", os.path.abspath(os.path.join(here, "..")))

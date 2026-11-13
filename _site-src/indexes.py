@@ -4,6 +4,8 @@ from counties import COUNTIES, OTHER_GUIDES, ZONES, LIVE_ZONES
 ALL_GUIDES = COUNTIES + OTHER_GUIDES
 
 GUIDES = [
+    ("/questions/cheaper-alternatives-to-aca-plans/", "Are there cheaper options than an ACA plan, and what do I give up?",
+     "Health care sharing, short-term, indemnity and discount plans can cost a third as much. What an ACA plan guarantees, what each alternative leaves out under North Carolina rules, and five real stories of what happens when it goes wrong."),
     ("/questions/bronze-vs-silver-medications/", "Bronze vs. Silver when you take medications",
      "Premium is often the wrong number. Year-long cost comparisons for generic, brand-name and specialty drug users on real 2027 Blue Cross NC plans, including the free (or nearly free) Bronze vs. $154 Silver question for subsidized households."),
     ("/questions/self-employed-north-carolina-2027/", "Health insurance for the self-employed in NC (2027)",
@@ -12,7 +14,10 @@ GUIDES = [
      "COBRA or the Marketplace, what a 64-year-old really pays, which retirement income counts, a cliff that can cost a couple $22,000 to $46,000 a year, and the hand-off to Medicare."),
     ("/questions/blue-care-vs-blue-advantage/", "Blue Care vs. Blue Advantage: is the nationwide PPO worth it?",
      "Same benefits, different network. What the PPO actually buys (college students, families with second homes, frequent travelers), what it costs where you live, the cheaper Blue Home, Blue Local and Blue Value networks, and how to get a PPO in the Triangle."),
+    ("/questions/aca-plan-quality-ratings/", "Is there any way to measure the quality of ACA plans?",
+     "What HealthCare.gov's star ratings measure, how each North Carolina insurer rates for 2027, and the other yardsticks: claim denial rates, complaint records, and why your doctors and drugs still come first."),
 ]
+GUIDE_DATES = {"/questions/cheaper-alternatives-to-aca-plans/": "2026-11-13", "/questions/aca-plan-quality-ratings/": "2026-11-13"}
 
 
 def cards(items):
@@ -46,7 +51,7 @@ body = f"""
 {cta()}
 """
 simple_page("/questions/", "Common Questions: NC Health Insurance Answered (2027) | Fact-Based Healthcare Decisions",
-            "Plain-English answers to the questions that decide which ACA Marketplace plan is right for you in North Carolina: medications, self-employment income, early retirement, built on HealthCare.gov data.",
+            "Plain-English answers to the questions that decide which ACA Marketplace plan is right for you in North Carolina: cheaper alternatives and what they leave out, medications, self-employment income, early retirement, networks and plan quality ratings, built on HealthCare.gov data.",
             "/questions/", [("/", "Home"), (None, "Common Questions")], body,
             [{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Common questions about North Carolina health insurance", "url": BASE + "/questions/",
               "hasPart": [{"@type": "Article", "headline": t, "url": BASE + h} for h, t, _ in GUIDES]}])
@@ -201,6 +206,7 @@ write("/404.html", doc)
 urls = ["/", "/questions/", "/counties/", "/about/"] + [h for h, _, _ in GUIDES] + [f"/counties/{c['slug']}/" for c in ALL_GUIDES] + [f"/counties/zone-{z}/" for z in sorted(ZONES, key=int) if z not in LIVE_ZONES] + ["/agents"]
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
 lastmod = {f"/counties/{g['slug']}/": g["updated"] for g in ALL_GUIDES if "updated" in g}
+lastmod.update(GUIDE_DATES)
 for u in urls:
     pri = "1.0" if u == "/" else ("0.9" if u.count("/") >= 3 else "0.7")
     sm.append(f"  <url><loc>{BASE}{u}</loc><lastmod>{lastmod.get(u, UPDATED)}</lastmod><changefreq>monthly</changefreq><priority>{pri}</priority></url>")
@@ -232,10 +238,12 @@ write("/llms.txt", f"""# Fact-Based Healthcare Decisions
 
 ## Common questions (2027 plan year)
 
+- [Are there cheaper options than an ACA plan, and what do I give up?]({BASE}/questions/cheaper-alternatives-to-aca-plans/): health care sharing plans, short-term limited-duration plans, hospital and fixed indemnity plans, and discount or "MEC" plans compared with ACA-qualified coverage (the 10 essential health benefits, a 2027 out-of-pocket ceiling of $12,000 per person and $24,000 per family, no pre-existing-condition exclusions, external review through Smart NC); in North Carolina short-term plans are limited to 3 months (4 with a renewal) under NC DOI Bulletin 25-B-11; five documented cases from NBC News, KFF Health News and Scripps News.
 - [Bronze vs. Silver when you take medications]({BASE}/questions/bronze-vs-silver-medications/): year-long total cost (premium plus deductible, copays, coinsurance) for generic, brand-name and specialty drug users on real Blue Cross NC plans; why a $0 Bronze plan often costs more than a $150 Silver plan with cost-sharing reductions; for a 45-year-old at $30,000 the benchmark Silver costs about $154 a month in every county, while the cheapest Bronze is free in 37 counties and $20 to $74 a month in the other 63.
 - [Health insurance for the self-employed in North Carolina (2027)]({BASE}/questions/self-employed-north-carolina-2027/): how premium tax credits use MAGI, the 400% federal-poverty-level cliff in dollars (from about $240 a year for a 40-year-old in Guilford County to $46,000 for a couple in their sixties in eastern NC), the self-employed health insurance deduction, SEP-IRA and HSA levers, elimination of repayment caps.
 - [Retiring before 65 in North Carolina]({BASE}/questions/retiring-before-65-north-carolina/): COBRA vs. Marketplace, what a 64-year-old pays, which retirement income counts toward MAGI, income planning for the bridge years, the hand-off to Medicare; a 64-year-old at $60,000 can get a $0 Bronze plan in 33 counties and pays about $80 to $345 a month for the cheapest Bronze elsewhere, and the cliff is $9,600 to $21,900 for one person and $22,000 to $46,200 for a couple, depending on the county.
 - [Blue Care vs. Blue Advantage]({BASE}/questions/blue-care-vs-blue-advantage/): in 90 counties each Blue Cross NC plan comes as a Blue Care HMO and a Blue Advantage PPO with identical benefits; the PPO costs 2.7% to 5.5% more depending on the rating area and buys nationwide in-network access (BlueCard), not meaningful out-of-network coverage; in 31 counties the narrower Blue Home, Blue Local and Blue Value networks cost 13% to 33% less than Blue Care; in the Triangle no PPO is sold on HealthCare.gov, and a Blue Cross NC PPO is available only off-exchange through licensed agents, without premium tax credits; who should pay for it.
+- [Is there any way to measure the quality of ACA plans?]({BASE}/questions/aca-plan-quality-ratings/): CMS Quality Rating System star ratings on HealthCare.gov (Overall, Medical Care, Member Experience, Plan Administration), rated by insurer and plan type in each state; North Carolina 2027 ratings: Blue Cross NC Blue Advantage (PPO), Blue Home and Blue Local (EPO) and Blue Value (POS) 4 stars, Blue Care (HMO) new and not rated, Ambetter and UnitedHealthcare 3 stars, Oscar and AmeriHealth Caritas Next 2 stars; HealthCare.gov insurers denied 19% of in-network claims in 2024 (3% to 36% by insurer, KFF); NAIC complaint index; NCQA does not rate Marketplace plans.
 
 ## County guides
 

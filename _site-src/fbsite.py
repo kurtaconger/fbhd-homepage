@@ -109,10 +109,12 @@ def footer():
             <div>
                 <h4>Common questions</h4>
                 <ul>
+                    <li><a href="/questions/cheaper-alternatives-to-aca-plans/">Cheaper alternatives to ACA plans</a></li>
                     <li><a href="/questions/bronze-vs-silver-medications/">Bronze vs. Silver with medications</a></li>
                     <li><a href="/questions/self-employed-north-carolina-2027/">Self-employed in NC (2027)</a></li>
                     <li><a href="/questions/retiring-before-65-north-carolina/">Retiring before 65 in NC</a></li>
                     <li><a href="/questions/blue-care-vs-blue-advantage/">Blue Care vs. Blue Advantage</a></li>
+                    <li><a href="/questions/aca-plan-quality-ratings/">Measuring plan quality</a></li>
                     <li><a href="/counties/">County guides</a></li>
                 </ul>
             </div>
@@ -196,9 +198,10 @@ AMB_EXTRAS = ("a free YMCA membership at participating North Carolina Ys, includ
 OSC_EXTRAS = "$0 virtual urgent care on every plan, $4 generic drugs on most plans, and a Care Team and an AI guide (Oswell) in the Oscar app that help you find doctors, estimate costs and understand bills"
 
 
-def byline(reading=None):
+def byline(reading=None, updated=None, data="Plan data: HealthCare.gov Marketplace API, 2027 plan year"):
     r = f" &middot; {reading}" if reading else ""
-    return f'<p class="byline">By <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) &middot; Updated {UPDATED_H}{r} &middot; Plan data: HealthCare.gov Marketplace API, 2027 plan year</p>'
+    d = f" &middot; {data}" if data else ""
+    return f'<p class="byline">By <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) &middot; Updated {updated or UPDATED_H}{r}{d}</p>'
 
 
 def breadcrumb(items):
@@ -217,15 +220,15 @@ def breadcrumb_ld(items):
     }
 
 
-def article_ld(title, desc, path, faq=None):
+def article_ld(title, desc, path, faq=None, date=None):
     ld = [{
         "@context": "https://schema.org",
         "@type": "Article",
         "headline": title,
         "description": desc,
         "url": BASE + path,
-        "datePublished": UPDATED,
-        "dateModified": UPDATED,
+        "datePublished": date or UPDATED,
+        "dateModified": date or UPDATED,
         "author": PERSON,
         "publisher": {"@type": "Organization", "name": "Fact-Based Healthcare Decisions", "url": BASE, "logo": {"@type": "ImageObject", "url": BASE + "/MFHD_LOGO.png"}},
         "mainEntityOfPage": BASE + path,
@@ -284,8 +287,8 @@ def write(path, content):
     print("wrote", full)
 
 
-def page(path, title, desc, current, crumbs, body, faq=None, extra_ld=None, reading=None, og_type="article"):
-    ld = article_ld(title, desc, path, faq) + [breadcrumb_ld(crumbs)] + (extra_ld or [])
+def page(path, title, desc, current, crumbs, body, faq=None, extra_ld=None, reading=None, og_type="article", date=None):
+    ld = article_ld(title, desc, path, faq, date) + [breadcrumb_ld(crumbs)] + (extra_ld or [])
     doc = head(title, desc, path, ld, og_type) + nav(current)
     doc += '    <div class="container">\n'
     doc += breadcrumb(crumbs)
