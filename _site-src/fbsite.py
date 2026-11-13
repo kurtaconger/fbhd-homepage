@@ -201,7 +201,7 @@ OSC_EXTRAS = "$0 virtual urgent care on every plan, $4 generic drugs on most pla
 def byline(reading=None, updated=None, data="Plan data: HealthCare.gov Marketplace API, 2027 plan year"):
     r = f" &middot; {reading}" if reading else ""
     d = f" &middot; {data}" if data else ""
-    return f'<p class="byline">By <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) &middot; Updated {updated or UPDATED_H}{r}{d}</p>'
+    return f'<p class="byline">Content drafted by Generative AI tools and reviewed and edited by <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) &middot; Updated {updated or UPDATED_H}{r}{d}</p>'
 
 
 def breadcrumb(items):

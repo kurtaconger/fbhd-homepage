@@ -397,7 +397,7 @@ assert set(TEXT) == {(p["ins"], p["design"]) for p in P.values()}, set(TEXT) ^ {
 
 
 def nh_byline(reading):
-    return (f'<p class="byline">By <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) '
+    return (f'<p class="byline">Content drafted by Generative AI tools and reviewed and edited by <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) '
             f'&middot; Updated {CHECKED_H} &middot; {reading} &middot; Plan data: HealthCare.gov plan preview, 2027 plan year</p>')
 
 

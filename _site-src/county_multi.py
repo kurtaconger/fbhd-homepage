@@ -1267,7 +1267,7 @@ def build(g):
 
 
 def byline_multi(reading):
-    return (f'<p class="byline">By <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) '
+    return (f'<p class="byline">Content drafted by Generative AI tools and reviewed and edited by <a href="/#about">Kurt Conger</a>, independent licensed NC health insurance agent (NPN 21720013) '
             f'&middot; Updated {CHECKED_H} &middot; {reading} &middot; Plan data: HealthCare.gov Marketplace API, 2027 plan year</p>')
 
 
