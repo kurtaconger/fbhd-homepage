@@ -1,7 +1,9 @@
 r"""/license/ : how a client can verify Kurt Conger's North Carolina insurance license.
 
 Not linked from the menu (Kurt, Nov 13, 2026); listed in the sitemap. The certificate image is
-/images/kurt-conger-nc-insurance-license.png (336 x 282, from Kurt). Facts checked Nov 13, 2026 against
+/images/kurt-conger-nc-insurance-license.jpg (1200 x 1000): only the bordered certificate, cropped from the NC DOI
+license PDF Kurt sent Nov 13, 2026 (rendered at 200 dpi). The PDF's top half, with his mailing address and the
+wallet card, is deliberately left out. Facts checked Nov 13, 2026 against
 the NC statutes and NC DOI pages in the sources list; the NAIC link opens the lookup with North Carolina,
 Licensee, Individual and license number 21720013 filled in, and the visitor adds the last name.
 """
@@ -30,8 +32,8 @@ body = f"""<h1>Verify Kurt Conger&rsquo;s North Carolina insurance license</h1>
 </section>
 
 <figure class="license-cert">
-<img src="/images/kurt-conger-nc-insurance-license.png" width="336" height="282" alt="North Carolina Department of Insurance license certificate for Kurt Conger: license number 21720013, NPN 21720013, license type Insurance Producer, line of authority Accident and Health or Sickness.">
-<figcaption>Kurt&rsquo;s license certificate from the North Carolina Department of Insurance. The NAIC lookup shows the license&rsquo;s current status.</figcaption>
+<a href="/images/kurt-conger-nc-insurance-license.jpg" target="_blank" rel="noopener"><img src="/images/kurt-conger-nc-insurance-license.jpg" width="1200" height="1000" alt="North Carolina Department of Insurance license certificate for Kurt Conger: license number 21720013, NPN 21720013, license type Insurance Producer, line of authority Accident and Health or Sickness, effective September 19, 2025."></a>
+<figcaption>Kurt&rsquo;s license certificate from the North Carolina Department of Insurance (click to enlarge). The NAIC lookup shows the license&rsquo;s current status.</figcaption>
 </figure>
 
 <h2>What a North Carolina health insurance license is</h2>
@@ -42,7 +44,7 @@ body = f"""<h1>Verify Kurt Conger&rsquo;s North Carolina insurance license</h1>
 
 <h2>The license includes a criminal background check</h2>
 <p>Every first-time applicant for a North Carolina resident insurance producer license must be fingerprinted for a state and federal criminal history check, as required by North Carolina General Statute 58-33-48. The Department of Insurance reviews the criminal history record, along with the applicant&rsquo;s answers to the application&rsquo;s background questions, before it decides whether to issue the license.</p>
-<p>Kurt completed this background check before North Carolina issued his license in 2025.</p>
+<p>Kurt completed this background check before North Carolina issued his license on September 19, 2025.</p>
 
 <p class="license-contact">Questions about Kurt&rsquo;s license or your coverage? {CONTACT_BTN}</p>
 

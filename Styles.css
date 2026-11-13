@@ -1444,7 +1444,7 @@ details.plan > p:last-child {
 }
 
 .license-cert {
-    max-width: 440px;
+    max-width: 640px;
     margin: 26px auto 30px;
     background: #fff;
     border: 1px solid #d7e3e5;
@@ -1452,6 +1452,10 @@ details.plan > p:last-child {
     border-radius: 8px;
     padding: 14px 14px 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.license-cert a {
+    display: block;
 }
 
 .license-cert img {
